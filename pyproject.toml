@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anaconda-channel-guide"
+version = "0.1.0"
+description = "A plugin that intercepts PNFE and checks if request package exists on other channels"
+requires-python = ">=3.8"
+classifiers = [
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy"
+]
+dependencies = [
+  "conda",
+]
+
+[project.entry-points.conda]
+anaconda-channel-guide = "anaconda_channel_guide.hooks"
+
+[tool.setuptools]
+packages = ["anaconda_channel_guide"]

@@ -1,0 +1,6 @@
+name: anaconda-channel-guide
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.8
+  - conda-canary/label/dev::conda
