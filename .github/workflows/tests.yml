@@ -17,20 +17,18 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Add conda to system path
         run: |
-          # $CONDA is an environment variable pointing to the root of the miniconda directory
           echo $CONDA/bin >> $GITHUB_PATH
-      - name: Install dependencies (conda)
+      - name: Install dependencies
         run: |
-          conda env update --file environment.yml --name base
-          conda install --file requirements.dev.txt
-      - name: Install conda-basic-auth
+          conda env update --file environment.yaml --name base
+      - name: Install package
         run: |
           pip install -e .
       - name: Test with pytest
