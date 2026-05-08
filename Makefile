@@ -12,7 +12,7 @@ help:            ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 
 env:     ## Create conda environment and install package
-	conda env create -f environment.yml --name $(CONDA_ENV_NAME) --yes
+	conda env create -f environment.yaml --name $(CONDA_ENV_NAME) --yes
 	conda run --name $(CONDA_ENV_NAME) pip install -e .
 
 test:            ## Run tests
