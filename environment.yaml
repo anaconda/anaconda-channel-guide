@@ -1,0 +1,17 @@
+name: anaconda-channel-guide
+channels:
+  - defaults
+dependencies:
+  - python>=3.8
+  - setuptools
+  - pip
+  - conda
+  # run
+  - requests
+  # test
+  - pytest
+  - responses
+  - pre-commit
+  # plugins
+  - pytest-cov
+  - pytest-mock
