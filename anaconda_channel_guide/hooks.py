@@ -1,20 +1,15 @@
-"""
-Insert your plugin hook definitions
-
-We have illustrated how this is done by defining a simple "hello conda"
-subcommand for you.
-"""
-
-from conda.plugins import hookimpl, CondaSubcommand
-
+from conda.plugins.types import CondaExceptionObserver
+from conda.plugins import hookimpl
 
 @hookimpl
-def conda_subcommands():
-    def hello_conda(args):
-        print("Hello conda!")
+def conda_exception_observers():
+    def on_package_not_found(event):
+        print(">>> CHANNEL GUIDE PLUGIN FIRED <<<")
+        print(f"Packages: {event.exc_value.packages}")
+        print(f"Channels: {event.channels}")
 
-    yield CondaSubcommand(
-        name="hello", 
-        action=hello_conda,
-        summary="Command that prints \"Hello conda!\""
+    yield CondaExceptionObserver(
+        name="channel-guide",
+        hook=on_package_not_found,
+        watch_for={"PackagesNotFoundError"},
     )
