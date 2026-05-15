@@ -12,10 +12,11 @@ def handle_pnfe(missing_packages: list[str], main_x_configured: bool, authentica
     :returns: A user-facing prompt string if action is needed, or None to fall through to default PNFE behavior
     """
 
-    if not get_available_packages_on_main_x(missing_packages):
+    in_main_x = get_available_packages_on_main_x(missing_packages)
+
+    if not in_main_x:
         return None
 
-    # best case scenario: PNFE really means it's not on main x
     if authenticated and main_x_configured:
         return None
 
