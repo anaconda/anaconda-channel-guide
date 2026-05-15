@@ -1,0 +1,39 @@
+package:
+  name: anaconda-channel-guide
+  version: "0.1.0"
+
+source:
+  path: ..
+
+build:
+  number: 0
+  noarch: python
+  script: python -m pip install . --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python >=3.8
+    - pip
+    - setuptools >=61.0
+    - setuptools-scm
+  run:
+    - python >=3.8
+    - conda
+    - requests
+
+test:
+  requires:
+    - pip
+    - conda
+  imports:
+    - anaconda_channel_guide
+    - anaconda_channel_guide.plugin
+    - anaconda_channel_guide.show
+    - anaconda_channel_guide.channel_check
+  commands:
+    - pip check
+
+about:
+  home: https://github.com/your-org/anaconda-channel-guide
+  summary: Conda plugin that guides users to main-x channel packages
+  license: BSD-3-Clause
