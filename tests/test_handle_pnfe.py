@@ -1,5 +1,6 @@
 import responses
 from anaconda_channel_guide.plugin import handle_pnfe
+from anaconda_channel_guide.show import ChannelGuideBox
 from anaconda_channel_guide.channel_check import BASE_URL
 
 
@@ -14,7 +15,9 @@ def test_handle_pnfe_configured_not_authenticated():
     responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
 
     result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
-    assert result == "Please login to your account to continue."
+    assert isinstance(result, ChannelGuideBox)
+    output = str(result)
+    assert "anaconda login" in output
 
 
 @responses.activate
@@ -34,7 +37,9 @@ def test_handle_pnfe_not_configured_authenticated():
     responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
 
     result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=True)
-    assert result == "Please configure your main-x channel to continue."
+    assert isinstance(result, ChannelGuideBox)
+    output = str(result)
+    assert "conda config --add channels main-x" in output
 
 
 @responses.activate
@@ -44,7 +49,10 @@ def test_handle_pnfe_not_configured_not_authenticated():
     responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
 
     result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
-    assert result == "Please login to your account and configure your main-x channel to continue."
+    assert isinstance(result, ChannelGuideBox)
+    output = str(result)
+    assert "anaanaconda login" in output
+    assert "conda config --add channels main-x" in output
 
 
 @responses.activate
