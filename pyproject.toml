@@ -22,6 +22,7 @@ classifiers = [
 dependencies = [
   "conda",
   "requests",
+  "rich",
 ]
 dynamic = ["version"]
 readme = "README.md"
