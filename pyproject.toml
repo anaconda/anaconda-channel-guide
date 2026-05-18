@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "anaconda-channel-guide"
@@ -21,10 +21,22 @@ classifiers = [
 ]
 dependencies = [
   "conda",
+  "requests",
 ]
+dynamic = ["version"]
+readme = "README.md"
 
 [project.entry-points.conda]
 anaconda-channel-guide = "anaconda_channel_guide.hooks"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "anaconda_channel_guide/_version.py"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+local_scheme = "dirty-tag"
 
 [tool.ruff]
 line-length = 100
