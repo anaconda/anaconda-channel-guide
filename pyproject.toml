@@ -5,16 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "anaconda-channel-guide"
 version = "0.1.0"
-description = "A plugin that intercepts PNFE and checks if request package exists on other channels"
-requires-python = ">=3.8"
+description = "A plugin that intercepts PackageNotFoundErrors and checks if the package exists in other channels."
+requires-python = ">=3.10"
 classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy"
 ]
