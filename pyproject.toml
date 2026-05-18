@@ -38,6 +38,9 @@ source = "vcs"
 [tool.hatch.version.raw-options]
 local_scheme = "dirty-tag"
 
+[tool.mypy]
+warn_no_return = False
+
 [tool.ruff]
 line-length = 100
 target-version = "py310"
