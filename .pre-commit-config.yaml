@@ -1,27 +1,20 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
     - id: check-yaml
-      exclude: "(mkdocs.yml|recipe/meta.yaml)"
     - id: end-of-file-fixer
     - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: ''  # Use the sha / tag you want to point at
+    rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # frozen: v2.1.0
     hooks:
     - id: mypy
       additional_dependencies: ['types-requests']
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 5e2fb545eba1ea9dc051f6f962d52fe8f76a9794  # frozen: v0.15.13
     hooks:
-      - id: pyupgrade
-        args: ["--py310-plus"]
-  - repo: https://github.com/akaihola/darker
-    rev: 1.5.1
-    hooks:
-      - id: darker
-        additional_dependencies: [black==22.10.0]
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
+      # Linter
+      - id: ruff-check
+        args: [--fix]
+      # Formatter
+      - id: ruff-format
