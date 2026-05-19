@@ -20,6 +20,7 @@ requirements:
     - python >=3.10
     - conda
     - requests
+    - rich
 
 test:
   requires:
