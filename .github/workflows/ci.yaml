@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        runner: [macos-latest, ubuntu-latest, ubtuntu-24.04-arm, windows-latest]
+        runner: [macos-latest, ubuntu-latest, ubuntu-24.04-arm, windows-latest]
         python-version: ["310", "311", "312", "313", "314"]
       fail-fast: false
     defaults:
