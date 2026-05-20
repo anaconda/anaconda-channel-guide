@@ -55,7 +55,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        runner: [macos-latest, ubuntu-latest, ubtuntu-24.04-arm, windows-latest]
+        runner: [macos-latest, ubuntu-latest, ubuntu-24.04-arm, windows-latest]
       fail-fast: false
     defaults:
       run:
