@@ -23,11 +23,12 @@ permissions:
 jobs:
   unit-tests:
     name: Test (${{ matrix.runner }}, py${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
         runner: [macos-latest, ubuntu-latest, ubtuntu-24.04-arm, windows-latest]
         python-version: ["310", "311", "312", "313", "314"]
+      fail-fast: false
     defaults:
       run:
         shell: bash
@@ -39,11 +40,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
-        with:
-          python-version: ${{ matrix.python-version }}
-
       - uses: prefix-dev/setup-pixi@1b2de7f3351f171c8b4dfeb558c639cb58ed4ec0 # v0.9.5
         with:
           environments: ${{ env.PIXI_ENV }}
@@ -53,3 +49,29 @@ jobs:
 
       - name: Run tests
         run: pixi run --environment "${PIXI_ENV}" test
+
+  build-conda:
+    name: Build conda package (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        runner: [macos-latest, ubuntu-latest, ubtuntu-24.04-arm, windows-latest]
+      fail-fast: false
+    defaults:
+      run:
+        shell: bash
+    env:
+      PIXI_ENV: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: prefix-dev/setup-pixi@1b2de7f3351f171c8b4dfeb558c639cb58ed4ec0 # v0.9.5
+        with:
+          environments: ${{ env.PIXI_ENV }}
+
+      - name: Build recipe
+        run: pixi run --environment "${PIXI_ENV}" build
