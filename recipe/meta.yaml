@@ -1,9 +1,14 @@
 package:
   name: anaconda-channel-guide
-  version: "0.1.0"
+  {% if GIT_DESCRIBE_TAG is defined and GIT_BUILD_STR is defined %}
+  version: {{ GIT_DESCRIBE_TAG }}+{{ GIT_BUILD_STR }}
+  {% else %}
+  version: 0.0.0dev0
+  {% endif %}
 
 source:
-  path: ..
+  # git_url only captures committed code
+  git_url: ../
 
 build:
   number: 0

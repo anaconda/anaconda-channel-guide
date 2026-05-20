@@ -19,9 +19,10 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy"
 ]
 dependencies = [
-  "conda",
-  "requests",
-  "rich",
+    # Keep empty and add dependencies to pixi.toml
+    # * pixi overrides dependencies from main with PyPi.
+    # * Since conda is not on PyPi, this plug-in is not fully
+    #   installable using pip anyway.
 ]
 dynamic = ["version"]
 readme = "README.md"
@@ -77,3 +78,58 @@ select = [
   "W",    # pycodestyle warnings
   "YTT",  # flake8-2020
 ]
+
+[tool.pixi.workspace]
+name = "anaconda-channel-guide"
+channels = ["https://repo.anaconda.com/pkgs/main"]
+platforms = ["linux-64", "linux-aarch64", "osx-arm64", "win-64"]
+
+[tool.pixi.dependencies]
+conda = ">=26.5.0"
+python = ">=3.10"
+requests = "*"
+rich = "*"
+
+[tool.pixi.pypi-dependencies]
+"anaconda-channel-guide" = { path  = ".", editable = true }
+
+[tool.pixi.tasks]
+conda = { cmd = "python -m conda", env = { CONDA_CHANNELS = "defaults" } }
+
+[tool.pixi.feature.build]
+dependencies = { conda-build = "*", anaconda-client = "*" }
+tasks = { build = "conda build recipe" }
+
+[tool.pixi.feature.test]
+[tool.pixi.feature.test.tasks]
+test = "python -m pytest -vvv -ra"
+
+[tool.pixi.feature.test.dependencies]
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+responses = "*"
+
+[tool.pixi.feature.py310.dependencies]
+python = "3.10.*"
+
+[tool.pixi.feature.py311.dependencies]
+python = "3.11.*"
+
+[tool.pixi.feature.py312.dependencies]
+python = "3.12.*"
+
+[tool.pixi.feature.py313.dependencies]
+python = "3.13.*"
+
+[tool.pixi.feature.py314.dependencies]
+python = "3.14.*"
+
+[tool.pixi.environments]
+build = ["build"]
+dev = ["py310"]
+test-py310 = ["test", "py310"]
+test-py311 = ["test", "py311"]
+test-py312 = ["test", "py312"]
+test-py313 = ["test", "py313"]
+test-py314 = ["test", "py314"]
