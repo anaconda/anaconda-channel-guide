@@ -95,7 +95,6 @@ rich = "*"
 
 [tool.pixi.tasks]
 conda = { cmd = "python -m conda", env = { CONDA_CHANNELS = "defaults" } }
-test = "python -m pytest -vvv -ra"
 
 [tool.pixi.feature.build]
 dependencies = { conda-build = "*", anaconda-client = "*" }
