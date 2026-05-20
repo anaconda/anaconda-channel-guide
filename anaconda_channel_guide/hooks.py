@@ -1,10 +1,18 @@
-from collections.abc import Iterable
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from conda.plugins import hookimpl
-from conda.plugins.types import CondaExceptionEvent, CondaExceptionObserver
+from conda.plugins.types import CondaExceptionObserver
 
 from anaconda_channel_guide.plugin import handle_pnfe
-from anaconda_channel_guide.show import ChannelGuideBox
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from conda.plugins.types import CondaExceptionEvent
+
+    from anaconda_channel_guide.show import ChannelGuideBox
 
 
 def on_package_not_found(event: CondaExceptionEvent) -> ChannelGuideBox | None:
