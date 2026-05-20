@@ -12,10 +12,8 @@ if TYPE_CHECKING:
 
     from conda.plugins.types import CondaExceptionEvent
 
-    from anaconda_channel_guide.show import ChannelGuideBox
 
-
-def on_package_not_found(event: CondaExceptionEvent) -> ChannelGuideBox | None:
+def on_package_not_found(event: CondaExceptionEvent) -> None:
     # TODO: when sending the info to API does it need name and version?
     main_x_configured = "main-x" in event.channels
     missing_packages = [str(pkg) for pkg in event.exc_value.packages]
@@ -23,11 +21,11 @@ def on_package_not_found(event: CondaExceptionEvent) -> ChannelGuideBox | None:
     # TODO: get authenticated status from conda
     authenticated = False
 
-    return handle_pnfe(missing_packages, main_x_configured, authenticated)
+    handle_pnfe(missing_packages, main_x_configured, authenticated)
 
 
 @hookimpl
-def conda_exception_observers() -> Iterable:
+def conda_exception_observers() -> Iterable[CondaExceptionObserver]:
     yield CondaExceptionObserver(
         name="channel-guide",
         hook=on_package_not_found,
