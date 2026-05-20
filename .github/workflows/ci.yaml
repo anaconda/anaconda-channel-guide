@@ -74,4 +74,4 @@ jobs:
           environments: ${{ env.PIXI_ENV }}
 
       - name: Build recipe
-        run: pixi run --environment "${PIXI_ENV}" build
+        run: pixi run --environment "${PIXI_ENV}" build --channel main
