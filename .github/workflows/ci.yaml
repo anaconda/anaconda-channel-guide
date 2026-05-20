@@ -21,11 +21,12 @@ permissions:
   contents: read  # to check out a private repository
 
 jobs:
-  test:
-    name: Test (py${{ matrix.python-version }})
+  unit-tests:
+    name: Test (${{ matrix.runner }}, py${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        runner: [macos-latest, ubuntu-latest, ubtuntu-24.04-arm, windows-latest]
         python-version: ["310", "311", "312", "313", "314"]
     defaults:
       run:
