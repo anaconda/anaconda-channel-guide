@@ -12,7 +12,7 @@ def is_logged_in() -> bool:
     return False
 
 
-def is_main_x_configured(info) -> bool:
+def is_main_x_configured() -> bool:
     """Checks if the main-x channel is configured in the user's conda setup.
 
     :param info: Conda context or exception info containing channel configuration
@@ -28,21 +28,21 @@ def is_package_on_main_x(packages: list[str]) -> dict[str, list[str]]:
     :param packages: List of package names to check availability for
     :returns: Dictionary mapping package names to their available versions on main-x
     """
-    response = requests.post(BASE_URL, json=packages)
+    response = requests.post(BASE_URL, json=packages, timeout=10)
     return response.json()
 
 
 def get_available_packages_on_main_x(missing_packages: list[str]) -> dict[str, list[str]]:
-    """Queries the main-x channel API and filters to only packages that have available versions.
+    """Queries the main-x channel API and filters to only packages
+       that have available versions.
 
     :param missing_packages: List of package names that were not found during install
-    :returns: Dictionary of packages available on main-x with their versions, or empty dict on API failure
+    :returns: Dictionary of packages available on main-x with their
+        versions, or empty dict on API failure
     """
-    # try:
-    #     availability = is_package_on_main_x(missing_packages)
-    #     in_main_x = {pkg: v for pkg, v in availability.items() if v}
-    #     return in_main_x
-    # except requests.exceptions.RequestException:
-    #     return {}
-
-    return {pkg: ["1.0"] for pkg in missing_packages}
+    try:
+        availability = is_package_on_main_x(missing_packages)
+        in_main_x = {pkg: v for pkg, v in availability.items() if v}
+        return in_main_x
+    except requests.exceptions.RequestException:
+        return {}

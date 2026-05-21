@@ -45,6 +45,7 @@ warn_no_return = false
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+exclude = ["anaconda_channel_guide/_version.py"]
 
 [tool.ruff.lint]
 extend-per-file-ignores = {"tests/*" = ["S101"]}

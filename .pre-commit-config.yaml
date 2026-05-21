@@ -1,26 +1,34 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+  - repo: builtin
     hooks:
-    - id: check-yaml
-      exclude: meta\.yaml
-    - id: end-of-file-fixer
-    - id: trailing-whitespace
+      - id: check-yaml
+        priority: 1
+        exclude: meta\.yaml
+      - id: end-of-file-fixer
+        priority: 1
+      - id: trailing-whitespace
+        priority: 2
+      - id: mixed-line-ending
+        priority: 3
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # frozen: v2.1.0
     hooks:
-    - id: mypy
-      additional_dependencies: ['types-requests']
+      - id: mypy
+        additional_dependencies: ['types-requests']
+        priority: 1
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 5e2fb545eba1ea9dc051f6f962d52fe8f76a9794  # frozen: v0.15.13
     hooks:
       # Linter
       - id: ruff-check
         args: [--fix]
+        priority: 1
       # Formatter
       - id: ruff-format
+        priority: 2
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
     rev: 9257c6050c0261b8c57e712f632dc4a8010109a9  # frozen: v1.25.2
     hooks:
       - id: zizmor
         args: [--persona, auditor]
+        priority: 1
