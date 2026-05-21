@@ -1,4 +1,5 @@
 import responses
+from anaconda_auth.token import TokenNotFoundError
 from pytest_mock import MockerFixture
 
 from anaconda_channel_guide.channel_check import BASE_URL, is_logged_in
@@ -77,7 +78,7 @@ def test_handle_pnfe_fully_setup() -> None:
 
 def test_is_logged_in_valid_token(mocker: MockerFixture) -> None:
     """Returns True when token exists and is not expired."""
-    mock_cls = mocker.patch("anaconda_auth.token.TokenInfo")
+    mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = False
     assert is_logged_in() is True
@@ -85,7 +86,7 @@ def test_is_logged_in_valid_token(mocker: MockerFixture) -> None:
 
 def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
     """Returns False when token exists but is expired."""
-    mock_cls = mocker.patch("anaconda_auth.token.TokenInfo")
+    mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = True
     assert is_logged_in() is False
@@ -93,6 +94,6 @@ def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
 
 def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
     """Returns False when no token is found."""
-    mock_cls = mocker.patch("anaconda_auth.token.TokenInfo")
-    mock_cls.load.side_effect = Exception("no token")
+    mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
+    mock_cls.load.side_effect = TokenNotFoundError("no token")
     assert is_logged_in() is False

@@ -1,4 +1,5 @@
 import requests
+from anaconda_auth.token import TokenInfo, TokenNotFoundError
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 
@@ -12,11 +13,9 @@ def is_logged_in() -> bool:
     :returns: True if the user has a valid (non-expired) token, False otherwise
     """
     try:
-        from anaconda_auth.token import TokenInfo
-
         token_info = TokenInfo.load()
         return not token_info.expired
-    except Exception:
+    except TokenNotFoundError:
         return False
 
 
