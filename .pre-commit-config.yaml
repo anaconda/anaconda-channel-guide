@@ -1,15 +1,20 @@
 repos:
-  - repo: builtin
+  - repo: local
+    hooks:
+      - id: pixi-lock
+        name: pixi lock
+        entry: bash -c 'pixi lock --check --quiet || (pixi lock --quiet && exit 1)'
+        language: system
+        files: (^pixi\.toml$|^pyproject\.toml$)
+        pass_filenames: false
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
     hooks:
       - id: check-yaml
-        priority: 1
         exclude: meta\.yaml
       - id: end-of-file-fixer
-        priority: 1
       - id: trailing-whitespace
-        priority: 2
       - id: mixed-line-ending
-        priority: 3
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: d2823d321df3af8f878f7ee3414dc94d037145b9  # frozen: v2.1.0
     hooks:
