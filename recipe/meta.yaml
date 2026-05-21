@@ -31,7 +31,6 @@ requirements:
 test:
   requires:
     - pip
-    - conda
   imports:
     - anaconda_channel_guide
     - anaconda_channel_guide.plugin
