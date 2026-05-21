@@ -32,7 +32,6 @@ test:
   requires:
     - pip
     - conda
-    - anaconda-auth
   imports:
     - anaconda_channel_guide
     - anaconda_channel_guide.plugin
