@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: pixi-lock
         name: pixi lock
-        entry: bash -c 'pixi lock --check --quiet || (pixi lock --quiet && exit 1)'
+        entry: bash -c 'pixi lock --check --quiet --no-progress || (pixi lock --quiet --no-progress && exit 1)'
         language: system
         files: (^pixi\.toml$|^pyproject\.toml$)
         pass_filenames: false
