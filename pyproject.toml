@@ -90,6 +90,7 @@ conda = ">=26.5.0"
 python = ">=3.10"
 requests = "*"
 rich = "*"
+anaconda-auth = "*"
 
 [tool.pixi.pypi-dependencies]
 "anaconda-channel-guide" = { path  = ".", editable = true }
@@ -110,7 +111,6 @@ pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
 responses = "*"
-anaconda-auth = "*"
 
 [tool.pixi.feature.py310.dependencies]
 python = "3.10.*"

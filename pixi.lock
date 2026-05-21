@@ -194,7 +194,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-libarchive-c-5.1-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -379,7 +379,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -549,7 +549,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.25.0-py314hb3cf4b8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -713,7 +713,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.25.0-py313hb03e5ee_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   default:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -723,6 +723,9 @@ environments:
       linux-64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/_openmp_mutex-5.1-52_gnu.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/anaconda-auth-0.15.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/anaconda-cli-base-0.8.2-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/annotated-doc-0.0.4-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/annotated-types-0.6.0-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/anyio-4.12.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/boltons-25.0.0-py314h06a4308_0.conda
@@ -743,7 +746,10 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/conda-rattler-solver-0.1.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/conda-self-0.2.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/cpp-expected-1.1.0-hdb19cb5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/cryptography-46.0.7-py314h04fe016_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/dbus-1.16.2-h5bd4931_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/distro-1.9.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/expat-2.8.0-h7354ed3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/filelock-3.20.3-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/fmt-12.1.0-h44f220b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/frozendict-2.4.6-py314hee96239_0.conda
@@ -755,9 +761,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/icu-78.3-h84d19a5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/idna-3.11-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jansson-2.14-h5eee18b_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.classes-3.4.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.context-6.1.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.functools-4.4.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jinja2-3.1.6-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jsonpatch-1.33-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jsonpointer-3.1.1-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/keyring-25.7.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ld_impl_linux-64-2.44-h9e0c5a2_3.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/libarchive-3.8.7-hb3cce40_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/libasprintf-0.25.1-hf2ab22a_0.conda
@@ -795,12 +805,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/markupsafe-3.0.2-py314h5eee18b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/mdurl-0.1.2-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/menuinst-2.4.2-py314h06a4308_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/more-itertools-11.0.2-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/msgpack-python-1.1.1-py314h6a678d5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ncurses-6.5-h7934f7d_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/nlohmann_json-3.11.2-h6a678d5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/openssl-3.5.6-h1b28b03_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/packaging-26.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pcre2-10.46-hf426167_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pkce-1.0.3-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/platformdirs-4.9.4-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pluggy-1.6.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pthread-stubs-0.3-h0ce48e5_1.conda
@@ -809,12 +821,16 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pycparser-3.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-2.13.4-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-core-2.46.4-py314h6e1b9ff_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-settings-2.12.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pygments-2.20.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyjwt-2.12.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyproject_hooks-1.2.0-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pysocks-1.7.1-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-3.14.4-h490e9c7_100_cp314.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py314h06a4308_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python_abi-3.14-2_cp314.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
@@ -822,12 +838,18 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py314h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py314h4aee224_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/secretstorage-3.5.0-py314h3e8c6aa_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/semver-3.0.4-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/setuptools-82.0.1-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/shellingham-1.5.4-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/simdjson-3.10.1-hdb19cb5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/sqlite-3.51.2-h3e8d24a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/tk-8.6.15-h54e0aa7_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/tomli-2.4.0-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/tomlkit-0.13.3-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/tqdm-4.67.3-py314h6fa48dc_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/truststore-0.10.4-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/typer-0.25.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing-extensions-4.15.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing-inspection-0.4.2-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing_extensions-4.15.0-py314h06a4308_0.conda
@@ -842,16 +864,21 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstandard-0.25.0-py314h89db63a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstd-1.5.7-h11fc155_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/jeepney-0.7.1-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyh0d26453_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anaconda-auth-0.15.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anaconda-cli-base-0.8.2-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/annotated-doc-0.0.4-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/annotated-types-0.6.0-py313hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anyio-4.12.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/boltons-25.0.0-py313hd43f75c_0.conda
@@ -872,7 +899,10 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/conda-rattler-solver-0.1.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/conda-self-0.2.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cpp-expected-1.1.0-hb8fdbf2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cryptography-45.0.7-py313h80a530f_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/dbus-1.16.2-h6a16351_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/distro-1.9.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/expat-2.8.0-h5b11e9f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/filelock-3.20.3-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/fmt-12.1.0-h8e5a627_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/frozendict-2.4.6-py313ha28494d_0.conda
@@ -884,9 +914,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/icu-78.3-h184064b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/idna-3.11-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jansson-2.14-h998d150_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.classes-3.4.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.context-6.1.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.functools-4.4.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jinja2-3.1.6-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jsonpatch-1.33-py313hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jsonpointer-3.1.1-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/keyring-25.7.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ld_impl_linux-aarch64-2.44-h97084ae_3.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/libarchive-3.8.7-h7866cb9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/libasprintf-0.25.1-h8121631_0.conda
@@ -924,12 +958,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/markupsafe-3.0.2-py313h998d150_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/mdurl-0.1.2-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/menuinst-2.4.2-py313hd43f75c_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/more-itertools-11.0.2-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/msgpack-python-1.1.1-py313h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ncurses-6.5-h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/nlohmann_json-3.11.2-h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/openssl-3.5.6-h39c9139_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/packaging-26.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pcre2-10.46-h1746348_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pkce-1.0.3-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/platformdirs-4.9.4-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pluggy-1.6.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pthread-stubs-0.3-hfd63f10_1.conda
@@ -938,12 +974,16 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pycparser-3.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-2.13.4-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-core-2.46.4-py313hef68074_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-settings-2.12.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pygments-2.20.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyjwt-2.12.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyproject_hooks-1.2.0-py313hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pysocks-1.7.1-py313hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.13.13-h0f2f12d_100_cp313.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py313hd43f75c_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
@@ -951,12 +991,18 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py313hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py313hd7af942_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/secretstorage-3.5.0-py313hafdef7f_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/semver-3.0.4-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/setuptools-82.0.1-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/shellingham-1.5.4-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/simdjson-3.10.1-hb8fdbf2_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/sqlite-3.51.2-h6a2ceb9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tk-8.6.15-h987d8db_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tomli-2.4.0-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tomlkit-0.13.3-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tqdm-4.67.3-py313had16b7f_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/truststore-0.10.4-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typer-0.25.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing-extensions-4.15.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing-inspection-0.4.2-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing_extensions-4.15.0-py313hd43f75c_0.conda
@@ -972,20 +1018,26 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstandard-0.25.0-py313hb079fa5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstd-1.5.7-hc8aa508_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/jeepney-0.7.1-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-auth-0.15.0-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-cli-base-0.8.2-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-doc-0.0.4-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-types-0.6.0-py313hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anyio-4.12.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/boltons-25.0.0-py313hca03da5_0.conda
@@ -1006,6 +1058,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/conda-rattler-solver-0.1.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/conda-self-0.2.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cpp-expected-1.1.0-h48ca7d4_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-45.0.7-py313h83bfa8c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/distro-1.9.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/filelock-3.20.3-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/fmt-12.1.0-hc20ec9e_0.conda
@@ -1018,9 +1071,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/icu-78.3-hb00977c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/idna-3.11-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jansson-2.14-h80987f9_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.classes-3.4.0-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.context-6.1.0-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.functools-4.4.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jinja2-3.1.6-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpatch-1.33-py313hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpointer-3.1.1-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/keyring-25.7.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libarchive-3.8.7-h81558fc_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libasprintf-0.25.1-h7b764f5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libasprintf-devel-0.25.1-h7b764f5_0.conda
@@ -1054,12 +1111,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/markupsafe-3.0.2-py313h80987f9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/mdurl-0.1.2-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/menuinst-2.4.2-py313hca03da5_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/more-itertools-11.0.2-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/msgpack-python-1.1.1-py313h313beb8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/nlohmann_json-3.11.2-h313beb8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.5.6-ha0b305a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-26.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pcre2-10.46-h1dacb4a_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pkce-1.0.3-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/platformdirs-4.9.4-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pluggy-1.6.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/py-rattler-0.23.1-py313hae07363_0.conda
@@ -1067,12 +1126,16 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pycparser-3.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-2.13.4-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-core-2.46.4-py313h3983f12_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-settings-2.12.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pygments-2.20.0-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyjwt-2.12.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyproject_hooks-1.2.0-py313hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pysocks-1.7.1-py313hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.13.13-ha8cd034_100_cp313.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py313hca03da5_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
@@ -1080,12 +1143,17 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py313h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py313h091b9d3_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/semver-3.0.4-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-82.0.1-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/shellingham-1.5.4-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/simdjson-3.10.1-h48ca7d4_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.51.2-h67002bf_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tomli-2.4.0-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tomlkit-0.13.3-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tqdm-4.67.3-py313h7eb115d_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/truststore-0.10.4-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typer-0.25.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing-extensions-4.15.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing-inspection-0.4.2-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing_extensions-4.15.0-py313hca03da5_0.conda
@@ -1097,14 +1165,18 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.25.0-py313hb3cf4b8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/anaconda-auth-0.15.0-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/anaconda-cli-base-0.8.2-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/annotated-doc-0.0.4-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/annotated-types-0.6.0-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/anyio-4.12.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/boltons-25.0.0-py313haa95532_0.conda
@@ -1125,6 +1197,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/conda-rattler-solver-0.1.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/conda-self-0.2.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/cpp-expected-1.1.0-h214f63a_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/cryptography-45.0.7-py313habbc9f9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/distro-1.9.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/filelock-3.20.3-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/fmt-12.1.0-ha349831_0.conda
@@ -1133,9 +1206,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/httpcore-1.0.9-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/httpx-0.28.1-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/idna-3.11-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.classes-3.4.0-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.context-6.1.0-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.functools-4.4.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jinja2-3.1.6-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jsonpatch-1.33-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jsonpointer-3.1.1-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/keyring-25.7.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libarchive-3.8.7-h8d653b7_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libbrotlicommon-1.2.0-h907acca_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libbrotlidec-1.2.0-h02c67a5_0.conda
@@ -1157,11 +1234,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/markupsafe-3.0.2-py313h827c3e9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/mdurl-0.1.2-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/menuinst-2.4.2-py313h885b0b7_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/more-itertools-11.0.2-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/msgpack-python-1.1.1-py313h5da7b33_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/nlohmann_json-3.11.2-h6c2663c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/openssl-3.5.6-hbb43b14_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/packaging-26.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pcre2-10.46-h5740b90_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pkce-1.0.3-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/platformdirs-4.9.4-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pluggy-1.6.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/py-rattler-0.23.1-py313h51239a8_0.conda
@@ -1169,24 +1248,34 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pycparser-3.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-2.13.4-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-core-2.46.4-py313h51239a8_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-settings-2.12.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pygments-2.20.0-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyjwt-2.12.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pyproject_hooks-1.2.0-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pysocks-1.7.1-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-3.13.13-h39c999c_100_cp313.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-build-1.3.0-py313haa95532_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py313hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py313hb9a58be_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/semver-3.0.4-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/setuptools-82.0.1-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/shellingham-1.5.4-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/simdjson-3.10.1-h214f63a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.51.2-hee5a0db_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/tk-8.6.15-hf199647_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/tomli-2.4.0-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/tomlkit-0.13.3-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/tqdm-4.67.3-py313h4442805_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/truststore-0.10.4-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/typer-0.25.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing-extensions-4.15.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing-inspection-0.4.2-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing_extensions-4.15.0-py313haa95532_0.conda
@@ -1203,7 +1292,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.25.0-py313hb03e5ee_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   dev:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -1213,8 +1302,12 @@ environments:
       linux-64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/_openmp_mutex-5.1-52_gnu.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/anaconda-auth-0.15.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/anaconda-cli-base-0.8.2-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/annotated-doc-0.0.4-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/annotated-types-0.6.0-py310h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/anyio-4.12.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/backports.tarfile-1.2.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/boltons-25.0.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/brotlicffi-1.2.0.0-py310h7354ed3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/bzip2-1.0.8-h5eee18b_6.conda
@@ -1233,8 +1326,11 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/conda-rattler-solver-0.1.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/conda-self-0.2.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/cpp-expected-1.1.0-hdb19cb5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/cryptography-45.0.7-py310h0a354b3_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/dbus-1.16.2-h5bd4931_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/distro-1.9.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/exceptiongroup-1.3.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/expat-2.8.0-h7354ed3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/filelock-3.20.3-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/fmt-12.1.0-h44f220b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/frozendict-2.4.6-py310hee96239_0.conda
@@ -1247,9 +1343,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/idna-3.11-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/importlib-metadata-8.7.1-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jansson-2.14-h5eee18b_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.classes-3.4.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.context-6.1.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/jaraco.functools-4.4.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jinja2-3.1.6-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jsonpatch-1.33-py310h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/jsonpointer-3.1.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/keyring-25.7.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ld_impl_linux-64-2.44-h9e0c5a2_3.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/libarchive-3.8.7-hb3cce40_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/libasprintf-0.25.1-hf2ab22a_0.conda
@@ -1287,12 +1387,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/markupsafe-3.0.2-py310h5eee18b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/mdurl-0.1.2-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/menuinst-2.4.2-py310h06a4308_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/more-itertools-11.0.2-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/msgpack-python-1.1.1-py310h6a678d5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ncurses-6.5-h7934f7d_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/nlohmann_json-3.11.2-h6a678d5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/openssl-3.5.6-h1b28b03_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/packaging-26.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pcre2-10.46-hf426167_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pkce-1.0.3-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/platformdirs-4.9.4-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pluggy-1.6.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pthread-stubs-0.3-h0ce48e5_1.conda
@@ -1301,11 +1403,15 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pycparser-3.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-2.13.4-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-core-2.46.4-py310h6e1b9ff_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pydantic-settings-2.12.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pygments-2.20.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyjwt-2.12.1-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyproject_hooks-1.2.0-py310h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/pysocks-1.7.1-py310h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-3.10.20-h741d88c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py310h06a4308_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
@@ -1313,13 +1419,18 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py310h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py310h4aee224_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/secretstorage-3.5.0-py310h3e8c6aa_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/semver-3.0.4-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/setuptools-82.0.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/shellingham-1.5.4-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/simdjson-3.10.1-hdb19cb5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/sqlite-3.51.2-h3e8d24a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/tk-8.6.15-h54e0aa7_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/tomli-2.4.0-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/tomlkit-0.13.3-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/tqdm-4.67.3-py310h7040dfc_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/truststore-0.10.4-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/typer-0.25.1-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing-extensions-4.15.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing-inspection-0.4.2-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/typing_extensions-4.15.0-py310h06a4308_0.conda
@@ -1336,18 +1447,24 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstandard-0.25.0-py310h89db63a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstd-1.5.7-h11fc155_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/jeepney-0.7.1-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-4-hd3eb1b0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anaconda-auth-0.15.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anaconda-cli-base-0.8.2-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/annotated-doc-0.0.4-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/annotated-types-0.6.0-py310hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/anyio-4.12.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/backports.tarfile-1.2.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/boltons-25.0.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/brotlicffi-1.2.0.0-py310h5b11e9f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/bzip2-1.0.8-h998d150_6.conda
@@ -1366,8 +1483,11 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/conda-rattler-solver-0.1.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/conda-self-0.2.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cpp-expected-1.1.0-hb8fdbf2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cryptography-45.0.7-py310h80a530f_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/dbus-1.16.2-h6a16351_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/distro-1.9.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/exceptiongroup-1.3.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/expat-2.8.0-h5b11e9f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/filelock-3.20.3-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/fmt-12.1.0-h8e5a627_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/frozendict-2.4.6-py310ha28494d_0.conda
@@ -1380,9 +1500,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/idna-3.11-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/importlib-metadata-8.7.1-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jansson-2.14-h998d150_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.classes-3.4.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.context-6.1.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jaraco.functools-4.4.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jinja2-3.1.6-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jsonpatch-1.33-py310hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/jsonpointer-3.1.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/keyring-25.7.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ld_impl_linux-aarch64-2.44-h97084ae_3.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/libarchive-3.8.7-h7866cb9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/libasprintf-0.25.1-h8121631_0.conda
@@ -1420,12 +1544,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/markupsafe-3.0.2-py310h998d150_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/mdurl-0.1.2-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/menuinst-2.4.2-py310hd43f75c_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/more-itertools-11.0.2-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/msgpack-python-1.1.1-py310h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ncurses-6.5-h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/nlohmann_json-3.11.2-h419075a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/openssl-3.5.6-h39c9139_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/packaging-26.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pcre2-10.46-h1746348_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pkce-1.0.3-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/platformdirs-4.9.4-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pluggy-1.6.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pthread-stubs-0.3-hfd63f10_1.conda
@@ -1434,11 +1560,15 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pycparser-3.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-2.13.4-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-core-2.46.4-py310hef68074_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pydantic-settings-2.12.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pygments-2.20.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyjwt-2.12.1-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyproject_hooks-1.2.0-py310hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pysocks-1.7.1-py310hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.10.20-hb11be13_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py310hd43f75c_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
@@ -1446,13 +1576,18 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py310hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py310hd7af942_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/secretstorage-3.5.0-py310hafdef7f_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/semver-3.0.4-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/setuptools-82.0.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/shellingham-1.5.4-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/simdjson-3.10.1-hb8fdbf2_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/sqlite-3.51.2-h6a2ceb9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tk-8.6.15-h987d8db_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tomli-2.4.0-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tomlkit-0.13.3-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/tqdm-4.67.3-py310had16b7f_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/truststore-0.10.4-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typer-0.25.1-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing-extensions-4.15.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing-inspection-0.4.2-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/typing_extensions-4.15.0-py310hd43f75c_0.conda
@@ -1469,22 +1604,29 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstandard-0.25.0-py310hb079fa5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstd-1.5.7-hc8aa508_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/jeepney-0.7.1-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-4-hd3eb1b0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-4-hd3eb1b0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-auth-0.15.0-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-cli-base-0.8.2-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-doc-0.0.4-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-types-0.6.0-py310hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/anyio-4.12.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/backports.tarfile-1.2.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/boltons-25.0.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/brotlicffi-1.2.0.0-py310h50f4ffc_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda
@@ -1503,6 +1645,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/conda-rattler-solver-0.1.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/conda-self-0.2.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cpp-expected-1.1.0-h48ca7d4_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-45.0.7-py310h83bfa8c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/distro-1.9.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/exceptiongroup-1.3.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/filelock-3.20.3-py310hca03da5_0.conda
@@ -1517,9 +1660,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/idna-3.11-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/importlib-metadata-8.7.1-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jansson-2.14-h80987f9_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.classes-3.4.0-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.context-6.1.0-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.functools-4.4.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jinja2-3.1.6-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpatch-1.33-py310hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpointer-3.1.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/keyring-25.7.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libarchive-3.8.7-h81558fc_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libasprintf-0.25.1-h7b764f5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/libasprintf-devel-0.25.1-h7b764f5_0.conda
@@ -1552,12 +1699,14 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/markupsafe-3.0.2-py310h80987f9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/mdurl-0.1.2-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/menuinst-2.4.2-py310hca03da5_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/more-itertools-11.0.2-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/msgpack-python-1.1.1-py310h313beb8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/nlohmann_json-3.11.2-h313beb8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.5.6-ha0b305a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-26.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pcre2-10.46-h1dacb4a_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pkce-1.0.3-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/platformdirs-4.9.4-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pluggy-1.6.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/py-rattler-0.23.1-py310hae07363_0.conda
@@ -1565,11 +1714,15 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pycparser-3.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-2.13.4-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-core-2.46.4-py310h3983f12_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-settings-2.12.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pygments-2.20.0-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyjwt-2.12.1-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyproject_hooks-1.2.0-py310hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pysocks-1.7.1-py310hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.10.20-h4f1bc5c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py310hca03da5_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
@@ -1577,13 +1730,17 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py310h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py310h091b9d3_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/semver-3.0.4-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-82.0.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/shellingham-1.5.4-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/simdjson-3.10.1-h48ca7d4_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.51.2-h67002bf_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tomli-2.4.0-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tomlkit-0.13.3-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/tqdm-4.67.3-py310h7eb115d_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/truststore-0.10.4-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typer-0.25.1-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing-extensions-4.15.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing-inspection-0.4.2-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/typing_extensions-4.15.0-py310hca03da5_0.conda
@@ -1596,16 +1753,21 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.25.0-py310hb3cf4b8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
+      - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-26.4.2-pyh3785b3c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pip-26.0.1-pyhc872135_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/anaconda-auth-0.15.0-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/anaconda-cli-base-0.8.2-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/annotated-doc-0.0.4-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/annotated-types-0.6.0-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/anyio-4.12.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/backports.tarfile-1.2.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/boltons-25.0.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/brotlicffi-1.2.0.0-py310h885b0b7_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/bzip2-1.0.8-h2bbff1b_6.conda
@@ -1624,6 +1786,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/conda-rattler-solver-0.1.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/conda-self-0.2.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/cpp-expected-1.1.0-h214f63a_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/cryptography-45.0.7-py310habbc9f9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/distro-1.9.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/exceptiongroup-1.3.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/filelock-3.20.3-py310haa95532_0.conda
@@ -1634,9 +1797,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/httpx-0.28.1-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/idna-3.11-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/importlib-metadata-8.7.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.classes-3.4.0-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.context-6.1.0-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/jaraco.functools-4.4.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jinja2-3.1.6-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jsonpatch-1.33-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/jsonpointer-3.1.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/keyring-25.7.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libarchive-3.8.7-h8d653b7_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libbrotlicommon-1.2.0-h907acca_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/libbrotlidec-1.2.0-h02c67a5_0.conda
@@ -1657,11 +1824,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/markupsafe-3.0.2-py310h827c3e9_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/mdurl-0.1.2-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/menuinst-2.4.2-py310h885b0b7_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/more-itertools-11.0.2-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/msgpack-python-1.1.1-py310h5da7b33_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/nlohmann_json-3.11.2-h6c2663c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/openssl-3.5.6-hbb43b14_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/packaging-26.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pcre2-10.46-h5740b90_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pkce-1.0.3-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/platformdirs-4.9.4-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pluggy-1.6.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/py-rattler-0.23.1-py310h51239a8_0.conda
@@ -1669,24 +1838,33 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pycparser-3.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-2.13.4-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-core-2.46.4-py310h51239a8_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pydantic-settings-2.12.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pygments-2.20.0-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyjwt-2.12.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pyproject_hooks-1.2.0-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pysocks-1.7.1-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-3.10.20-h1044e36_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-build-1.3.0-py310haa95532_1.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py310hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py310hb9a58be_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/semver-3.0.4-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/setuptools-82.0.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/shellingham-1.5.4-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/simdjson-3.10.1-h214f63a_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.51.2-hee5a0db_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/tk-8.6.15-hf199647_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/tomli-2.4.0-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/tomlkit-0.13.3-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/tqdm-4.67.3-py310h4442805_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/truststore-0.10.4-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/typer-0.25.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing-extensions-4.15.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing-inspection-0.4.2-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/typing_extensions-4.15.0-py310haa95532_0.conda
@@ -1704,7 +1882,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.25.0-py310hb03e5ee_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   test-py310:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -1876,7 +2054,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -2042,7 +2220,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -2192,7 +2370,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py310hbc14757_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -2330,7 +2508,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py310he335c29_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   test-py311:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -2501,7 +2679,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -2666,7 +2844,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -2815,7 +2993,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py311hbc14757_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -2952,7 +3130,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py311he335c29_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   test-py312:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -3119,7 +3297,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -3280,7 +3458,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -3426,7 +3604,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py312hbc14757_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -3560,7 +3738,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py312he335c29_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   test-py313:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -3729,7 +3907,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -3892,7 +4070,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -4040,7 +4218,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py313hbc14757_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -4176,7 +4354,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py313he335c29_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
   test-py314:
     channels:
     - url: https://repo.anaconda.com/pkgs/main/
@@ -4344,7 +4522,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       linux-aarch64:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_libgcc_mutex-0.1-main.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/_openmp_mutex-5.1-52_gnu.conda
@@ -4506,7 +4684,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/python-installer-1.0.0-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/toml-0.10.2-pyhd3eb1b0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026a-he532380_0.conda
-      - pypi: ./
+      - pypi: .
       osx-arm64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -4651,7 +4829,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.25.0-py314hb3cf4b8_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
-      - pypi: ./
+      - pypi: .
       win-64:
       - conda: https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.6-pyhb46e38b_100.conda
       - conda: https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
@@ -4786,7 +4964,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.25.0-py314hb03e5ee_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstd-1.5.7-h56299aa_0.conda
-      - pypi: ./
+      - pypi: .
 packages:
 - conda: https://repo.anaconda.com/pkgs/main/linux-64/_libgcc_mutex-0.1-main.conda
   sha256: 476626712f60e5ef0fe04c354727152b1ee5285d57ccd3575c7be930122bd051
@@ -6403,6 +6581,21 @@ packages:
   license_family: CC
   size: 132687
   timestamp: 1734039334436
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/cryptography-45.0.7-py310h0a354b3_0.conda
+  sha256: be371b00469cbca45c8ce22eb191b469e49fcf6a0c991df179e648141625ca4d
+  md5: 838505a987108534a16cccecd155c66f
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - cffi >=1.14
+  - libgcc-ng >=11.2.0
+  - openssl >=3.0.18,<4.0a0
+  - python >=3.10,<3.11.0a0
+  constrains:
+  - pyopenssl >=23.0.0
+  license: Apache-2.0 OR BSD-3-Clause
+  license_family: OTHER
+  size: 1592396
+  timestamp: 1760092661782
 - conda: https://repo.anaconda.com/pkgs/main/linux-64/cryptography-46.0.7-py310h04fe016_0.conda
   sha256: de1cebc594f8c37bcfa486bf00b61743dfa27300d23ecb205bfdf3ce2df19289
   md5: c73b701f6b7b1cabeed229a23608b1be
@@ -12989,6 +13182,21 @@ packages:
   license_family: CC
   size: 132686
   timestamp: 1734039347698
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cryptography-45.0.7-py310h80a530f_0.conda
+  sha256: 8f3844296a88a736f1a8e38845a983d8b9f901c5ac96b22f0e3eb7c3fde7e1f5
+  md5: cad130f89ccad12da3b4d94cf58fcbf6
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - cffi >=1.14
+  - libgcc-ng >=11.2.0
+  - openssl >=3.0.18,<4.0a0
+  - python >=3.10,<3.11.0a0
+  constrains:
+  - pyopenssl >=23.0.0
+  license: Apache-2.0 OR BSD-3-Clause
+  license_family: OTHER
+  size: 1568067
+  timestamp: 1760092670626
 - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/cryptography-45.0.7-py313h80a530f_0.conda
   sha256: d70e601646d83766db5c7cafb5e5b90147f4c56430ca17d3c2f029203af2b04f
   md5: 075607d63024f363b72f20014355f380
@@ -19697,6 +19905,35 @@ packages:
   license_family: CC
   size: 134133
   timestamp: 1734039345192
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-45.0.7-py310h83bfa8c_0.conda
+  sha256: 923b2e30019790979602990173ccf5854237789f8e0e2156d7fcaa890f04ee53
+  md5: aa7fbdd1c43a42fbb9781895c88862d5
+  depends:
+  - __osx >=12.1
+  - cffi >=1.14
+  - openssl >=3.0.18,<4.0a0
+  - python >=3.10,<3.11.0a0
+  constrains:
+  - pyopenssl >=23.0.0
+  license: Apache-2.0 OR BSD-3-Clause
+  license_family: OTHER
+  size: 1484899
+  timestamp: 1760092693462
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-45.0.7-py313h83bfa8c_0.conda
+  sha256: ef7a786c5c25f686c98ac02a09242fec7ce068c9d552b45e7feedf3f81fd527d
+  md5: d20b103cc6ff9abe9d17ad9d518adc42
+  depends:
+  - __osx >=12.1
+  - cffi >=1.14
+  - openssl >=3.0.18,<4.0a0
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  constrains:
+  - pyopenssl >=23.0.0
+  license: Apache-2.0 OR BSD-3-Clause
+  license_family: OTHER
+  size: 1512692
+  timestamp: 1760092697603
 - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-46.0.7-py310hae07363_0.conda
   sha256: 89ddd5528e153be4c6de69d0bb712d5c45794b9712b757e599a0c18be688fad6
   md5: 07dd16fb91ce3f2acc644d47035e0332
@@ -25982,6 +26219,22 @@ packages:
   license_family: CC
   size: 133944
   timestamp: 1734039396266
+- conda: https://repo.anaconda.com/pkgs/main/win-64/cryptography-45.0.7-py310habbc9f9_0.conda
+  sha256: 814f0905b57c42beacb913c16fac78fba0112525b04c8e815b4329cfbd1a0bb2
+  md5: e003ee42f416535d2fa1ed9aa31a6ca6
+  depends:
+  - cffi >=1.14
+  - openssl >=3.0.18,<4.0a0
+  - python >=3.10,<3.11.0a0
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30133
+  constrains:
+  - pyopenssl >=23.0.0
+  license: Apache-2.0 OR BSD-3-Clause
+  license_family: OTHER
+  size: 1360594
+  timestamp: 1760092863996
 - conda: https://repo.anaconda.com/pkgs/main/win-64/cryptography-45.0.7-py313habbc9f9_0.conda
   sha256: b0fd7a7b1763d6a4df0f7043c1b9971d1d272b76ccf017415393d41e03a0dbe8
   md5: 8210abddfcda82392e1f71c28b1a3cf7
@@ -30855,6 +31108,6 @@ packages:
   license_family: BSD
   size: 660146
   timestamp: 1758039218319
-- pypi: ./
+- pypi: .
   name: anaconda-channel-guide
   requires_python: '>=3.10'
