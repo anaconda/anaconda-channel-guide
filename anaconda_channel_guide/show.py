@@ -1,7 +1,8 @@
-from rich.panel import Panel
+from io import StringIO
+
 from rich.console import Console
 from rich.padding import Padding
-from io import StringIO
+from rich.panel import Panel
 
 
 class ChannelGuideBox:
@@ -9,7 +10,7 @@ class ChannelGuideBox:
 
     TITLE = "Anaconda Channel Guide"
 
-    def __init__(self, header: str, steps: list[str]):
+    def __init__(self, header: str, steps: list[str]) -> None:
         """
         :param header: Top message explaining the situation
         :param steps: Numbered action items for the user
@@ -35,11 +36,13 @@ def show_login_prompt() -> ChannelGuideBox:
         steps=["Log in: anaconda login"],
     )
 
+
 def show_config_prompt() -> ChannelGuideBox:
     return ChannelGuideBox(
         header="This package is available in main-x, Anaconda's extended channel.",
         steps=["Add the channel: conda config --add channels main-x"],
     )
+
 
 def show_login_and_config_prompt() -> ChannelGuideBox:
     return ChannelGuideBox(
