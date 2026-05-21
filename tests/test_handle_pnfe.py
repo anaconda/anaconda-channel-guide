@@ -89,11 +89,11 @@ def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = True
-    assert is_logged_in() is False
+    assert not is_logged_in()
 
 
 def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
     """Verify user is not considered logged in if no token is found."""
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     mock_cls.load.side_effect = TokenNotFoundError("no token")
-    assert is_logged_in() is False
+    assert not is_logged_in()
