@@ -77,22 +77,12 @@ def test_handle_pnfe_fully_setup() -> None:
     assert result is None
 
 
-@pytest.mark.parametrize(
-    ("expired", "expected"),
-    [
-        (False, True),
-        (True, False),
-    ],
-)
-def test_is_logged_in_token_state(
-    mocker: MockerFixture,
-    expired: bool,
-    expected: bool,
-) -> None:
+@pytest.mark.parametrize("expected", [True, False])
+def test_is_logged_in(mocker: MockerFixture, expected: bool) -> None:
     """Verify is_logged_in reflects token state."""
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
-    mock_cls.load.return_value.expired = expired
-    assert is_logged_in() is expected
+    mock_cls.load.return_value.expired = not expected
+    assert is_logged_in() == expected
 
 
 def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
