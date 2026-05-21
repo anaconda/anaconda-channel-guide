@@ -110,6 +110,7 @@ pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
 responses = "*"
+anaconda-auth = "*"
 
 [tool.pixi.feature.py310.dependencies]
 python = "3.10.*"
