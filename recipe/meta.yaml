@@ -26,11 +26,11 @@ requirements:
     - conda
     - requests
     - rich
+    - anaconda-auth
 
 test:
   requires:
     - pip
-    - conda
   imports:
     - anaconda_channel_guide
     - anaconda_channel_guide.plugin

@@ -1,15 +1,22 @@
 import requests
+from anaconda_auth.token import TokenInfo, TokenNotFoundError
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 
 
 def is_logged_in() -> bool:
-    """Checks if the user is authenticated.
+    """Checks if the user is authenticated via anaconda-auth.
 
-    :returns: True if the user is logged in, False otherwise
+    Attempts to load the token. Returns False if no token
+    is found or if the token has expired.
+
+    :returns: True if the user has a valid (non-expired) token, False otherwise
     """
-    # TODO: real auth check - through conda?
-    return False
+    try:
+        token_info = TokenInfo.load()
+        return not token_info.expired
+    except TokenNotFoundError:
+        return False
 
 
 def is_main_x_configured() -> bool:
