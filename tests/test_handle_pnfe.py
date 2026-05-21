@@ -81,7 +81,7 @@ def test_is_logged_in_valid_token(mocker: MockerFixture) -> None:
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = False
-    assert is_logged_in() is True
+    assert is_logged_in()
 
 
 def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
