@@ -77,7 +77,7 @@ def test_handle_pnfe_fully_setup() -> None:
 
 
 def test_is_logged_in_valid_token(mocker: MockerFixture) -> None:
-    """Returns True when token exists and is not expired."""
+    """Verify user is considered logged in if a valid token exists."""
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = False
@@ -85,7 +85,7 @@ def test_is_logged_in_valid_token(mocker: MockerFixture) -> None:
 
 
 def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
-    """Returns False when token exists but is expired."""
+    """Verify user is not considered logged in if token is expired."""
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     fake_token = mock_cls.load.return_value
     fake_token.expired = True
@@ -93,7 +93,7 @@ def test_is_logged_in_expired_token(mocker: MockerFixture) -> None:
 
 
 def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
-    """Returns False when no token is found."""
+    """Verify user is not considered logged in if no token is found."""
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     mock_cls.load.side_effect = TokenNotFoundError("no token")
     assert is_logged_in() is False
