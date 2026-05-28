@@ -1,7 +1,6 @@
 import pytest
 import responses
 from anaconda_auth.token import TokenNotFoundError
-from conda.base.context import context
 from conda.models.channel import Channel
 from pytest_mock import MockerFixture
 
@@ -117,5 +116,5 @@ def test_main_x_configured(
     or default_channels, and False otherwise."""
     event = mocker.MagicMock()
     event.exc_value.channel_urls = channel_urls
-    mocker.patch.object(context, "default_channels", default_channels)
+    mocker.patch("anaconda_channel_guide.channel_check.context").default_channels = default_channels
     assert is_main_x_configured(event) is expected
