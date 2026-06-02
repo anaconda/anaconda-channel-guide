@@ -31,11 +31,11 @@ def handle_pnfe(
         return None
 
     # TODO: confirm API response shape for multi-package requests
-    package = ", ".join(in_main_x)
+    packages = ", ".join(in_main_x.keys())
 
     if main_x_configured and not authenticated:
-        return show_login_prompt(package)
+        return show_login_prompt(packages)
     elif not main_x_configured and authenticated:
-        return show_config_prompt(package)
+        return show_config_prompt(packages)
     else:
-        return show_login_and_config_prompt(package)
+        return show_login_and_config_prompt(packages)
