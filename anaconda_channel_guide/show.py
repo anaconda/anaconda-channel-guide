@@ -4,26 +4,28 @@ from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
 
+LOGIN_STEP = "Log in:\n\n    $ anaconda login"
+CONFIG_STEP = "Add the 'main-x' channel:\n\n    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+
 
 class ChannelGuideBox:
     """Reusable Rich panel for channel guide prompts."""
 
     TITLE = "Anaconda Channel Guide"
-    FOOTER = "Then re-run your original command."
 
-    def __init__(self, header: str, steps: list[str]) -> None:
+    def __init__(self, package: str, steps: list[str]) -> None:
         """
-        :param header: Top message explaining the situation
+        :param package: Package name that triggered the PNFE
         :param steps: Numbered action items for the user
         """
-        self.header = header
+        self.package = package
         self.steps = steps
 
     def to_panel(self) -> Panel:
-        body = self.header
+        body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
         for i, step in enumerate(self.steps, 1):
             body += f"\n\n  {i}. {step}"
-        body += f"\n\n{self.FOOTER}"
+        body += "\n\nThen re-run your original command."
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
@@ -33,28 +35,12 @@ class ChannelGuideBox:
 
 
 def show_login_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(
-        header=f"'{package}' is available in Anaconda's 'main-x' channel.",
-        steps=["Log in:\n\n    $ anaconda login"],
-    )
+    return ChannelGuideBox(package, [LOGIN_STEP])
 
 
 def show_config_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(
-        header=f"'{package}' is available in Anaconda's 'main-x' channel.",
-        steps=[
-            "Add the 'main-x' channel:\n\n"
-            "    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
-        ],
-    )
+    return ChannelGuideBox(package, [CONFIG_STEP])
 
 
 def show_login_and_config_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(
-        header=f"'{package}' is available in Anaconda's 'main-x' channel.",
-        steps=[
-            "Log in:\n\n    $ anaconda login",
-            "Add the 'main-x' channel:\n\n"
-            "    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x",
-        ],
-    )
+    return ChannelGuideBox(package, [LOGIN_STEP, CONFIG_STEP])
