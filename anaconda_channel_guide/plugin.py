@@ -1,9 +1,8 @@
 from anaconda_channel_guide.channel_check import get_available_packages_on_main_x
 from anaconda_channel_guide.show import (
+    CONFIG_STEP,
+    LOGIN_STEP,
     ChannelGuideBox,
-    show_config_prompt,
-    show_login_and_config_prompt,
-    show_login_prompt,
 )
 
 
@@ -34,8 +33,8 @@ def handle_pnfe(
     packages = ", ".join(in_main_x.keys())
 
     if main_x_configured and not authenticated:
-        return show_login_prompt(packages)
+        return ChannelGuideBox(packages, [LOGIN_STEP])
     elif not main_x_configured and authenticated:
-        return show_config_prompt(packages)
+        return ChannelGuideBox(packages, [CONFIG_STEP])
     else:
-        return show_login_and_config_prompt(packages)
+        return ChannelGuideBox(packages, [LOGIN_STEP, CONFIG_STEP])

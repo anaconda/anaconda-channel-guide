@@ -25,22 +25,10 @@ class ChannelGuideBox:
         body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
         for i, step in enumerate(self.steps, 1):
             body += f"\n\n  {i}. {step}"
-        body += "\n\nThen re-run your original command."
+        body += "\n\nThen re-run the original command."
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
         console = Console(file=StringIO(), width=84, height=25, highlight=False, markup=False)
         console.print(self.to_panel())
         return console.file.getvalue()
-
-
-def show_login_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(package, [LOGIN_STEP])
-
-
-def show_config_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(package, [CONFIG_STEP])
-
-
-def show_login_and_config_prompt(package: str) -> ChannelGuideBox:
-    return ChannelGuideBox(package, [LOGIN_STEP, CONFIG_STEP])
