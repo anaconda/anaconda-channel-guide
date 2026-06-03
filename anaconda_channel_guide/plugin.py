@@ -29,12 +29,11 @@ def handle_pnfe(
     if authenticated and main_x_configured:
         return None
 
-    # TODO: confirm API response shape for multi-package requests
     packages = ", ".join(in_main_x.keys())
 
-    if main_x_configured and not authenticated:
-        return ChannelGuideBox(packages, [LOGIN_STEP])
-    elif not main_x_configured and authenticated:
-        return ChannelGuideBox(packages, [CONFIG_STEP])
-    else:
-        return ChannelGuideBox(packages, [LOGIN_STEP, CONFIG_STEP])
+    steps = []
+    if not main_x_configured:
+        steps.append(CONFIG_STEP)
+    if not authenticated:
+        steps.append(LOGIN_STEP)
+    return ChannelGuideBox(packages, steps)
