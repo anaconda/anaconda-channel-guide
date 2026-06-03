@@ -32,8 +32,8 @@ def handle_pnfe(
     packages = ", ".join(in_main_x.keys())
 
     steps = []
-    if not main_x_configured:
-        steps.append(CONFIG_STEP)
     if not authenticated:
         steps.append(LOGIN_STEP)
+    if not main_x_configured:
+        steps.append(CONFIG_STEP)
     return ChannelGuideBox(packages, steps)
