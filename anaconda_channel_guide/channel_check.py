@@ -1,8 +1,14 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 import requests
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.base.context import context
 from conda.models.channel import Channel
-from conda.plugins.types import CondaExceptionEvent
+
+if TYPE_CHECKING:
+    from conda.plugins.types import CondaExceptionEvent
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 MAIN_X_CHANNEL = Channel.from_url("https://repo.anaconda.cloud/repo/main-x")
