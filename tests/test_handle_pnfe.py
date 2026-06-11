@@ -47,7 +47,7 @@ def test_handle_pnfe_not_configured_authenticated() -> None:
     result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=True)
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
+    assert "conda config --add channels main-x" in output
 
 
 @responses.activate
@@ -59,7 +59,7 @@ def test_handle_pnfe_not_configured_not_authenticated() -> None:
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
     assert "anaconda login" in output
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
+    assert "conda config --add channels main-x" in output
 
 
 @responses.activate
