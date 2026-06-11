@@ -1,12 +1,11 @@
 import pytest
 import responses
 from anaconda_auth.token import TokenNotFoundError
-from conda.models.channel import Channel
 from pytest_mock import MockerFixture
 
 from anaconda_channel_guide.channel_check import (
     BASE_URL,
-    MAIN_X_CHANNEL,
+    MAIN_X_CHANNEL_NAME,
     is_logged_in,
     is_main_x_configured,
 )
@@ -99,22 +98,20 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
 
 
 @pytest.mark.parametrize(
-    ("channel_urls", "default_channels", "expected"),
+    ("channels", "expected"),
     [
-        ((MAIN_X_CHANNEL,), (), True),
-        ((), (MAIN_X_CHANNEL,), True),
-        ((), (), False),
+        ((MAIN_X_CHANNEL_NAME,), True),
+        (("defaults", MAIN_X_CHANNEL_NAME), True),
+        (("defaults", "conda-forge"), False),
+        ((), False),
+        (None, False),
     ],
 )
 def test_main_x_configured(
     mocker: MockerFixture,
-    channel_urls: tuple[Channel, ...],
-    default_channels: tuple[Channel, ...],
+    channels: tuple[str, ...] | None,
     expected: bool,
 ) -> None:
-    """Verify is_main_x_configured returns True when main-x is present in channel_urls
-    or default_channels, and False otherwise."""
     event = mocker.MagicMock()
-    event.exc_value.channel_urls = channel_urls
-    mocker.patch("anaconda_channel_guide.channel_check.context").default_channels = default_channels
+    event.channels = channels
     assert is_main_x_configured(event) is expected
