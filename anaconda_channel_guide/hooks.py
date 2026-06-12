@@ -20,9 +20,7 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     missing_packages = event.exc_value.packages
     authenticated = is_logged_in()
 
-    result = handle_pnfe(missing_packages, main_x_configured, authenticated)
-    if result:
-        print(result)
+    handle_pnfe(missing_packages, main_x_configured, authenticated)
 
 
 @hookimpl
