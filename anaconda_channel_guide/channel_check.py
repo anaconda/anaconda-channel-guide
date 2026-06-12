@@ -1,7 +1,11 @@
-import requests
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
+from conda.base.context import context
+from conda.core.subdir_data import SubdirData
+from conda.models.match_spec import MatchSpec
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
+
+MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 
 
 def is_logged_in() -> bool:
@@ -29,27 +33,16 @@ def is_main_x_configured() -> bool:
     return False
 
 
-def is_package_on_main_x(packages: list[str]) -> dict[str, list[str]]:
-    """Posts a list of package names to the main-x API and returns available versions.
+def get_packages_on_main_x(specs: list[str]) -> dict[str, list[str]]:
+    """Queries main-x repodata to check which of the given package specs exist.
 
-    :param packages: List of package names to check availability for
-    :returns: Dictionary mapping package names to their available versions on main-x
+    :param specs: List of package specs (names or match specs) to check
+    :returns: Mapping of package name to its versions on main-x
     """
-    response = requests.post(BASE_URL, json=packages, timeout=10)
-    return response.json()
-
-
-def get_available_packages_on_main_x(missing_packages: list[str]) -> dict[str, list[str]]:
-    """Queries the main-x channel API and filters to only packages
-       that have available versions.
-
-    :param missing_packages: List of package names that were not found during install
-    :returns: Dictionary of packages available on main-x with their
-        versions, or empty dict on API failure
-    """
-    try:
-        availability = is_package_on_main_x(missing_packages)
-        in_main_x = {pkg: v for pkg, v in availability.items() if v}
-        return in_main_x
-    except requests.exceptions.RequestException:
-        return {}
+    available: dict[str, list[str]] = {}
+    for spec in specs:
+        name = MatchSpec(spec).name
+        records = SubdirData.query_all(name, channels=[MAIN_X_CHANNEL_URL], subdirs=context.subdirs)
+        if records:
+            available[name] = sorted({r.version for r in records})
+    return available

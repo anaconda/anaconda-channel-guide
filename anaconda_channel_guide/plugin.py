@@ -1,4 +1,4 @@
-from anaconda_channel_guide.channel_check import get_available_packages_on_main_x
+from anaconda_channel_guide.channel_check import get_packages_on_main_x
 from anaconda_channel_guide.show import (
     CONFIG_STEP,
     LOGIN_STEP,
@@ -21,15 +21,15 @@ def handle_pnfe(
         or None to fall through to default PNFE behavior
     """
 
-    in_main_x = get_available_packages_on_main_x(missing_packages)
+    packages_on_main_x = get_packages_on_main_x(missing_packages)
 
-    if not in_main_x:
+    if not packages_on_main_x:
         return None
 
     if authenticated and main_x_configured:
         return None
 
-    packages = ", ".join(in_main_x.keys())
+    packages = ", ".join(packages_on_main_x.keys())
 
     steps = []
     if not authenticated:
