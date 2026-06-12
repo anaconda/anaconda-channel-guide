@@ -29,7 +29,7 @@ def handle_pnfe(
     if authenticated and main_x_configured:
         return None
 
-    packages = ", ".join(packages_on_main_x.keys())
+    packages = ", ".join(packages_on_main_x)
 
     steps = []
     if not authenticated:

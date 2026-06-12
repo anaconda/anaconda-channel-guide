@@ -1,7 +1,9 @@
+from collections.abc import Iterable
+
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
-from conda.base.context import context
 from conda.core.subdir_data import SubdirData
 from conda.models.match_spec import MatchSpec
+from conda.models.records import PackageRecord
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 
@@ -33,16 +35,15 @@ def is_main_x_configured() -> bool:
     return False
 
 
-def get_packages_on_main_x(specs: list[str]) -> dict[str, list[str]]:
+def get_packages_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> list[str] | None:
     """Queries main-x repodata to check which of the given package specs exist.
 
-    :param specs: List of package specs (names or match specs) to check
-    :returns: Mapping of package name to its versions on main-x
+    :param packages: List of package specs (names or match specs) to check
+    :returns: list of available package specs, or None if any package is not on main-x
     """
-    available: dict[str, list[str]] = {}
-    for spec in specs:
-        name = MatchSpec(spec).name
-        records = SubdirData.query_all(name, channels=[MAIN_X_CHANNEL_URL], subdirs=context.subdirs)
-        if records:
-            available[name] = sorted({r.version for r in records})
+    available = []
+    for package in packages:
+        if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL]):
+            return None
+        available.append(str(package))
     return available
