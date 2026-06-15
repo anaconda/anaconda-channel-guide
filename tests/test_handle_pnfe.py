@@ -1,80 +1,62 @@
 import pytest
-import responses
 from anaconda_auth.token import TokenNotFoundError
 from pytest_mock import MockerFixture
 
-from anaconda_channel_guide.channel_check import BASE_URL, is_logged_in
+from anaconda_channel_guide.channel_check import is_logged_in
 from anaconda_channel_guide.plugin import handle_pnfe
 from anaconda_channel_guide.show import ChannelGuideBox
 
-FOUND_RESPONSE: dict[str, list[str]] = {"numpy": ["1.24", "1.25"]}
-NOT_FOUND_RESPONSE: dict[str, list[str]] = {"numpy": []}
+LOGIN_CMD = "anaconda login"
+CONFIG_CMD = "conda config --append channels https://repo.anaconda.cloud/repo/main-x"
 
 
-@responses.activate
-def test_handle_pnfe_configured_not_authenticated() -> None:
-    """Verifies that a user with main-x configured but not logged in is prompted to log in."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
+@pytest.mark.parametrize(
+    ("on_main_x", "main_x_configured", "authenticated"),
+    [
+        (False, True, False),
+        (False, False, False),
+        (True, True, True),
+    ],
+)
+def test_handle_pnfe_returns_none(
+    mocker: MockerFixture,
+    on_main_x: bool,
+    main_x_configured: bool,
+    authenticated: bool,
+) -> None:
+    """No prompt when packages aren't on main-x, or the user is already set up."""
+    mocker.patch("anaconda_channel_guide.plugin.get_packages_on_main_x", return_value=on_main_x)
 
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
-    assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
-
-
-@responses.activate
-def test_handle_pnfe_configured_not_found() -> None:
-    """Verifies that when the package is not on main-x, the plugin
-    falls through to default PNFE behavior.
-    """
-    responses.post(BASE_URL, json=NOT_FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
+    result = handle_pnfe(
+        ["package_name"], main_x_configured=main_x_configured, authenticated=authenticated
+    )
     assert result is None
 
 
-@responses.activate
-def test_handle_pnfe_not_configured_authenticated() -> None:
-    """Verifies that a logged-in user without main-x configured is prompted to add the channel."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
+@pytest.mark.parametrize(
+    ("main_x_configured", "authenticated", "expected_steps"),
+    [
+        (True, False, [LOGIN_CMD]),
+        (False, True, [CONFIG_CMD]),
+        (False, False, [LOGIN_CMD, CONFIG_CMD]),
+    ],
+)
+def test_handle_pnfe_prompts_required_steps(
+    mocker: MockerFixture,
+    main_x_configured: bool,
+    authenticated: bool,
+    expected_steps: list[str],
+) -> None:
+    """When packages are on main-x and setup is incomplete, prompt the missing steps."""
+    mocker.patch("anaconda_channel_guide.plugin.get_packages_on_main_x", return_value=True)
 
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=True)
+    result = handle_pnfe(
+        ["package_name"], main_x_configured=main_x_configured, authenticated=authenticated
+    )
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
-
-
-@responses.activate
-def test_handle_pnfe_not_configured_not_authenticated() -> None:
-    """Verifies that a user without main-x configured and not logged in is prompted to do both."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
-    assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
-
-
-@responses.activate
-def test_handle_pnfe_not_configured_not_found() -> None:
-    """Verifies that when the package is not on main-x, the plugin
-    falls through to default PNFE behavior.
-    """
-    responses.post(BASE_URL, json=NOT_FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
-    assert result is None
-
-
-@responses.activate
-def test_handle_pnfe_fully_setup() -> None:
-    """Verifies that a fully set up user (authenticated with main-x
-    configured) gets no prompt, even if the package exists on main-x.
-    """
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=True)
-    assert result is None
+    for step in expected_steps:
+        assert step in output
 
 
 @pytest.mark.parametrize("expected", [True, False])
