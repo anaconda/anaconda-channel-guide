@@ -21,15 +21,13 @@ def handle_pnfe(
         or None to fall through to default PNFE behavior
     """
 
-    packages_on_main_x = get_packages_on_main_x(missing_packages)
-
-    if not packages_on_main_x:
+    if not get_packages_on_main_x(missing_packages):
         return None
 
     if authenticated and main_x_configured:
         return None
 
-    packages = ", ".join(packages_on_main_x)
+    packages = ", ".join([str(package) for package in missing_packages])
 
     steps = []
     if not authenticated:

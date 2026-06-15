@@ -35,15 +35,15 @@ def is_main_x_configured() -> bool:
     return False
 
 
-def get_packages_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> list[str] | None:
-    """Queries main-x repodata to check which of the given package specs exist.
+def get_packages_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> bool:
+    """Checks whether all of the given packages are available on the main-x channel.
 
-    :param packages: List of package specs (names or match specs) to check
-    :returns: list of available package specs, or None if any package is not on main-x
+    :param packages: Package specs to check (names, match specs, or records)
+    :returns: True if every package is available on main-x, False otherwise
     """
-    available = []
     for package in packages:
+        if isinstance(package, PackageRecord):
+            return False
         if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL]):
-            return None
-        available.append(str(package))
-    return available
+            return False
+    return True
