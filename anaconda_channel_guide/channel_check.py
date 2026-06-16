@@ -1,9 +1,15 @@
-from collections.abc import Iterable
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.core.subdir_data import SubdirData
-from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from conda.models.match_spec import MatchSpec
 
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 
