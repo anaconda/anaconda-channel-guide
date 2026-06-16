@@ -5,8 +5,6 @@ from conda.core.subdir_data import SubdirData
 from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 
-BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
-
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 
 
