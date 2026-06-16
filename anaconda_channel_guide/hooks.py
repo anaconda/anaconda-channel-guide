@@ -17,10 +17,9 @@ if TYPE_CHECKING:
 def on_package_not_found(event: CondaExceptionEvent) -> None:
     # TODO: when sending the info to API does it need name and version?
     main_x_configured = "main-x" in event.channels
-    missing_packages = event.exc_value.packages
     authenticated = is_logged_in()
 
-    handle_pnfe(missing_packages, main_x_configured, authenticated)
+    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated)
 
 
 @hookimpl

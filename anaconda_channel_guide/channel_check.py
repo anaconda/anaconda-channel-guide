@@ -2,6 +2,7 @@ from collections.abc import Iterable
 
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.core.subdir_data import SubdirData
+from conda.exceptions import CondaError
 from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 
@@ -35,15 +36,18 @@ def is_main_x_configured() -> bool:
     return False
 
 
-def get_packages_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> bool:
+def is_available_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> bool:
     """Checks whether all of the given packages are available on the main-x channel.
 
     :param packages: Package specs to check (names, match specs, or records)
     :returns: True if every package is available on main-x, False otherwise
     """
-    for package in packages:
-        if isinstance(package, PackageRecord):
-            return False
-        if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL]):
-            return False
+    try:
+        for package in packages:
+            if isinstance(package, PackageRecord):
+                return False
+            if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL]):
+                return False
+    except CondaError:
+        return False
     return True
