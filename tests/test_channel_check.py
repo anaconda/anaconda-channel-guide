@@ -1,5 +1,4 @@
 import pytest
-from conda.exceptions import CondaError
 from conda.models.records import PackageRecord
 from pytest_mock import MockerFixture
 
@@ -30,5 +29,5 @@ def test_query_failure_returns_false(mocker: MockerFixture) -> None:
     """A failed main-x query is treated as 'not available' rather than crashing."""
     mocker.patch(
         "anaconda_channel_guide.channel_check.SubdirData"
-    ).query_all.side_effect = CondaError("")
+    ).query_all.side_effect = Exception()
     assert is_available_on_main_x(["pychoir"]) is False
