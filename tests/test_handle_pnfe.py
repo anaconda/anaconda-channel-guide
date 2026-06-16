@@ -25,10 +25,10 @@ def test_handle_pnfe_returns_none(
     authenticated: bool,
 ) -> None:
     """No prompt when packages aren't on main-x, or the user is already set up."""
-    mocker.patch("anaconda_channel_guide.plugin.get_packages_on_main_x", return_value=on_main_x)
+    mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=on_main_x)
 
     result = handle_pnfe(
-        ["package_name"], main_x_configured=main_x_configured, authenticated=authenticated
+        ["pychoir"], main_x_configured=main_x_configured, authenticated=authenticated
     )
     assert result is None
 
@@ -48,10 +48,10 @@ def test_handle_pnfe_prompts_required_steps(
     expected_steps: list[str],
 ) -> None:
     """When packages are on main-x and setup is incomplete, prompt the missing steps."""
-    mocker.patch("anaconda_channel_guide.plugin.get_packages_on_main_x", return_value=True)
+    mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=True)
 
     result = handle_pnfe(
-        ["package_name"], main_x_configured=main_x_configured, authenticated=authenticated
+        ["pychoir"], main_x_configured=main_x_configured, authenticated=authenticated
     )
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
