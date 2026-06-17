@@ -3,11 +3,11 @@ from anaconda_auth.token import TokenNotFoundError
 from pytest_mock import MockerFixture
 
 from anaconda_channel_guide.channel_check import (
-    BASE_URL,
     MAIN_X_CHANNEL_NAME,
     is_logged_in,
     is_main_x_configured,
 )
+from anaconda_channel_guide.hooks import on_package_not_found
 from anaconda_channel_guide.plugin import handle_pnfe
 from anaconda_channel_guide.show import ChannelGuideBox
 
@@ -97,3 +97,12 @@ def test_main_x_configured(
     event = mocker.MagicMock()
     event.channels = channels
     assert is_main_x_configured(event) is expected
+
+
+def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
+    """Availability checks are skipped entirely when conda is in offline mode."""
+    event = mocker.MagicMock()
+    event.offline = True
+    mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
+    on_package_not_found(event)
+    mock_handle.assert_not_called()

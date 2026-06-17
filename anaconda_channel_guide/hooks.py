@@ -15,6 +15,9 @@ if TYPE_CHECKING:
 
 
 def on_package_not_found(event: CondaExceptionEvent) -> None:
+    #  Bail out in offline mode — availability checks require network access.
+    if event.offline:
+        return
     main_x_configured = is_main_x_configured(event)
     authenticated = is_logged_in()
 
