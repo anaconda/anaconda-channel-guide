@@ -1,7 +1,17 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 import requests
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
+from conda.models.channel import Channel
+
+if TYPE_CHECKING:
+    from conda.plugins.types import CondaExceptionEvent
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
+MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
+MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
 
 
 def is_logged_in() -> bool:
@@ -19,14 +29,13 @@ def is_logged_in() -> bool:
         return False
 
 
-def is_main_x_configured() -> bool:
+def is_main_x_configured(event: CondaExceptionEvent) -> bool:
     """Checks if the main-x channel is configured in the user's conda setup.
 
-    :param info: Conda context or exception info containing channel configuration
+    :param event: The conda exception event containing channel and error information
     :returns: True if main-x is in the configured channels, False otherwise
     """
-    # TODO: how to see if main-x is configured?
-    return False
+    return MAIN_X_CHANNEL_NAME in (event.channels or ())
 
 
 def is_package_on_main_x(packages: list[str]) -> dict[str, list[str]]:
