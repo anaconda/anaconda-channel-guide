@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - main
+  release:
+    types:
+      - published
 
 concurrency:
   # Concurrency group that uses the workflow name and PR number if available
@@ -71,3 +74,14 @@ jobs:
 
       - name: Build recipe
         run: pixi run --environment "${PIXI_ENV}" build --channel main
+
+      - name: Upload conda package to anaconda.org
+        if: ${{ (github.event_name == 'push' && github.ref_name == 'main') || (github.event_name == 'release') }}
+        uses: anaconda/actions/upload-package@a6f488910b4a1e4f3fe01736241ca1b92b4b355a  # v0.3.1
+        with:
+          channel: anaconda-cloud
+          labels: ${{ github.event_name == 'push' && 'dev' || '' }}
+          packages: .pixi/envs/build/conda-bld/noarch/anaconda-channel-guide-*.conda
+          private: true
+          target-type: anaconda.org
+          token: ${{ secrets.ANACONDA_ORG_UPLOAD_TOKEN }}  # zizmor: ignore[secrets-outside-env]
