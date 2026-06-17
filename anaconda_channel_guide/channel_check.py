@@ -1,20 +1,23 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+
 #### current
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.core.subdir_data import SubdirData
+from conda.models.channel import Channel
 from conda.models.records import PackageRecord
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
-    from conda.plugins.types import CondaExceptionEvent
 
     from conda.models.match_spec import MatchSpec
+    from conda.plugins.types import CondaExceptionEvent
 
 BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
+
 
 def is_logged_in() -> bool:
     """Checks if the user is authenticated via anaconda-auth.
