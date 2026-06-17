@@ -65,3 +65,29 @@ def test_platform_specific_miss(mocker: MockerFixture) -> None:
     mock_sd.query_all.assert_called_once_with(
         "numpy", channels=[MAIN_X_CHANNEL_URL], subdirs=("osx-arm64", "noarch")
     )
+
+
+def test_channel_qualified_non_main_x_returns_false(mocker: MockerFixture) -> None:
+    """Specs pinned to another channel → don't prompt."""
+    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
+
+    assert is_available_on_main_x(["conda-forge::numpy"]) is False
+    mock_sd.query_all.assert_not_called()
+
+
+def test_versioned_spec_queries_name_only(mocker: MockerFixture) -> None:
+    """Version constraints stripped — only name sent to query_all."""
+    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
+    mock_sd.query_all.return_value = ["rec"]
+
+    assert is_available_on_main_x(["numpy=1.24"]) is True
+    mock_sd.query_all.assert_called_once_with("numpy", channels=[MAIN_X_CHANNEL_URL], subdirs=None)
+
+
+def test_constrained_spec_queries_name_only(mocker: MockerFixture) -> None:
+    """>=/>/<constraints stripped."""
+    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
+    mock_sd.query_all.return_value = ["rec"]
+
+    assert is_available_on_main_x(["python >=3.12"]) is True
+    mock_sd.query_all.assert_called_once_with("python", channels=[MAIN_X_CHANNEL_URL], subdirs=None)
