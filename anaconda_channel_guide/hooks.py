@@ -21,7 +21,9 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     main_x_configured = is_main_x_configured(event)
     authenticated = is_logged_in()
 
-    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated)
+    subdirs = (event.subdir, "noarch") if event.subdir else None
+
+    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated, subdirs=subdirs)
 
 
 @hookimpl

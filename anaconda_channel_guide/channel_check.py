@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-#### current
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.core.subdir_data import SubdirData
 from conda.models.channel import Channel
@@ -42,7 +41,10 @@ def is_main_x_configured(event: CondaExceptionEvent) -> bool:
     return MAIN_X_CHANNEL_NAME in (event.channels or ())
 
 
-def is_available_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) -> bool:
+def is_available_on_main_x(
+    packages: Iterable[MatchSpec | PackageRecord | str],
+    subdirs: Iterable[str] | None = None,
+) -> bool:
     """Checks whether all of the given packages are available on the main-x channel.
 
     :param packages: Package specs to check (names, match specs, or records)
@@ -52,7 +54,7 @@ def is_available_on_main_x(packages: Iterable[MatchSpec | PackageRecord | str]) 
         for package in packages:
             if isinstance(package, PackageRecord):
                 return False
-            if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL]):
+            if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
                 return False
     except Exception:
         return False
