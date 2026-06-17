@@ -51,12 +51,8 @@ jobs:
         run: pixi run --environment "${PIXI_ENV}" test
 
   build-conda:
-    name: Build conda package (${{ matrix.runner }})
-    runs-on: ${{ matrix.runner }}
-    strategy:
-      matrix:
-        runner: [macos-latest, ubuntu-latest, ubuntu-24.04-arm, windows-latest]
-      fail-fast: false
+    name: Build conda package
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
