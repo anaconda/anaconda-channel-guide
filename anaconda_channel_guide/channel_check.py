@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from conda.models.match_spec import MatchSpec
     from conda.plugins.types import CondaExceptionEvent
 
-BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
 
