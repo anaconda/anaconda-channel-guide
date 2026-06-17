@@ -74,7 +74,7 @@ jobs:
           environments: ${{ env.PIXI_ENV }}
 
       - name: Build recipe
-        run: pixi run --environment "${PIXI_ENV}" build --channel main
+        run: pixi run --environment "${PIXI_ENV}" build
 
       - name: Upload conda package to anaconda.org
         if: ${{ (github.event_name == 'push' && github.ref_name == 'main') || (github.event_name == 'release') }}
