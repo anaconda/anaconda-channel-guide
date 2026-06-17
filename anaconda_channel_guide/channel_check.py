@@ -5,12 +5,12 @@ from typing import TYPE_CHECKING
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
 from conda.core.subdir_data import SubdirData
 from conda.models.channel import Channel
+from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from conda.models.match_spec import MatchSpec
     from conda.plugins.types import CondaExceptionEvent
 
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
@@ -47,6 +47,10 @@ def is_available_on_main_x(
 ) -> bool:
     """Checks whether all of the given packages are available on the main-x channel.
 
+    Normalizes package specs before querying: version constraints are stripped
+    so we check by name only, and specs pinned to a non-main-x channel are
+    rejected immediately.
+
     :param packages: Package specs to check (names, match specs, or records)
     :returns: True if every package is available on main-x, False otherwise
     """
@@ -54,8 +58,16 @@ def is_available_on_main_x(
         for package in packages:
             if isinstance(package, PackageRecord):
                 return False
-            if not SubdirData.query_all(package, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
+
+            spec = MatchSpec(package) if isinstance(package, str) else package
+            channel = spec.get_exact_value("channel")
+
+            if channel and Channel(channel).canonical_name != MAIN_X_CHANNEL_NAME:
                 return False
+
+            if not SubdirData.query_all(spec.name, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
+                return False
+
     except Exception:
         return False
     return True
