@@ -15,7 +15,6 @@ if TYPE_CHECKING:
 
 
 def on_package_not_found(event: CondaExceptionEvent) -> None:
-    # TODO: when sending the info to API does it need name and version?
     main_x_configured = is_main_x_configured(event)
     authenticated = is_logged_in()
 
