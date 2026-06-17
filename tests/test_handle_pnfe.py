@@ -2,7 +2,12 @@ import pytest
 from anaconda_auth.token import TokenNotFoundError
 from pytest_mock import MockerFixture
 
-from anaconda_channel_guide.channel_check import is_logged_in
+from anaconda_channel_guide.channel_check import (
+    BASE_URL,
+    MAIN_X_CHANNEL_NAME,
+    is_logged_in,
+    is_main_x_configured,
+)
 from anaconda_channel_guide.plugin import handle_pnfe
 from anaconda_channel_guide.show import ChannelGuideBox
 
@@ -72,3 +77,23 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
     mock_cls = mocker.patch("anaconda_channel_guide.channel_check.TokenInfo")
     mock_cls.load.side_effect = TokenNotFoundError("no token")
     assert not is_logged_in()
+
+
+@pytest.mark.parametrize(
+    ("channels", "expected"),
+    [
+        ((MAIN_X_CHANNEL_NAME,), True),
+        (("defaults", MAIN_X_CHANNEL_NAME), True),
+        (("defaults", "conda-forge"), False),
+        ((), False),
+        (None, False),
+    ],
+)
+def test_main_x_configured(
+    mocker: MockerFixture,
+    channels: tuple[str, ...] | None,
+    expected: bool,
+) -> None:
+    event = mocker.MagicMock()
+    event.channels = channels
+    assert is_main_x_configured(event) is expected
