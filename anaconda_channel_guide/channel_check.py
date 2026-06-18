@@ -43,7 +43,7 @@ def is_main_x_configured(event: CondaExceptionEvent) -> bool:
 
 def is_available_on_main_x(
     packages: Iterable[MatchSpec | PackageRecord | str],
-    subdirs: Iterable[str] | None = None,
+    subdirs: Iterable[str],
 ) -> bool:
     """Checks whether all of the given packages are available on the main-x channel.
 
@@ -55,17 +55,21 @@ def is_available_on_main_x(
     :returns: True if every package is available on main-x, False otherwise
     """
     try:
+        specs = []
         for package in packages:
             if isinstance(package, PackageRecord):
+                spec = package.to_match_spec()
+            elif isinstance(package, str):
+                spec = MatchSpec(package)
+            else:
+                spec = package
+
+            if spec.get_exact_value("channel") is not None:
                 return False
+            specs.append(spec)
 
-            spec = MatchSpec(package) if isinstance(package, str) else package
-            channel = spec.get_exact_value("channel")
-
-            if channel and Channel(channel).canonical_name != MAIN_X_CHANNEL_NAME:
-                return False
-
-            if not SubdirData.query_all(spec.name, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
+        for spec in specs:
+            if not SubdirData.query_all(spec, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
                 return False
 
     except Exception:

@@ -17,7 +17,7 @@ def handle_pnfe(
     missing_packages: list[str],
     main_x_configured: bool,
     authenticated: bool,
-    subdirs: Iterable[str] | None = None,
+    subdirs: Iterable[str],
 ) -> ChannelGuideBox | None:
     """Handles a PackageNotFoundError by checking if missing packages
     are available on main-x and guiding the user on what to do next.
@@ -29,18 +29,15 @@ def handle_pnfe(
     :returns: A user-facing prompt string if action is needed,
         or None to fall through to default PNFE behavior
     """
-
     if authenticated and main_x_configured:
         return None
 
     if not is_available_on_main_x(missing_packages, subdirs):
         return None
 
-    packages = ", ".join([str(package) for package in missing_packages])
-
     steps = []
     if not authenticated:
         steps.append(LOGIN_STEP)
     if not main_x_configured:
         steps.append(CONFIG_STEP)
-    return ChannelGuideBox(packages, steps)
+    return ChannelGuideBox(missing_packages, steps)

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from conda.base.context import context
 from conda.plugins import hookimpl
 from conda.plugins.types import CondaExceptionObserver
 
@@ -15,15 +16,13 @@ if TYPE_CHECKING:
 
 
 def on_package_not_found(event: CondaExceptionEvent) -> None:
-    #  Bail out in offline mode — availability checks require network access.
+    #  Return immediately in offline mode — availability checks require network access.
     if event.offline:
         return
     main_x_configured = is_main_x_configured(event)
     authenticated = is_logged_in()
 
-    subdirs = (event.subdir, "noarch") if event.subdir else None
-
-    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated, subdirs=subdirs)
+    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated, subdirs=context.subdirs)
 
 
 @hookimpl

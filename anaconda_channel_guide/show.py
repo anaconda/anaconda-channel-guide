@@ -1,5 +1,7 @@
+from collections.abc import Iterable
 from io import StringIO
 
+from conda.models.match_spec import MatchSpec
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
@@ -13,19 +15,21 @@ class ChannelGuideBox:
 
     TITLE = "Anaconda Channel Guide"
 
-    def __init__(self, package: str, steps: list[str]) -> None:
+    def __init__(self, packages: Iterable[str], steps: list[str]) -> None:
         """
-        :param package: Package name that triggered the PNFE
+        :param packages: Packages that triggered the PNFE
         :param steps: Numbered action items for the user
         """
-        self.package = package
+        self.packages = packages
         self.steps = steps
 
     def to_panel(self) -> Panel:
-        body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
-        for i, step in enumerate(self.steps, 1):
-            body += f"\n\n  {i}. {step}"
-        body += "\n\nThen re-run the original command."
+        for package in self.packages:
+            package_name = package.name if isinstance(package, MatchSpec) else package
+            body = f"'{package_name}' is available in Anaconda's 'main-x' channel."
+            for i, step in enumerate(self.steps, 1):
+                body += f"\n\n  {i}. {step}"
+            body += "\n\nThen re-run the original command."
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
