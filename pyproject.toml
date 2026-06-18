@@ -99,7 +99,9 @@ anaconda-auth = "*"
 conda = { cmd = "python -m conda", env = { CONDA_CHANNELS = "defaults" } }
 
 [tool.pixi.feature.build]
-dependencies = { conda-build = "*", anaconda-client = "*" }
+[tool.pixi.feature.build.dependencies]
+conda-build = "*"
+
 [tool.pixi.feature.build.tasks]
 build = { cmd = "python -m conda build recipe", env = { CONDA_CHANNELS = "defaults" } }
 
