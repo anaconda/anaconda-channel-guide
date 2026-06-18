@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
+from conda.base.context import context
 from conda.core.subdir_data import SubdirData
 from conda.models.channel import Channel
 from conda.models.match_spec import MatchSpec
@@ -38,7 +39,14 @@ def is_main_x_configured(event: CondaExceptionEvent) -> bool:
     :param event: The conda exception event containing channel and error information
     :returns: True if main-x is in the configured channels, False otherwise
     """
-    return MAIN_X_CHANNEL_NAME in (event.channels or ())
+    return any(is_main_x_channel(channel) for channel in (event.channels or ()))
+
+
+def is_main_x_channel(channel: str) -> bool:
+    try:
+        return Channel(channel).canonical_name == MAIN_X_CHANNEL_NAME
+    except Exception:
+        return False
 
 
 def is_available_on_main_x(
@@ -68,9 +76,12 @@ def is_available_on_main_x(
                 return False
             specs.append(spec)
 
-        for spec in specs:
-            if not SubdirData.query_all(spec, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
-                return False
+        # Temporary workaround until main/main-x can serve this via sharded repodata.
+        # Avoid refreshing unsharded repodata on the exception path.
+        with context._override("use_index_cache", True):
+            for spec in specs:
+                if not SubdirData.query_all(spec, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
+                    return False
 
     except Exception:
         return False

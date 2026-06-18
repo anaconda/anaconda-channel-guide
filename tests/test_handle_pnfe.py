@@ -91,6 +91,7 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
     [
         ((MAIN_X_CHANNEL_NAME,), True),
         (("defaults", MAIN_X_CHANNEL_NAME), True),
+        ((f"{MAIN_X_CHANNEL_NAME}/",), True),
         (("defaults", "conda-forge"), False),
         ((), False),
         (None, False),
