@@ -110,7 +110,6 @@ test = "python -m pytest -vvv -ra"
 pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
-responses = "*"
 
 [tool.pixi.feature.py310.dependencies]
 python = "3.10.*"
