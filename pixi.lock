@@ -2006,11 +2006,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-3.10.20-h741d88c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py310h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py310h591646f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/requests-2.33.1-py310h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py310h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py310h4aee224_0.conda
@@ -2037,6 +2039,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-libxdmcp-1.1.5-h9b100fa_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-xorgproto-2024.1-h5eee18b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xz-5.8.2-h448239c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-0.2.5-h7b6447c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-cpp-0.8.0-h6a678d5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zipp-3.23.0-py310h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
@@ -2169,11 +2172,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.10.20-hb11be13_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py310hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py310hbd8301c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/requests-2.33.1-py310hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py310hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py310hd7af942_0.conda
@@ -2200,6 +2205,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-libxdmcp-1.1.5-hf66535e_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-xorgproto-2024.1-h998d150_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xz-5.8.2-hed4fdd2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-0.2.5-hfd63f10_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-cpp-0.8.0-h419075a_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zipp-3.23.0-py310hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
@@ -2330,11 +2336,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.10.20-h4f1bc5c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py310hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py310h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.33.1-py310hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py310h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py310h091b9d3_0.conda
@@ -2356,6 +2364,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.7.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.46.3-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zipp-3.23.0-py310hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
@@ -2461,10 +2470,12 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-build-1.3.0-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py310hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py310haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py310hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py310hb9a58be_0.conda
@@ -2491,6 +2502,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/wheel-0.46.3-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/win_inet_pton-1.1.0-py310haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/xz-5.8.2-h53af0af_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-0.2.5-he774522_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-cpp-0.8.0-hd77b12b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zipp-3.23.0-py310haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
@@ -2619,11 +2631,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-3.11.15-h741d88c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py311h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py311h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py311h591646f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py311h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/requests-2.33.1-py311h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py311h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py311h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py311h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py311h4aee224_0.conda
@@ -2650,6 +2664,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-libxdmcp-1.1.5-h9b100fa_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-xorgproto-2024.1-h5eee18b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xz-5.8.2-h448239c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-0.2.5-h7b6447c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-cpp-0.8.0-h6a678d5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zipp-3.23.0-py311h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
@@ -2781,11 +2796,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.11.15-hb11be13_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py311hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py311hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py311hbd8301c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py311hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/requests-2.33.1-py311hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py311hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py311hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py311hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py311hd7af942_0.conda
@@ -2812,6 +2829,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-libxdmcp-1.1.5-hf66535e_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-xorgproto-2024.1-h998d150_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xz-5.8.2-hed4fdd2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-0.2.5-hfd63f10_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-cpp-0.8.0-h419075a_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zipp-3.23.0-py311hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
@@ -2941,11 +2959,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.11.15-h4f1bc5c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py311hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py311hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py311h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.33.1-py311hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py311h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py311h091b9d3_0.conda
@@ -2967,6 +2987,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.7.0-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.46.3-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zipp-3.23.0-py311hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
@@ -3071,10 +3092,12 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-build-1.3.0-py311haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py311haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py311hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py311haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py311hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py311hb9a58be_0.conda
@@ -3101,6 +3124,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/wheel-0.46.3-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/win_inet_pton-1.1.0-py311haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/xz-5.8.2-h53af0af_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-0.2.5-he774522_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-cpp-0.8.0-hd77b12b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zipp-3.23.0-py311haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
@@ -3226,11 +3250,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-3.12.13-h4d16e0c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py312h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py312h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py312h591646f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py312h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/requests-2.33.1-py312h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py312h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py312h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py312h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py312h4aee224_0.conda
@@ -3257,6 +3283,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-libxdmcp-1.1.5-h9b100fa_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-xorgproto-2024.1-h5eee18b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xz-5.8.2-h448239c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-0.2.5-h7b6447c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-cpp-0.8.0-h6a678d5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstandard-0.24.0-py312h3d778a8_0.conda
@@ -3384,11 +3411,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-3.12.13-h51a4668_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py312hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py312hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py312hbd8301c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py312hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/requests-2.33.1-py312hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py312hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py312hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py312hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py312hd7af942_0.conda
@@ -3415,6 +3444,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-libxdmcp-1.1.5-hf66535e_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-xorgproto-2024.1-h998d150_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xz-5.8.2-hed4fdd2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-0.2.5-hfd63f10_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-cpp-0.8.0-h419075a_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstandard-0.24.0-py312ha8a8473_0.conda
@@ -3541,11 +3571,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.12.13-hd7e0f33_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py312hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py312hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py312h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py312hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.33.1-py312hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py312hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-15.0.0-py312hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py312h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py312h091b9d3_0.conda
@@ -3567,6 +3599,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.7.0-py312hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.46.3-py312hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py312hbc14757_0.conda
@@ -3668,10 +3701,12 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-build-1.3.0-py312haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py312haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py312haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py312hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py312haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py312haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py312haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py312haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py312hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py312hb9a58be_0.conda
@@ -3698,6 +3733,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/wheel-0.46.3-py312haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/win_inet_pton-1.1.0-py312haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/xz-5.8.2-h53af0af_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-0.2.5-he774522_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-cpp-0.8.0-hd77b12b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py312he335c29_0.conda
@@ -3824,11 +3860,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py313h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py313h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py313h591646f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py313h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/requests-2.33.1-py313h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py313h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py313h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py313h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py313h4aee224_0.conda
@@ -3855,6 +3893,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-libxdmcp-1.1.5-h9b100fa_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-xorgproto-2024.1-h5eee18b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xz-5.8.2-h448239c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-0.2.5-h7b6447c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-cpp-0.8.0-h6a678d5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstandard-0.24.0-py313h3d778a8_0.conda
@@ -3984,11 +4023,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py313hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py313hbd8301c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/requests-2.33.1-py313hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py313hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py313hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py313hd7af942_0.conda
@@ -4015,6 +4056,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-libxdmcp-1.1.5-hf66535e_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-xorgproto-2024.1-h998d150_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xz-5.8.2-hed4fdd2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-0.2.5-hfd63f10_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-cpp-0.8.0-h419075a_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstandard-0.24.0-py313ha8a8473_0.conda
@@ -4143,11 +4185,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py313hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python_abi-3.13-3_cp313.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py313h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.33.1-py313hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py313h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py313h091b9d3_0.conda
@@ -4169,6 +4213,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.7.0-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.46.3-py313hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py313hbc14757_0.conda
@@ -4272,10 +4317,12 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python_abi-3.13-3_cp313.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py313hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py313haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py313hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py313hb9a58be_0.conda
@@ -4302,6 +4349,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/wheel-0.46.3-py313haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/win_inet_pton-1.1.0-py313haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/xz-5.8.2-h53af0af_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-0.2.5-he774522_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-cpp-0.8.0-hd77b12b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.24.0-py313he335c29_0.conda
@@ -4428,11 +4476,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-build-1.3.0-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python-dotenv-1.2.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/python_abi-3.14-2_cp314.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py314h591646f_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readchar-4.2.1-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/readline-8.3-hc2a1206_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/reproc-cpp-14.2.4-h6a678d5_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/requests-2.33.1-py314h06a4308_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py314h06a4308_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py314h06a4308_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml-0.18.16-py314h4aee224_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/ruamel.yaml.clib-0.2.14-py314h4aee224_0.conda
@@ -4458,6 +4508,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-libxdmcp-1.1.5-h9b100fa_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xorg-xorgproto-2024.1-h5eee18b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/xz-5.8.2-h448239c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-0.2.5-h7b6447c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/yaml-cpp-0.8.0-h6a678d5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zlib-1.3.1-h47b2149_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-64/zstandard-0.25.0-py314h89db63a_0.conda
@@ -4587,11 +4638,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-build-1.3.0-py314hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python-dotenv-1.2.1-py314hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/python_abi-3.14-2_cp314.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py314hbd8301c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readchar-4.2.1-py314hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/readline-8.3-h886d1d0_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/reproc-cpp-14.2.4-h419075a_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/requests-2.33.1-py314hd43f75c_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py314hd43f75c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py314hd43f75c_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml-0.18.16-py314hd7af942_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/ruamel.yaml.clib-0.2.14-py314hd7af942_0.conda
@@ -4617,6 +4670,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-libxdmcp-1.1.5-hf66535e_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xorg-xorgproto-2024.1-h998d150_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/xz-5.8.2-hed4fdd2_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-0.2.5-hfd63f10_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/yaml-cpp-0.8.0-h419075a_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zlib-1.3.1-h27118de_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/zstandard-0.25.0-py314hb079fa5_0.conda
@@ -4743,11 +4797,13 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-build-1.3.0-py314hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.2.1-py314hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/python_abi-3.14-2_cp314.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py314h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py314hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.33.1-py314hca03da5_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py314hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py314hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py314h091b9d3_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py314h091b9d3_0.conda
@@ -4768,6 +4824,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/unearth-0.17.5-py314hca03da5_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.7.0-py314hca03da5_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-hb4cf58c_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.25.0-py314hb3cf4b8_0.conda
@@ -4871,10 +4928,12 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python-dotenv-1.2.1-py314haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/python_abi-3.14-2_cp314.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/pywin32-ctypes-0.2.3-py314haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py314hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/readchar-4.2.1-py314haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/reproc-cpp-14.2.4-hd77b12b_2.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/requests-2.33.1-py314haa95532_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py314haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py314haa95532_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml-0.18.16-py314hb9a58be_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/ruamel.yaml.clib-0.2.14-py314hb9a58be_0.conda
@@ -4900,6 +4959,7 @@ environments:
       - conda: https://repo.anaconda.com/pkgs/main/win-64/vs2015_runtime-14.44.35208-ha6b5a95_12.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/win_inet_pton-1.1.0-py314haa95532_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/xz-5.8.2-h53af0af_0.conda
+      - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-0.2.5-he774522_0.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/yaml-cpp-0.8.0-hd77b12b_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zlib-1.3.1-h1c6eee0_1.conda
       - conda: https://repo.anaconda.com/pkgs/main/win-64/zstandard-0.25.0-py314hb03e5ee_0.conda
@@ -9885,6 +9945,55 @@ packages:
   license_family: MIT
   size: 228138
   timestamp: 1773692865213
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py310h591646f_0.conda
+  sha256: 8dc7a85dc4d6b22ba423dfa84b6f2707b7c3587bf5f8bfdd981e44554cfce8d9
+  md5: a5a1f024199809864ead124b4b733b47
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.10,<3.11.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 226249
+  timestamp: 1763465521807
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py311h591646f_0.conda
+  sha256: a04964eed63bd80e5c31d48311d68a0da626a9c75e7ca48cba5c875646dc8f6c
+  md5: c40361e70cccc5a3fa57dc05032fb9cc
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.11,<3.12.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 258212
+  timestamp: 1763465520653
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py312h591646f_0.conda
+  sha256: 56f88a2dce3e0b592fe5956c46ed9d58b25c1b3d253a580e76a534be682d7502
+  md5: 01e406f19472c77dbca1c79aad0543dc
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.12,<3.13.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 250322
+  timestamp: 1763465521176
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py313h591646f_0.conda
+  sha256: 089600b68f1c5fc3c5823528114f763e2789af20f04164ea6c660326513ace67
+  md5: 2384f037ab798b6ce6097c717a8758dc
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 253759
+  timestamp: 1763465523432
 - conda: https://repo.anaconda.com/pkgs/main/linux-64/pyyaml-6.0.3-py314h591646f_0.conda
   sha256: 8ba6510c08af3eeb359d354f9190bc775f78b6804d4f156a6a2b6086ce94b90e
   md5: 5b8da7e272da442aad3c8e9755ad93c5
@@ -10094,6 +10203,68 @@ packages:
   license_family: Apache
   size: 89293
   timestamp: 1762547471315
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py310h06a4308_0.conda
+  sha256: 76f3feab692a6cf0d9a5498303c45b0bf5a825da21c3caf7d6394ac005626c9a
+  md5: 3501891fe3ef5a2acc7a8eaf60536bce
+  depends:
+  - python >=3.10,<3.11.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 85238
+  timestamp: 1761750745829
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py311h06a4308_0.conda
+  sha256: 7314091d9191bfe7262e1df938b66c1af7ccff48702101da4b9c3304f9fa5861
+  md5: f584bdbe202a22d9663f034dfd8ece8e
+  depends:
+  - python >=3.11,<3.12.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 97485
+  timestamp: 1761750707942
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py312h06a4308_0.conda
+  sha256: 67c90aa9c1aaa2cc93be5d0d0c55e3f17acad89e469ef1fe82a79345bb3d1d29
+  md5: c8e413a0c2d0a009ba383bbc6fa627ed
+  depends:
+  - python >=3.12,<3.13.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96354
+  timestamp: 1761750708797
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py313h06a4308_0.conda
+  sha256: ba35861b2dc93d2a9948e0fe51ec4c760e976495d0cfb16eba05cc00b77a8e83
+  md5: de1391ee108e97ce4a9bfdba4c830310
+  depends:
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96837
+  timestamp: 1761750705055
+- conda: https://repo.anaconda.com/pkgs/main/linux-64/responses-0.25.8-py314h06a4308_1.conda
+  sha256: e1630269511919808b789ab1c62a398a65d5cf6ce02b669791683fa35fc8d4eb
+  md5: fd54a10c9e0d427c4847d0d918c33ac7
+  depends:
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 101042
+  timestamp: 1762425486658
 - conda: https://repo.anaconda.com/pkgs/main/linux-64/rich-15.0.0-py310h06a4308_0.conda
   sha256: aadba2f2ba86316304bffa0beaa03b39bbd23bb6b72e7ee4808be10a50cfcb9b
   md5: 7df2a71f79c720b2f9c2ed2ef764c6ba
@@ -16398,6 +16569,42 @@ packages:
   license_family: MIT
   size: 223054
   timestamp: 1773043038462
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py310hbd8301c_0.conda
+  sha256: e9083d2cdf9e8ea4def63959aae1a8eb3f4f1ec419d58986bcc7f9afe233838d
+  md5: ba45b9811a8343e7cdf8c2c6a740e32e
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.10,<3.11.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 221236
+  timestamp: 1763465521854
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py311hbd8301c_0.conda
+  sha256: 1ce17c973e5c3f6c73abda0c821a1ddfa53e954c4756b801edb3a41d26030dc4
+  md5: de3c87c82c0b16f8ca15fde544f7629e
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.11,<3.12.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 252985
+  timestamp: 1763465521347
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py312hbd8301c_0.conda
+  sha256: 3294eb29bd60a07fd8d6fb86107934e92e2c4b7f928328254bfb35f04ec03012
+  md5: 5cee2a7a55180083c678e35005c8fd6b
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.12,<3.13.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 243561
+  timestamp: 1763465525523
 - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py313hbd8301c_0.conda
   sha256: 4496ec7513e79769dcdbb4f2db3f3d7968c59240e03e7f29391023820cb70f80
   md5: a9b067a53f219bf9ed2a4583154facf9
@@ -16411,6 +16618,19 @@ packages:
   license_family: MIT
   size: 245388
   timestamp: 1763465541517
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/pyyaml-6.0.3-py314hbd8301c_0.conda
+  sha256: a2dfc0982c63380c419e0a8802a027d0b49c8cdaf245a2151e6bd911f6f4bdf7
+  md5: d1787b466821918fadc4a7a132f682b3
+  depends:
+  - __glibc >=2.28,<3.0.a0
+  - libgcc >=14
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 247465
+  timestamp: 1763465525510
 - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rattler-build-0.55.1-h3374abe_0.conda
   sha256: a96409038c24e7a5643134532b69235e3bf98071300a75ae9724911354536c3e
   md5: a0c14f81e56a15a962018f6212a63f7c
@@ -16606,6 +16826,68 @@ packages:
   license_family: Apache
   size: 88285
   timestamp: 1728500408740
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py310hd43f75c_0.conda
+  sha256: d873a32e8fc65e38c4cc07b6d74d3ecbe2eb8e83fd892a240ea95ca1afa3f627
+  md5: 35e234623278e8e4ab8d3400c37603a1
+  depends:
+  - python >=3.10,<3.11.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 85101
+  timestamp: 1761750704182
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py311hd43f75c_0.conda
+  sha256: 974981278a98b46f1579560f94d23c7b4c7c21792262a65fb2c4d0f172bbc52b
+  md5: 1c8cc16044eb608ab6f1b6aa41e09524
+  depends:
+  - python >=3.11,<3.12.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 97925
+  timestamp: 1761750705071
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py312hd43f75c_0.conda
+  sha256: 966500688af1357d8c18a73c01b71d5d6e2830be67109c8ca335e99f1693d02c
+  md5: c3cde89beda7a9f41f07666fc6b307f0
+  depends:
+  - python >=3.12,<3.13.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96341
+  timestamp: 1761750705277
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py313hd43f75c_0.conda
+  sha256: b862db5fe05a25e11867701a1e6af18ef8af4dabeb82ba7773414bb23049b7f0
+  md5: cf25d3ebad30180a0c864cae1a6cf842
+  depends:
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96934
+  timestamp: 1761750708249
+- conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/responses-0.25.8-py314hd43f75c_1.conda
+  sha256: 6ef243fd44f05c8a9c1a593ed6181f39c5123f7022a9da14a60426844eab169d
+  md5: f9ad1c9cd2e173418e04d6fc2cd93044
+  depends:
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 100198
+  timestamp: 1762425488744
 - conda: https://repo.anaconda.com/pkgs/main/linux-aarch64/rich-15.0.0-py310hd43f75c_0.conda
   sha256: dab95f4d47e0ab34f76088534ad6ee3842157fa857fe5bc0379d4dbdf94680f5
   md5: d38d15837b0c487f90992df37142fca1
@@ -22816,6 +23098,51 @@ packages:
   license_family: MIT
   size: 231643
   timestamp: 1773692765937
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py310h091b9d3_0.conda
+  sha256: 0b1d75d1ddfb6e1bd58adfefd71a3449e9d9b3240e37db170c37a1d51d566224
+  md5: 9d0b579d9b18c4df90426f13a720a983
+  depends:
+  - __osx >=12.1
+  - python >=3.10,<3.11.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 211897
+  timestamp: 1763465529919
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py311h091b9d3_0.conda
+  sha256: a2b89551529fee419c232309b119eefc9801a9304388b56a6647695c9de0685e
+  md5: 4c059ce152d440dd4d7480701ac193b5
+  depends:
+  - __osx >=12.1
+  - python >=3.11,<3.12.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 241865
+  timestamp: 1763465529247
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py312h091b9d3_0.conda
+  sha256: 5c6040cbe5186d82f3ce5b470a4fe444b56b6e642441de20881bc94d2b65a90f
+  md5: 8134e1b4b66059cdb43e03839739c02b
+  depends:
+  - __osx >=12.1
+  - python >=3.12,<3.13.0a0
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 236815
+  timestamp: 1763465527950
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py313h091b9d3_0.conda
+  sha256: 52d335bd2a19047162856f58afa6a5e10ef612e3b6617bc3d89dd2c968c7f579
+  md5: 5ea183aac23f4bbe41412f200a70d09d
+  depends:
+  - __osx >=12.1
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 237854
+  timestamp: 1763465528485
 - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py314h091b9d3_0.conda
   sha256: c1b658e089db04646fb4366bfa2f6dfcf21d3b5ea610b96dfc43d57a9d19f915
   md5: efdfbaea379b46cb6b61e99a5cf6e6ff
@@ -23017,6 +23344,68 @@ packages:
   license_family: Apache
   size: 89609
   timestamp: 1763762981820
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py310hca03da5_0.conda
+  sha256: 3daf8cb472f38a3fd951a51676079708611d8179808380724ec0e055a3455898
+  md5: c02d18242d30fb81391d1fbc199e7142
+  depends:
+  - python >=3.10,<3.11.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 85101
+  timestamp: 1761750711870
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py311hca03da5_0.conda
+  sha256: 8f6b3824b23c3732b7d933476427692809f2fabe96301a0f94a1414de1d447f4
+  md5: 7e1a40af6cc4c16a594f15ca9287dab5
+  depends:
+  - python >=3.11,<3.12.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96789
+  timestamp: 1761750706159
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py312hca03da5_0.conda
+  sha256: 83bb135a81b17100d9f3217b35aa92f29faa19adf707c6840662bea7256da2df
+  md5: 9f45e443ff411508d02624ea9726318b
+  depends:
+  - python >=3.12,<3.13.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96000
+  timestamp: 1761750732779
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py313hca03da5_0.conda
+  sha256: 44086ccda0c614649a639d67d2adf8bad917bffc78b679306e5ae5efbbcb8ff4
+  md5: e0d75c31a75b1f17b675776f53cdd189
+  depends:
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96566
+  timestamp: 1761750706270
+- conda: https://repo.anaconda.com/pkgs/main/osx-arm64/responses-0.25.8-py314hca03da5_1.conda
+  sha256: c796f73f1760d7f367be3ba37c47236615c8ba10a85217ebed185f641329954f
+  md5: fffb9d7dbe991fc0beefbc48731044c1
+  depends:
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 100726
+  timestamp: 1762425485603
 - conda: https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py310hca03da5_0.conda
   sha256: 855e18964f94a46c3f5cc26f51aae7f0b4e5286e6d54f8b62c5104c855d7c361
   md5: 1f9b0ffb8ad97037393bbfaf51a71263
@@ -29132,6 +29521,45 @@ packages:
   license_family: BSD
   size: 56583
   timestamp: 1768296696353
+- conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py310hb9a58be_0.conda
+  sha256: 2adf510b069c3bdaa1dde8055e68e08ada549657b410162232e1982d5cf829a5
+  md5: dc85e0282376a2616473b0a68b8f84eb
+  depends:
+  - python >=3.10,<3.11.0a0
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30133
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 208281
+  timestamp: 1763465569630
+- conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py311hb9a58be_0.conda
+  sha256: 3e1558db99762b3d32d181f010fb817f554714606e9463bd0202a41bb1e9f48d
+  md5: eb5b76d2a8c5afc3d442fe945ea6329a
+  depends:
+  - python >=3.11,<3.12.0a0
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30133
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 238536
+  timestamp: 1763465570930
+- conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py312hb9a58be_0.conda
+  sha256: 24adde2fc3df74cab77c3fd11cb18d9895986547a3f5f6dbc8b391b75c27b7f8
+  md5: 23d6daff05287694ee96bf3941002588
+  depends:
+  - python >=3.12,<3.13.0a0
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30133
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 231076
+  timestamp: 1763465639332
 - conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py313hb9a58be_0.conda
   sha256: cdf7b48afb00e8f1c75b8009bf288015f3f894925807350c412d2b40505ff71b
   md5: 99d3b0d7895f14c833020bae2637fbd0
@@ -29146,6 +29574,20 @@ packages:
   license_family: MIT
   size: 232090
   timestamp: 1763465571269
+- conda: https://repo.anaconda.com/pkgs/main/win-64/pyyaml-6.0.3-py314hb9a58be_0.conda
+  sha256: 56e96d34a81ff26d85dac5cce768c7c66bfe6821c01624aec351bd2a30687c03
+  md5: d83974318cad32d3da4c9c7cb900ccf2
+  depends:
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30133
+  - yaml >=0.2.5,<0.3.0a0
+  license: MIT
+  license_family: MIT
+  size: 232829
+  timestamp: 1763465572137
 - conda: https://repo.anaconda.com/pkgs/main/win-64/rattler-build-0.55.1-hff8fe86_0.conda
   sha256: e3b301f7df63dc25c763d0d71755c88a123bda20ee0e76d2cdc88af949de1884
   md5: 49ae80900d7bef6a27fdadf34f3049f6
@@ -29330,6 +29772,68 @@ packages:
   license_family: Apache
   size: 89136
   timestamp: 1731731373752
+- conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py310haa95532_0.conda
+  sha256: dda388d63fe9a4b4595988a2effb469cf8021c2b846c92ad01a7ad9a212d10f1
+  md5: 42899f75567d0bb092ddc936c7808aaa
+  depends:
+  - python >=3.10,<3.11.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 85864
+  timestamp: 1761750747377
+- conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py311haa95532_0.conda
+  sha256: e3609b77d96f85229c70ff4103c488092b2324ad6d395e5ea1c68700f750d68d
+  md5: 30341c17d9b58e751de3001fe4a06498
+  depends:
+  - python >=3.11,<3.12.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 98510
+  timestamp: 1761750814761
+- conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py312haa95532_0.conda
+  sha256: 9de3c07b6d83fc17bf66c2e86eb6fa71e60aad60eed9e051e12df45f1c5498c1
+  md5: e4bab0174ad6d555846f45d90cb03c3a
+  depends:
+  - python >=3.12,<3.13.0a0
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96177
+  timestamp: 1761750746362
+- conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py313haa95532_0.conda
+  sha256: 7c3630859d5b925f0fb02e2ab46092d8581fee2d2b0b145c820d1a8fc65226e9
+  md5: afa3f7c8ec3f743792b7d9995d68cc96
+  depends:
+  - python >=3.13,<3.14.0a0
+  - python_abi 3.13.* *_cp313
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 96810
+  timestamp: 1761750746618
+- conda: https://repo.anaconda.com/pkgs/main/win-64/responses-0.25.8-py314haa95532_1.conda
+  sha256: 1c8e7b5dfe88bc189fc0efa4b5686577d2813b516c7fedc7276534400b39bc85
+  md5: 6e9af3688bef77edacb232a8807c4782
+  depends:
+  - python >=3.14,<3.15.0a0
+  - python_abi 3.14.* *_cp314
+  - pyyaml
+  - requests >=2.30.0,<3.0
+  - urllib3 >=1.25.10,<3.0
+  license: Apache-2.0
+  license_family: APACHE
+  size: 100982
+  timestamp: 1762425523867
 - conda: https://repo.anaconda.com/pkgs/main/win-64/rich-15.0.0-py310haa95532_0.conda
   sha256: 02686d6050c6352d531972a02b17a923785eb04c39263a9631a0aad898759493
   md5: 72f29e5d98d3f96f3762bbe77f756352
