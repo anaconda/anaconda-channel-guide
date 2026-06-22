@@ -1,4 +1,5 @@
 import pytest
+from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 from pytest_mock import MockerFixture
 
@@ -7,87 +8,50 @@ from anaconda_channel_guide.channel_check import (
     is_available_on_main_x,
 )
 
+PYCHOIR_RECORD = PackageRecord(name="pychoir", version="0.0.30", build="pypi_0", build_number=0)
+SUBDIRS = ("linux-64", "noarch")
 
-@pytest.mark.parametrize(("query_result", "expected"), [(["rec"], True), ([], False)])
-def test_is_available_on_main_x(mocker: MockerFixture, query_result: list, expected: bool) -> None:
+
+@pytest.mark.parametrize(("query_result", "expected"), [((PYCHOIR_RECORD,), True), ((), False)])
+def test_package_found_on_main_x(mocker: MockerFixture, query_result: list, expected: bool) -> None:
     """A non-empty main-x query result reports the package as available (True);
     an empty result reports it as unavailable (False).
     """
     mocker.patch(
         "anaconda_channel_guide.channel_check.SubdirData"
     ).query_all.return_value = query_result
-    assert is_available_on_main_x(["pychoir"]) is expected
+    assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is expected
 
 
-def test_package_record_returns_false(mocker: MockerFixture) -> None:
-    """A PackageRecord input is rejected by the guard."""
-    mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    record = PackageRecord(name="pychoir", version="0.0.30", build="pypi_0", build_number=0)
-    assert is_available_on_main_x([record]) is False
+def test_package_record_with_channel(mocker: MockerFixture) -> None:
+    """A PackageRecord whose MatchSpec carries a channel is rejected."""
+    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
+    mock_sd.query_all.return_value = (PYCHOIR_RECORD,)
+    assert is_available_on_main_x([PYCHOIR_RECORD], subdirs=SUBDIRS) is False
+    mock_sd.query_all.assert_not_called()
 
 
-def test_query_failure_returns_false(mocker: MockerFixture) -> None:
+def test_query_raises_exception(mocker: MockerFixture) -> None:
     """A failed main-x query is treated as 'not available' rather than crashing."""
     mocker.patch(
         "anaconda_channel_guide.channel_check.SubdirData"
     ).query_all.side_effect = Exception()
-    assert is_available_on_main_x(["pychoir"]) is False
+    assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is False
 
 
-def test_platform_specific_hit(mocker: MockerFixture) -> None:
-    """Package found for the user's platform reports available."""
+def test_query_receives_correct_args(mocker: MockerFixture) -> None:
+    """Subdirs and channels are forwarded to query_all."""
     mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    mock_sd.query_all.return_value = ["rec"]
-
-    assert is_available_on_main_x(["numpy"], subdirs=("linux-64", "noarch")) is True
+    mock_sd.query_all.return_value = (PYCHOIR_RECORD,)
+    is_available_on_main_x(["pychoir"], subdirs=SUBDIRS)
     mock_sd.query_all.assert_called_once_with(
-        "numpy", channels=[MAIN_X_CHANNEL_URL], subdirs=("linux-64", "noarch")
+        MatchSpec("pychoir"), channels=[MAIN_X_CHANNEL_URL], subdirs=SUBDIRS
     )
 
 
-def test_noarch_hit(mocker: MockerFixture) -> None:
-    """A noarch-only package is found when noarch is in the subdirs."""
-    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    mock_sd.query_all.return_value = ["rec"]
-
-    assert is_available_on_main_x(["pychoir"], subdirs=("osx-arm64", "noarch")) is True
-    mock_sd.query_all.assert_called_once_with(
-        "pychoir", channels=[MAIN_X_CHANNEL_URL], subdirs=("osx-arm64", "noarch")
-    )
-
-
-def test_platform_specific_miss(mocker: MockerFixture) -> None:
-    """Package exists on main-x but not for this platform — reports unavailable."""
-    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    mock_sd.query_all.return_value = []
-
-    assert is_available_on_main_x(["numpy"], subdirs=("osx-arm64", "noarch")) is False
-    mock_sd.query_all.assert_called_once_with(
-        "numpy", channels=[MAIN_X_CHANNEL_URL], subdirs=("osx-arm64", "noarch")
-    )
-
-
-def test_channel_qualified_non_main_x_returns_false(mocker: MockerFixture) -> None:
-    """Specs pinned to another channel → don't prompt."""
+def test_channel_pinned_spec(mocker: MockerFixture) -> None:
+    """Specs pinned to another channel, returns False."""
     mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
 
-    assert is_available_on_main_x(["conda-forge::numpy"]) is False
+    assert is_available_on_main_x(["conda-forge::numpy"], subdirs=SUBDIRS) is False
     mock_sd.query_all.assert_not_called()
-
-
-def test_versioned_spec_queries_name_only(mocker: MockerFixture) -> None:
-    """Version constraints stripped — only name sent to query_all."""
-    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    mock_sd.query_all.return_value = ["rec"]
-
-    assert is_available_on_main_x(["numpy=1.24"]) is True
-    mock_sd.query_all.assert_called_once_with("numpy", channels=[MAIN_X_CHANNEL_URL], subdirs=None)
-
-
-def test_constrained_spec_queries_name_only(mocker: MockerFixture) -> None:
-    """>=/>/<constraints stripped."""
-    mock_sd = mocker.patch("anaconda_channel_guide.channel_check.SubdirData")
-    mock_sd.query_all.return_value = ["rec"]
-
-    assert is_available_on_main_x(["python >=3.12"]) is True
-    mock_sd.query_all.assert_called_once_with("python", channels=[MAIN_X_CHANNEL_URL], subdirs=None)

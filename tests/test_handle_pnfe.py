@@ -13,6 +13,7 @@ from anaconda_channel_guide.show import ChannelGuideBox
 
 LOGIN_CMD = "anaconda login"
 CONFIG_CMD = "conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+SUBDIRS = ("linux-64", "noarch")
 
 
 @pytest.mark.parametrize(
@@ -33,7 +34,10 @@ def test_handle_pnfe_returns_none(
     mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=on_main_x)
 
     result = handle_pnfe(
-        ["pychoir"], main_x_configured=main_x_configured, authenticated=authenticated
+        ["pychoir"],
+        main_x_configured=main_x_configured,
+        authenticated=authenticated,
+        subdirs=SUBDIRS,
     )
     assert result is None
 
@@ -56,7 +60,10 @@ def test_handle_pnfe_prompts_required_steps(
     mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=True)
 
     result = handle_pnfe(
-        ["pychoir"], main_x_configured=main_x_configured, authenticated=authenticated
+        ["pychoir"],
+        main_x_configured=main_x_configured,
+        authenticated=authenticated,
+        subdirs=SUBDIRS,
     )
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
