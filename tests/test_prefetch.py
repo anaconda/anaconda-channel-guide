@@ -25,7 +25,7 @@ def test_prefetch_spawns_background_process(mocker: MockerFixture) -> None:
     with (
         context._override("offline", False),
         context._override("channels", ()),
-        context._override("subdir", "osx-arm64"),
+        context._override("_subdir", "osx-arm64"),
     ):
         prefetch_main_x_repodata("install")
 
