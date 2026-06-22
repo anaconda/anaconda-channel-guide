@@ -102,6 +102,15 @@ conda = { cmd = "python -m conda", env = { CONDA_CHANNELS = "defaults" } }
 dependencies = { conda-build = "*", anaconda-client = "*" }
 tasks = { build = "conda build recipe" }
 
+[tool.pixi.feature.benchmark]
+channels = ["conda-forge"]
+
+[tool.pixi.feature.benchmark.dependencies]
+hyperfine = "*"
+
+[tool.pixi.feature.benchmark.tasks]
+benchmark-main-x = "python scripts/benchmark.py"
+
 [tool.pixi.feature.test]
 [tool.pixi.feature.test.tasks]
 test = "python -m pytest -vvv -ra"
@@ -129,6 +138,7 @@ python = "3.14.*"
 [tool.pixi.environments]
 build = ["build"]
 dev = ["py310"]
+benchmark-py313 = ["benchmark", "py313"]
 test-py310 = ["test", "py310"]
 test-py311 = ["test", "py311"]
 test-py312 = ["test", "py312"]

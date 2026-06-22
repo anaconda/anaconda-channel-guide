@@ -1,4 +1,5 @@
 import pytest
+from conda.base.context import context
 from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 from pytest_mock import MockerFixture
@@ -55,3 +56,29 @@ def test_channel_pinned_spec(mocker: MockerFixture) -> None:
 
     assert is_available_on_main_x(["conda-forge::numpy"], subdirs=SUBDIRS) is False
     mock_sd.query_all.assert_not_called()
+
+
+def test_availability_lookup_uses_index_cache(mocker: MockerFixture) -> None:
+    """Use conda's cached repodata instead of refreshing on the PNFE path."""
+    seen_use_index_cache = []
+
+    def query_all(
+        package: MatchSpec,
+        *,
+        channels: list[str],
+        subdirs: tuple[str, ...],
+    ) -> tuple[PackageRecord, ...]:
+        assert package == MatchSpec("pychoir")
+        assert channels == [MAIN_X_CHANNEL_URL]
+        assert subdirs == SUBDIRS
+        seen_use_index_cache.append(context.use_index_cache)
+        return (PYCHOIR_RECORD,)
+
+    mocker.patch(
+        "anaconda_channel_guide.channel_check.SubdirData"
+    ).query_all.side_effect = query_all
+
+    with context._override("use_index_cache", False):
+        assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is True
+        assert seen_use_index_cache == [True]
+        assert context.use_index_cache is False
