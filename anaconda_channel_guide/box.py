@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
