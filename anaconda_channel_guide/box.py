@@ -1,12 +1,9 @@
-from __future__ import annotations
-
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
 
 MAX_WIDTH = 84
 MAX_HEIGHT = 25
-
 
 LOGIN_STEP = "Log in:\n\n    $ anaconda login"
 CONFIG_STEP = "Add the 'main-x' channel:\n\n    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
