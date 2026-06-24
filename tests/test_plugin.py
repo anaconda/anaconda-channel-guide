@@ -3,7 +3,7 @@ import responses
 from anaconda_auth.token import TokenNotFoundError
 from pytest_mock import MockerFixture
 
-from anaconda_channel_guide.box import ChannelGuideBox
+from anaconda_channel_guide.box import CONFIG_STEP, LOGIN_STEP, ChannelGuideBox
 from anaconda_channel_guide.plugin import (
     BASE_URL,
     MAIN_X_CHANNEL_NAME,
@@ -25,8 +25,7 @@ def test_handle_pnfe_configured_not_authenticated() -> None:
 
     result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
     assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
+    assert LOGIN_STEP in result.steps
 
 
 @responses.activate
@@ -47,8 +46,7 @@ def test_handle_pnfe_not_configured_authenticated() -> None:
 
     result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=True)
     assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
+    assert CONFIG_STEP in result.steps
 
 
 @responses.activate
@@ -58,9 +56,8 @@ def test_handle_pnfe_not_configured_not_authenticated() -> None:
 
     result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
     assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
+    assert LOGIN_STEP in result.steps
+    assert CONFIG_STEP in result.steps
 
 
 @responses.activate
@@ -133,3 +130,13 @@ def test_is_package_on_main_x() -> None:
     result = is_package_on_main_x(["numpy", "six"])
 
     assert result == MOCK_RESPONSE
+
+
+def test_render_channel_guide_prints(capsys: pytest.CaptureFixture) -> None:
+    """Verifies render_channel_guide outputs the panel to stderr."""
+    from anaconda_channel_guide.box import render_channel_guide
+
+    box = ChannelGuideBox("numpy", [LOGIN_STEP])
+    render_channel_guide(box)
+    _, err = capsys.readouterr()
+    assert "Anaconda Channel Guide" in err
