@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 from conda.plugins import hookimpl
 from conda.plugins.types import CondaExceptionObserver
 
+from anaconda_channel_guide.box import render_channel_guide
 from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 
 if TYPE_CHECKING:
@@ -19,7 +20,9 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     missing_packages = [str(pkg) for pkg in event.exc_value.packages]
     authenticated = is_logged_in()
 
-    handle_pnfe(missing_packages, main_x_configured, authenticated)
+    result = handle_pnfe(missing_packages, main_x_configured, authenticated)
+    if result:
+        render_channel_guide(result)
 
 
 @hookimpl

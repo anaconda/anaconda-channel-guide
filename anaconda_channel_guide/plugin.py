@@ -81,8 +81,8 @@ def handle_pnfe(
     :param missing_packages: List of package names that triggered the PNFE
     :param main_x_configured: True if the main-x channel is already in the user's config
     :param authenticated: True if the user is currently logged in
-    :returns: A user-facing prompt string if action is needed,
-        or None to fall through to default PNFE behavior
+    :returns: A ChannelGuideBox object if action is needed,
+        None to fall through to default PNFE behavior
     """
 
     in_main_x = get_available_packages_on_main_x(missing_packages)
