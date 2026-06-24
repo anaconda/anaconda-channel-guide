@@ -5,8 +5,7 @@ from typing import TYPE_CHECKING
 from conda.plugins import hookimpl
 from conda.plugins.types import CondaExceptionObserver
 
-from anaconda_channel_guide.channel_check import is_logged_in, is_main_x_configured
-from anaconda_channel_guide.plugin import handle_pnfe
+from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 
 if TYPE_CHECKING:
     from collections.abc import Iterable

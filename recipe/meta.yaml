@@ -34,8 +34,7 @@ test:
   imports:
     - anaconda_channel_guide
     - anaconda_channel_guide.plugin
-    - anaconda_channel_guide.show
-    - anaconda_channel_guide.channel_check
+    - anaconda_channel_guide.box
   commands:
     - pip check
 
