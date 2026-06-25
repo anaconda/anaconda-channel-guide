@@ -3,7 +3,7 @@ from __future__ import annotations
 import subprocess
 import sys
 
-from anaconda_channel_guide.channel_check import MAIN_X_CHANNEL_URL, is_main_x_channel
+from anaconda_channel_guide.plugin import MAIN_X_CHANNEL_URL, is_main_x_channel
 
 
 def prefetch_main_x_repodata(_command: str) -> None:

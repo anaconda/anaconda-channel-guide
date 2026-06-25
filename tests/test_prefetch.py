@@ -3,8 +3,8 @@ import sys
 from conda.base.context import context
 from pytest_mock import MockerFixture
 
-from anaconda_channel_guide.channel_check import MAIN_X_CHANNEL_NAME, MAIN_X_CHANNEL_URL
 from anaconda_channel_guide.hooks import conda_pre_commands
+from anaconda_channel_guide.plugin import MAIN_X_CHANNEL_NAME, MAIN_X_CHANNEL_URL
 from anaconda_channel_guide.prefetch import (
     main,
     prefetch_main_x_repodata,

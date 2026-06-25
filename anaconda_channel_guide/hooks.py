@@ -6,8 +6,7 @@ from conda.base.context import context
 from conda.plugins import hookimpl
 from conda.plugins.types import CondaExceptionObserver, CondaPreCommand
 
-from anaconda_channel_guide.channel_check import is_logged_in, is_main_x_configured
-from anaconda_channel_guide.plugin import handle_pnfe
+from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 from anaconda_channel_guide.prefetch import prefetch_main_x_repodata
 
 if TYPE_CHECKING:
