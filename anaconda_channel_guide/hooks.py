@@ -25,6 +25,8 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
 
     box = handle_pnfe(missing_packages, main_x_configured, authenticated)
 
+    # This is a temperary solution to append the box to the end of the message.
+    # This will be removed in conda 26.7.x when there is a better solution.
     if box and not event.quiet and not event.json:
         event.exc_value.message += str(box)
 
