@@ -70,13 +70,12 @@ def is_available_on_main_x(
     try:
         specs = []
         for package in packages:
+            # Solvers typically convert into MatchSpec, but exception events
+            # also allow for PackageRecord. These are unlikely to come from
+            # a channel search, so we return to be defensive.
             if isinstance(package, PackageRecord):
-                spec = package.to_match_spec()
-            elif isinstance(package, str):
-                spec = MatchSpec(package)
-            else:
-                spec = package
-
+                return False
+            spec = MatchSpec(package) if isinstance(package, str) else package
             if spec.get_exact_value("channel") is not None:
                 return False
             specs.append(spec)
