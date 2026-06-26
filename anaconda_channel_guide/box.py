@@ -1,4 +1,5 @@
 from io import StringIO
+
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel

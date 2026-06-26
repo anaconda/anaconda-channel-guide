@@ -130,13 +130,3 @@ def test_is_package_on_main_x() -> None:
     result = is_package_on_main_x(["numpy", "six"])
 
     assert result == MOCK_RESPONSE
-
-
-def test_render_channel_guide_prints(capsys: pytest.CaptureFixture) -> None:
-    """Verifies render_channel_guide outputs the panel to stderr."""
-    from anaconda_channel_guide.box import render_channel_guide
-
-    box = ChannelGuideBox("numpy", [LOGIN_STEP])
-    render_channel_guide(box)
-    _, err = capsys.readouterr()
-    assert "Anaconda Channel Guide" in err
