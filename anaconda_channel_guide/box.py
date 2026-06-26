@@ -6,7 +6,14 @@ MAX_WIDTH = 84
 MAX_HEIGHT = 25
 
 LOGIN_STEP = "Log in:\n\n    $ anaconda login"
-CONFIG_STEP = "Add the 'main-x' channel:\n\n    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+CONFIG_STEP = (
+    "Add the 'main-x' channel:\n\n"
+    "    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+)
+DISABLE_STEP = (
+    "To disable these notifications, please run:\n\n"
+    "    $ conda config --set plugins.anaconda_channel_guide false"
+)
 
 
 class ChannelGuideBox:
@@ -27,7 +34,7 @@ class ChannelGuideBox:
         body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
         for i, step in enumerate(self.steps, 1):
             body += f"\n\n  {i}. {step}"
-        body += "\n\nThen re-run the original command."
+        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
 

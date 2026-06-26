@@ -81,6 +81,7 @@ jobs:
         uses: anaconda/actions/upload-package@a6f488910b4a1e4f3fe01736241ca1b92b4b355a  # v0.3.1
         with:
           channel: anaconda-cloud
+          force: true
           labels: ${{ github.event_name == 'push' && 'dev' || '' }}
           packages: .pixi/envs/build/conda-bld/noarch/anaconda-channel-guide-*.conda
           private: true
