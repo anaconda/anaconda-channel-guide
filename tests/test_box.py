@@ -28,6 +28,7 @@ def test_disable_message_shown() -> None:
     ("package", "expected"),
     [
         ("pychoir", "'pychoir' is available in Anaconda's 'main-x' channel."),
+        ("pychoir, aabbtree", "'pychoir, aabbtree' is available in Anaconda's 'main-x' channel."),
     ],
 )
 def test_package_name_display(package: str, expected: str) -> None:
