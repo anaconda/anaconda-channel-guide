@@ -7,7 +7,6 @@ from conda.common.configuration import PrimitiveParameter
 from conda.plugins import hookimpl
 from conda.plugins.types import CondaExceptionObserver, CondaSetting
 
-from anaconda_channel_guide.box import render_channel_guide
 from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 
 if TYPE_CHECKING:
@@ -24,9 +23,10 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     missing_packages = [str(pkg) for pkg in event.exc_value.packages]
     authenticated = is_logged_in()
 
-    result = handle_pnfe(missing_packages, main_x_configured, authenticated)
-    if result:
-        render_channel_guide(result)
+    box = handle_pnfe(missing_packages, main_x_configured, authenticated)
+
+    if box and not event.quiet and not event.json:
+        event.exc_value.message += str(box)
 
 
 @hookimpl

@@ -1,9 +1,9 @@
+from io import StringIO
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
 
 MAX_WIDTH = 84
-MAX_HEIGHT = 25
 
 LOGIN_STEP = "Log in:\n\n    $ anaconda login"
 CONFIG_STEP = (
@@ -37,16 +37,7 @@ class ChannelGuideBox:
         body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
-
-def render_channel_guide(box: ChannelGuideBox) -> None:
-    """Renders a ChannelGuideBox to stderr as a Rich panel.
-
-    Auto-detects terminal width and caps at MAX_WIDTH to prevent
-    the box from stretching on wide terminals.
-
-    :param box: The channel guide box to render
-    """
-    console = Console(stderr=True, height=MAX_HEIGHT)
-    if console.width > MAX_WIDTH:
-        console = Console(stderr=True, width=MAX_WIDTH, height=MAX_HEIGHT)
-    console.print(box.to_panel())
+    def __str__(self) -> str:
+        console = Console(file=StringIO(), width=84)
+        console.print(self.to_panel())
+        return console.file.getvalue()
