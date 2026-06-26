@@ -4,6 +4,7 @@ from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
 
+# Cap rendered box width so it stays readable on wide terminals.
 MAX_WIDTH = 84
 
 LOGIN_STEP = "Log in:\n\n    $ anaconda login"
@@ -39,6 +40,6 @@ class ChannelGuideBox:
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
-        console = Console(file=StringIO(), width=84)
+        console = Console(file=StringIO(), width=MAX_WIDTH)
         console.print(self.to_panel())
         return console.file.getvalue()
