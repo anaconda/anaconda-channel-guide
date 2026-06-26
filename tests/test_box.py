@@ -23,9 +23,7 @@ def box_output(package: str, steps: list[str]) -> str:
     return str(ChannelGuideBox(package, steps))
 
 
-def make_pnfe_event(
-    mocker: MockerFixture, *, quiet: bool = False, json: bool = False
-) -> MagicMock:
+def make_pnfe_event(mocker: MockerFixture, *, quiet: bool = False, json: bool = False) -> MagicMock:
     """Make a mock CondaExceptionEvent for tests"""
     event = mocker.MagicMock()
     event.exc_value.message = "Packages not found.\n"
@@ -34,6 +32,7 @@ def make_pnfe_event(
     event.quiet = quiet
     event.json = json
     return event
+
 
 def test_disable_message_shown() -> None:
     """Ensure that the message to disable the plug-in is shown."""
@@ -61,6 +60,7 @@ def test_always_present_content() -> None:
     assert ChannelGuideBox.TITLE in output
     assert "Then re-run the original command." in output
     assert "conda config --set plugins.anaconda_channel_guide false" in output
+
 
 @pytest.mark.parametrize(
     ("steps", "expected_fragments"),
