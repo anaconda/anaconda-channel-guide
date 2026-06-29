@@ -94,7 +94,7 @@ def is_available_on_main_x(
 
 
 def handle_pnfe(
-    missing_packages: list[str],
+    missing_packages: list[str | MatchSpec | PackageRecord],
     main_x_configured: bool,
     authenticated: bool,
     subdirs: Iterable[str],
