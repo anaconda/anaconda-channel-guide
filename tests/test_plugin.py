@@ -129,9 +129,7 @@ def test_package_found_on_main_x(mocker: MockerFixture, query_result: list, expe
     """A non-empty main-x query result reports the package as available (True);
     an empty result reports it as unavailable (False).
     """
-    mocker.patch(
-        "anaconda_channel_guide.plugin.SubdirData"
-    ).query_all.return_value = query_result
+    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.return_value = query_result
     assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is expected
 
 
@@ -145,9 +143,7 @@ def test_package_record_with_channel(mocker: MockerFixture) -> None:
 
 def test_query_raises_exception(mocker: MockerFixture) -> None:
     """A failed main-x query is treated as 'not available' rather than crashing."""
-    mocker.patch(
-        "anaconda_channel_guide.plugin.SubdirData"
-    ).query_all.side_effect = Exception()
+    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.side_effect = Exception()
     assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is False
 
 
@@ -185,9 +181,7 @@ def test_availability_lookup_uses_index_cache(mocker: MockerFixture) -> None:
         seen_use_index_cache.append(context.use_index_cache)
         return (PYCHOIR_RECORD,)
 
-    mocker.patch(
-        "anaconda_channel_guide.plugin.SubdirData"
-    ).query_all.side_effect = query_all
+    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.side_effect = query_all
 
     with context._override("use_index_cache", False):
         assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is True
