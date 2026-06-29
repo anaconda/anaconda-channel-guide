@@ -3,19 +3,17 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import pytest
+from conda.exceptions import PackagesNotFoundError
+from conda.plugins.types import CondaExceptionEvent
 
 from anaconda_channel_guide.box import ChannelGuideBox
 from anaconda_channel_guide.hooks import conda_settings, on_package_not_found
-from conda.exceptions import PackagesNotFoundError
-from conda.plugins.types import CondaExceptionEvent
 
 if TYPE_CHECKING:
     from pytest_mock import MockerFixture
 
 
 def make_pnfe_event(
-
-    quiet: bool = False,
     json: bool = False,
     channels: tuple[str, ...] | None = ("defaults",),
     packages: list[str] | None = None,
@@ -28,9 +26,9 @@ def make_pnfe_event(
         exc_value=exc,
         exc_traceback=None,
         channels=channels,
-        quiet=quiet,
         json=json,
     )
+
 
 def test_conda_settings() -> None:
     """
@@ -109,26 +107,24 @@ def test_box_correct_steps_appended(
 
 
 @pytest.mark.parametrize(
-    ("enabled", "quiet", "json", "authenticated", "main_x_configured", "availability"),
+    ("enabled", "json", "authenticated", "main_x_configured", "availability"),
     [
-        pytest.param(True, True, False, False, False, {"pychoir": ["0.0.29"]}, id="quiet"),
-        pytest.param(True, False, True, False, False, {"pychoir": ["0.0.29"]}, id="json"),
-        pytest.param(True, False, False, True, True, {"pychoir": ["0.0.29"]}, id="no_action_needed"),
-        pytest.param(True, False, False, False, False, {}, id="not_on_main_x"),
-        pytest.param(False, False, False, False, False, {"pychoir": ["0.0.29"]}, id="disabled"),
+        pytest.param(True, True, False, False, {"pychoir": ["0.0.29"]}, id="json"),
+        pytest.param(True, False, True, True, {"pychoir": ["0.0.29"]}, id="no_action_needed"),
+        pytest.param(True, False, False, False, {}, id="not_on_main_x"),
+        pytest.param(False, False, False, False, {"pychoir": ["0.0.29"]}, id="disabled"),
     ],
 )
 def test_box_not_appended(
     mocker: MockerFixture,
     enabled: bool,
-    quiet: bool,
     json: bool,
     authenticated: bool,
     main_x_configured: bool,
     availability: dict[str, list[str]],
 ) -> None:
     """Box is not appended when output mode or user state makes it unnecessary."""
-    event = make_pnfe_event(quiet=quiet, json=json)
+    event = make_pnfe_event(json=json)
     original_message = event.exc_value.message
     mocker.patch(
         "anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide",
