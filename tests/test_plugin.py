@@ -130,18 +130,23 @@ def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
 
 
 @pytest.mark.parametrize(
-    ("query_result", "expected"),
+    ("spec", "expected"),
     [
-        pytest.param((PYCHOIR_RECORD,), True, id="found-on-main-x"),
-        pytest.param((), False, id="not-found-on-main-x"),
+        pytest.param("pychoir", True, id="found-on-main-x"),
+        pytest.param("pychoir>0.0.29", True, id="found-on-main-x-version-satisfied"),
+        pytest.param("pychoir<0.0.29", False, id="not-found-on-main-x"),
     ],
 )
-def test_package_found_on_main_x(mocker: MockerFixture, query_result: list, expected: bool) -> None:
-    """A non-empty main-x query result reports the package as available (True);
-    an empty result reports it as unavailable (False).
+def test_package_found_on_main_x(
+    main_x_repodata: tuple[str, str],
+    spec: str,
+    expected: bool,
+) -> None:
+    """is_available_on_main_x uses real main-x repodata.
+    Returns True when the spec matches at least one package on main-x,
+    False when it does not (missing package or unsatisfied version).
     """
-    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.return_value = query_result
-    assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is expected
+    assert is_available_on_main_x([spec], subdirs=main_x_repodata) is expected
 
 
 def test_package_record_with_channel(mocker: MockerFixture) -> None:
