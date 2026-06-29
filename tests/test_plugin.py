@@ -129,6 +129,15 @@ def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
     mock_handle.assert_not_called()
 
 
+@pytest.fixture(scope="module")
+def main_x_cache() -> None:
+    """Load main-x repodata once so is_available_on_main_x can use the index cache."""
+    from anaconda_channel_guide.prefetch import main
+
+    main(list(context.subdirs))
+
+
+@pytest.mark.usefixtures("main_x_cache")
 @pytest.mark.parametrize(
     ("package", "expected"),
     [
