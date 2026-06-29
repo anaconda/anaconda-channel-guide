@@ -1,7 +1,6 @@
 from collections.abc import Iterable
 from io import StringIO
 
-from conda.models.match_spec import MatchSpec
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
@@ -30,14 +29,21 @@ class ChannelGuideBox:
         self.packages = packages
         self.steps = steps
 
-    def to_panel(self) -> Panel:
-        for package in self.packages:
-            package_name = package.name if isinstance(package, MatchSpec) else package
-            body = f"'{package_name}' is available in Anaconda's 'main-x' channel."
-            for i, step in enumerate(self.steps, 1):
-                body += f"\n\n  {i}. {step}"
-            body += "\n\nThen re-run the original command."
-        body += f"\n\n{DISABLE_STEP}"
+    def to_panel(self) -> Padding:
+        names = [pkg if isinstance(pkg, str) else pkg.name for pkg in self.packages]
+        if len(names) == 1:
+            intro = f"'{names[0]}' is available in Anaconda's 'main-x' channel."
+        elif len(names) == 2:
+            intro = f"'{names[0]}' and '{names[1]}' are available in Anaconda's 'main-x' channel."
+        else:
+            *rest, last = names
+            joined = ", ".join(f"'{n}'" for n in rest)
+            intro = f"{joined}, and '{last}' are available in Anaconda's 'main-x' channel."
+
+        body = intro
+        for i, step in enumerate(self.steps, 1):
+            body += f"\n\n  {i}. {step}"
+        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
