@@ -15,13 +15,13 @@ def box_output(package: str, steps: list[str]) -> str:
     return str(ChannelGuideBox(package, steps))
 
 
-def test_disable_message_shown() -> None:
-    """Ensure that the message to disable the plug-in is shown."""
+def test_always_present_content() -> None:
+    """Ensure that content always appended by to_panel() is present in the output."""
     output = box_output("package", [])
-    padding = ChannelGuideBox("package", []).to_panel()
-    assert DISABLE_STEP in padding.renderable.renderable
-    lines = [line for line in DISABLE_STEP.split("\n") if line]
-    assert all(line in output for line in lines)
+
+    assert ChannelGuideBox.TITLE in output
+    assert "Then re-run the original command." in output
+    assert all(line in output for line in DISABLE_STEP.splitlines() if line)
 
 
 @pytest.mark.parametrize(
@@ -34,14 +34,6 @@ def test_disable_message_shown() -> None:
 def test_package_name_display(package: str, expected: str) -> None:
     """Ensure that the package name is displayed in the box."""
     assert expected in box_output(package, [])
-
-
-def test_always_present_content() -> None:
-    """Ensure that the always present content is displayed in the box."""
-    output = box_output("pychoir", [LOGIN_STEP])
-    assert ChannelGuideBox.TITLE in output
-    assert "Then re-run the original command." in output
-    assert "conda config --set plugins.anaconda_channel_guide false" in output
 
 
 @pytest.mark.parametrize(
