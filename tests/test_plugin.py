@@ -21,15 +21,14 @@ CONFIG_CMD = "conda config --append channels https://repo.anaconda.cloud/repo/ma
 SUBDIRS = ("linux-64", "noarch")
 
 PYCHOIR_RECORD = PackageRecord(name="pychoir", version="0.0.30", build="pypi_0", build_number=0)
-SUBDIRS = ("linux-64", "noarch")
 
 
 @pytest.mark.parametrize(
     ("on_main_x", "main_x_configured", "authenticated"),
     [
-        (False, True, False),
-        (False, False, False),
-        (True, True, True),
+        pytest.param(False, True, False, id="not-on-main-x-with-channel"),
+        pytest.param(False, False, False, id="not-on-main-x-without-channel"),
+        pytest.param(True, True, True, id="already-set-up"),
     ],
 )
 def test_handle_pnfe_returns_none(
@@ -53,9 +52,9 @@ def test_handle_pnfe_returns_none(
 @pytest.mark.parametrize(
     ("main_x_configured", "authenticated", "expected_steps"),
     [
-        (True, False, [LOGIN_CMD]),
-        (False, True, [CONFIG_CMD]),
-        (False, False, [LOGIN_CMD, CONFIG_CMD]),
+        pytest.param(True, False, [LOGIN_CMD], id="needs-login-only"),
+        pytest.param(False, True, [CONFIG_CMD], id="needs-config-only"),
+        pytest.param(False, False, [LOGIN_CMD, CONFIG_CMD], id="needs-login-and-config"),
     ],
 )
 def test_handle_pnfe_prompts_required_steps(
@@ -79,7 +78,13 @@ def test_handle_pnfe_prompts_required_steps(
         assert step in output
 
 
-@pytest.mark.parametrize("expected", [True, False])
+@pytest.mark.parametrize(
+    "expected",
+    [
+        pytest.param(True, id="valid-token"),
+        pytest.param(False, id="expired-token"),
+    ],
+)
 def test_is_logged_in(mocker: MockerFixture, expected: bool) -> None:
     """Verify is_logged_in reflects token state."""
     mock_cls = mocker.patch("anaconda_channel_guide.plugin.TokenInfo")
@@ -97,12 +102,12 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
 @pytest.mark.parametrize(
     ("channels", "expected"),
     [
-        ((MAIN_X_CHANNEL_NAME,), True),
-        (("defaults", MAIN_X_CHANNEL_NAME), True),
-        ((f"{MAIN_X_CHANNEL_NAME}/",), True),
-        (("defaults", "conda-forge"), False),
-        ((), False),
-        (None, False),
+        pytest.param((MAIN_X_CHANNEL_NAME,), True, id="main-x-only"),
+        pytest.param(("defaults", MAIN_X_CHANNEL_NAME), True, id="main-x-with-defaults"),
+        pytest.param((f"{MAIN_X_CHANNEL_NAME}/",), True, id="main-x-trailing-slash"),
+        pytest.param(("defaults", "conda-forge"), False, id="no-main-x"),
+        pytest.param((), False, id="empty-channels"),
+        pytest.param(None, False, id="none-channels"),
     ],
 )
 def test_main_x_configured(
@@ -124,7 +129,13 @@ def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
     mock_handle.assert_not_called()
 
 
-@pytest.mark.parametrize(("query_result", "expected"), [((PYCHOIR_RECORD,), True), ((), False)])
+@pytest.mark.parametrize(
+    ("query_result", "expected"),
+    [
+        pytest.param((PYCHOIR_RECORD,), True, id="found-on-main-x"),
+        pytest.param((), False, id="not-found-on-main-x"),
+    ],
+)
 def test_package_found_on_main_x(mocker: MockerFixture, query_result: list, expected: bool) -> None:
     """A non-empty main-x query result reports the package as available (True);
     an empty result reports it as unavailable (False).

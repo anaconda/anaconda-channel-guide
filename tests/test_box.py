@@ -18,17 +18,20 @@ def test_disable_message_shown() -> None:
 @pytest.mark.parametrize(
     ("packages", "expected_intro"),
     [
-        (
+        pytest.param(
             ["numpy"],
             "'numpy' is available in Anaconda's 'main-x' channel.",
+            id="single-package",
         ),
-        (
+        pytest.param(
             ["numpy", "pandas"],
             "'numpy' and 'pandas' are available in Anaconda's 'main-x' channel.",
+            id="two-packages",
         ),
-        (
+        pytest.param(
             ["numpy", "pandas", "scipy"],
             "'numpy', 'pandas', and 'scipy' are available in Anaconda's 'main-x' channel.",
+            id="three-packages",
         ),
     ],
 )
