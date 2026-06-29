@@ -26,7 +26,7 @@ requirements:
     - conda
     - requests
     - rich
-    - anaconda-auth
+    - anaconda-auth >=0.15.1
 
 test:
   requires:

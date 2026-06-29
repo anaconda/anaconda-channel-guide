@@ -7,7 +7,14 @@ from rich.padding import Padding
 from rich.panel import Panel
 
 LOGIN_STEP = "Log in:\n\n    $ anaconda login"
-CONFIG_STEP = "Add the 'main-x' channel:\n\n    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+CONFIG_STEP = (
+    "Add the 'main-x' channel:\n\n"
+    "    $ conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+)
+DISABLE_STEP = (
+    "To disable these notifications, please run:\n\n"
+    "    $ conda config --set plugins.anaconda_channel_guide false"
+)
 
 
 class ChannelGuideBox:
@@ -23,13 +30,11 @@ class ChannelGuideBox:
         self.packages = packages
         self.steps = steps
 
-    def to_panel(self) -> Panel:
-        for package in self.packages:
-            package_name = package.name if isinstance(package, MatchSpec) else package
-            body = f"'{package_name}' is available in Anaconda's 'main-x' channel."
-            for i, step in enumerate(self.steps, 1):
-                body += f"\n\n  {i}. {step}"
-            body += "\n\nThen re-run the original command."
+    def to_panel(self) -> Padding:
+        body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
+        for i, step in enumerate(self.steps, 1):
+            body += f"\n\n  {i}. {step}"
+        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
