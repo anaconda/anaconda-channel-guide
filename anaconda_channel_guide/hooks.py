@@ -18,6 +18,10 @@ if TYPE_CHECKING:
 def on_package_not_found(event: CondaExceptionEvent) -> None:
     if not context.plugins.anaconda_channel_guide:
         return
+
+    if event.json:
+        return
+
     # TODO: when sending the info to API does it need name and version?
     main_x_configured = is_main_x_configured(event)
     missing_packages = [str(pkg) for pkg in event.exc_value.packages]
@@ -25,9 +29,9 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
 
     box = handle_pnfe(missing_packages, main_x_configured, authenticated)
 
-    # This is a temperary solution to append the box to the end of the message.
+    # This is a temporary solution to append the box to the end of the message.
     # This will be removed in conda 26.7.x when there is a better solution.
-    if box and not event.quiet and not event.json:
+    if box:
         event.exc_value.message += str(box)
 
 
