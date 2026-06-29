@@ -130,23 +130,29 @@ def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
 
 
 @pytest.mark.parametrize(
-    ("spec", "expected"),
+    ("package", "expected"),
     [
         pytest.param("pychoir", True, id="found-on-main-x"),
         pytest.param("pychoir>0.0.29", True, id="found-on-main-x-version-satisfied"),
         pytest.param("pychoir<0.0.29", False, id="not-found-on-main-x"),
+        pytest.param(MatchSpec("pychoir"), True, id="found-on-main-x-matchspec"),
+        pytest.param(
+            MatchSpec("pychoir>0.0.29"),
+            True,
+            id="found-on-main-x-version-satisfied-matchspec",
+        ),
+        pytest.param(MatchSpec("pychoir<0.0.29"), False, id="not-found-on-main-x-matchspec"),
     ],
 )
 def test_package_found_on_main_x(
-    main_x_repodata: tuple[str, str],
-    spec: str,
+    package: str | MatchSpec,
     expected: bool,
 ) -> None:
     """is_available_on_main_x uses real main-x repodata.
     Returns True when the spec matches at least one package on main-x,
     False when it does not (missing package or unsatisfied version).
     """
-    assert is_available_on_main_x([spec], subdirs=main_x_repodata) is expected
+    assert is_available_on_main_x([package], subdirs=context.subdirs) is expected
 
 
 def test_package_record_with_channel(mocker: MockerFixture) -> None:
@@ -163,21 +169,35 @@ def test_query_raises_exception(mocker: MockerFixture) -> None:
     assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is False
 
 
-def test_query_receives_correct_args(mocker: MockerFixture) -> None:
+@pytest.mark.parametrize(
+    "package",
+    [
+        pytest.param("pychoir", id="str"),
+        pytest.param(MatchSpec("pychoir"), id="matchspec"),
+    ],
+)
+def test_query_receives_correct_args(mocker: MockerFixture, package: str | MatchSpec) -> None:
     """Subdirs and channels are forwarded to query_all."""
     mock_sd = mocker.patch("anaconda_channel_guide.plugin.SubdirData")
     mock_sd.query_all.return_value = (PYCHOIR_RECORD,)
-    is_available_on_main_x(["pychoir"], subdirs=SUBDIRS)
+    is_available_on_main_x([package], subdirs=SUBDIRS)
     mock_sd.query_all.assert_called_once_with(
         MatchSpec("pychoir"), channels=[MAIN_X_CHANNEL_URL], subdirs=SUBDIRS
     )
 
 
-def test_channel_pinned_spec(mocker: MockerFixture) -> None:
+@pytest.mark.parametrize(
+    "package",
+    [
+        pytest.param("conda-forge::numpy", id="str"),
+        pytest.param(MatchSpec("conda-forge::numpy"), id="matchspec"),
+    ],
+)
+def test_channel_pinned_spec(mocker: MockerFixture, package: str | MatchSpec) -> None:
     """Specs pinned to another channel, returns False."""
     mock_sd = mocker.patch("anaconda_channel_guide.plugin.SubdirData")
 
-    assert is_available_on_main_x(["conda-forge::numpy"], subdirs=SUBDIRS) is False
+    assert is_available_on_main_x([package], subdirs=SUBDIRS) is False
     mock_sd.query_all.assert_not_called()
 
 
