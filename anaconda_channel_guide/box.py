@@ -1,6 +1,9 @@
-from collections.abc import Iterable
-from io import StringIO
+from __future__ import annotations
 
+from io import StringIO
+from typing import TYPE_CHECKING
+
+from conda.models.match_spec import MatchSpec
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
@@ -16,12 +19,16 @@ DISABLE_STEP = (
 )
 
 
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+
 class ChannelGuideBox:
     """Reusable Rich panel for channel guide prompts."""
 
     TITLE = "Anaconda Channel Guide"
 
-    def __init__(self, packages: Iterable[str], steps: list[str]) -> None:
+    def __init__(self, packages: Iterable[str | MatchSpec], steps: list[str]) -> None:
         """
         :param packages: Packages that triggered the PNFE
         :param steps: Numbered action items for the user
@@ -30,7 +37,7 @@ class ChannelGuideBox:
         self.steps = steps
 
     def to_panel(self) -> Padding:
-        names = [pkg if isinstance(pkg, str) else pkg.name for pkg in self.packages]
+        names = [pkg.name if isinstance(pkg, MatchSpec) else pkg for pkg in self.packages]
         if len(names) == 1:
             intro = f"'{names[0]}' is available in Anaconda's 'main-x' channel."
         elif len(names) == 2:
