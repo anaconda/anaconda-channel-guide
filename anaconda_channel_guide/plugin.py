@@ -23,6 +23,7 @@ if TYPE_CHECKING:
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
 
+
 def is_logged_in() -> bool:
     """Checks if the user is authenticated via anaconda-auth.
 
@@ -90,7 +91,6 @@ def is_available_on_main_x(
     except Exception:
         return False
     return True
-
 
 
 def handle_pnfe(

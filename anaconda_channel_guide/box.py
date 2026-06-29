@@ -30,11 +30,14 @@ class ChannelGuideBox:
         self.packages = packages
         self.steps = steps
 
-    def to_panel(self) -> Padding:
-        body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
-        for i, step in enumerate(self.steps, 1):
-            body += f"\n\n  {i}. {step}"
-        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
+    def to_panel(self) -> Panel:
+        for package in self.packages:
+            package_name = package.name if isinstance(package, MatchSpec) else package
+            body = f"'{package_name}' is available in Anaconda's 'main-x' channel."
+            for i, step in enumerate(self.steps, 1):
+                body += f"\n\n  {i}. {step}"
+            body += "\n\nThen re-run the original command."
+        body += f"\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def __str__(self) -> str:
