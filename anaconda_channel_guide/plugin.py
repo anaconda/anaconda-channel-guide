@@ -2,9 +2,12 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-import requests
 from anaconda_auth.token import TokenInfo, TokenNotFoundError
+from conda.base.context import context
+from conda.core.subdir_data import SubdirData
 from conda.models.channel import Channel
+from conda.models.match_spec import MatchSpec
+from conda.models.records import PackageRecord
 
 from anaconda_channel_guide.box import (
     CONFIG_STEP,
@@ -13,9 +16,10 @@ from anaconda_channel_guide.box import (
 )
 
 if TYPE_CHECKING:
+    from collections.abc import Iterable
+
     from conda.plugins.types import CondaExceptionEvent
 
-BASE_URL = "http://YOUR_BASE_URL/channels/main-x/artifacts/exists"
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
 
@@ -41,39 +45,59 @@ def is_main_x_configured(event: CondaExceptionEvent) -> bool:
     :param event: The conda exception event containing channel and error information
     :returns: True if main-x is in the configured channels, False otherwise
     """
-    return MAIN_X_CHANNEL_NAME in (event.channels or ())
+    return any(is_main_x_channel(channel) for channel in (event.channels or ()))
 
 
-def is_package_on_main_x(packages: list[str]) -> dict[str, list[str]]:
-    """Posts a list of package names to the main-x API and returns available versions.
-
-    :param packages: List of package names to check availability for
-    :returns: Dictionary mapping package names to their available versions on main-x
-    """
-    response = requests.post(BASE_URL, json=packages, timeout=10)
-    return response.json()
+def is_main_x_channel(channel: str) -> bool:
+    try:
+        return Channel(channel).canonical_name == MAIN_X_CHANNEL_NAME
+    except Exception:
+        return False
 
 
-def get_available_packages_on_main_x(missing_packages: list[str]) -> dict[str, list[str]]:
-    """Queries the main-x channel API and filters to only packages
-       that have available versions.
+def is_available_on_main_x(
+    packages: Iterable[MatchSpec | PackageRecord | str],
+    subdirs: Iterable[str],
+) -> bool:
+    """Checks whether all of the given packages are available on the main-x channel.
 
-    :param missing_packages: List of package names that were not found during install
-    :returns: Dictionary of packages available on main-x with their
-        versions, or empty dict on API failure
+    Normalizes package specs before querying: version constraints are stripped
+    so we check by name only, and specs pinned to a non-main-x channel are
+    rejected immediately.
+
+    :param packages: Package specs to check (names, match specs, or records)
+    :returns: True if every package is available on main-x, False otherwise
     """
     try:
-        availability = is_package_on_main_x(missing_packages)
-        in_main_x = {pkg: v for pkg, v in availability.items() if v}
-        return in_main_x
-    except requests.exceptions.RequestException:
-        return {}
+        specs = []
+        for package in packages:
+            # Solvers typically convert into MatchSpec, but exception events
+            # also allow for PackageRecord. These are unlikely to come from
+            # a channel search, so we return to be defensive.
+            if isinstance(package, PackageRecord):
+                return False
+            spec = MatchSpec(package) if isinstance(package, str) else package
+            if spec.get_exact_value("channel") is not None:
+                return False
+            specs.append(spec)
+
+        # Temporary workaround until main/main-x can serve this via sharded repodata.
+        # Avoid refreshing unsharded repodata on the exception path.
+        with context._override("use_index_cache", True):
+            for spec in specs:
+                if not SubdirData.query_all(spec, channels=[MAIN_X_CHANNEL_URL], subdirs=subdirs):
+                    return False
+
+    except Exception:
+        return False
+    return True
 
 
 def handle_pnfe(
-    missing_packages: list[str],
+    missing_packages: list[str | MatchSpec | PackageRecord],
     main_x_configured: bool,
     authenticated: bool,
+    subdirs: Iterable[str],
 ) -> ChannelGuideBox | None:
     """Handles a PackageNotFoundError by checking if missing packages
     are available on main-x and guiding the user on what to do next.
@@ -81,23 +105,19 @@ def handle_pnfe(
     :param missing_packages: List of package names that triggered the PNFE
     :param main_x_configured: True if the main-x channel is already in the user's config
     :param authenticated: True if the user is currently logged in
+    :param subdirs: List of subdirectories to check for availability
     :returns: A user-facing prompt string if action is needed,
         or None to fall through to default PNFE behavior
     """
-
-    in_main_x = get_available_packages_on_main_x(missing_packages)
-
-    if not in_main_x:
-        return None
-
     if authenticated and main_x_configured:
         return None
 
-    packages = ", ".join(in_main_x.keys())
+    if not is_available_on_main_x(missing_packages, subdirs):
+        return None
 
     steps = []
     if not authenticated:
         steps.append(LOGIN_STEP)
     if not main_x_configured:
         steps.append(CONFIG_STEP)
-    return ChannelGuideBox(packages, steps)
+    return ChannelGuideBox(missing_packages, steps)

@@ -1,5 +1,9 @@
-from io import StringIO
+from __future__ import annotations
 
+from io import StringIO
+from typing import TYPE_CHECKING
+
+from conda.models.match_spec import MatchSpec
 from rich.console import Console
 from rich.padding import Padding
 from rich.panel import Panel
@@ -15,21 +19,35 @@ DISABLE_STEP = (
 )
 
 
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+
 class ChannelGuideBox:
     """Reusable Rich panel for channel guide prompts."""
 
     TITLE = "Anaconda Channel Guide"
 
-    def __init__(self, package: str, steps: list[str]) -> None:
+    def __init__(self, packages: Iterable[str | MatchSpec], steps: list[str]) -> None:
         """
-        :param package: Package name that triggered the PNFE
+        :param packages: Packages that triggered the PNFE
         :param steps: Numbered action items for the user
         """
-        self.package = package
+        self.packages = packages
         self.steps = steps
 
     def to_panel(self) -> Padding:
-        body = f"'{self.package}' is available in Anaconda's 'main-x' channel."
+        names = [pkg.name if isinstance(pkg, MatchSpec) else pkg for pkg in self.packages]
+        if len(names) == 1:
+            intro = f"'{names[0]}' is available in Anaconda's 'main-x' channel."
+        elif len(names) == 2:
+            intro = f"'{names[0]}' and '{names[1]}' are available in Anaconda's 'main-x' channel."
+        else:
+            *rest, last = names
+            joined = ", ".join(f"'{n}'" for n in rest)
+            intro = f"{joined}, and '{last}' are available in Anaconda's 'main-x' channel."
+
+        body = intro
         for i, step in enumerate(self.steps, 1):
             body += f"\n\n  {i}. {step}"
         body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"

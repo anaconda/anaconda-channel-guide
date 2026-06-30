@@ -1,90 +1,90 @@
 import pytest
-import responses
 from anaconda_auth.token import TokenNotFoundError
+from conda.base.context import context
+from conda.models.match_spec import MatchSpec
+from conda.models.records import PackageRecord
 from pytest_mock import MockerFixture
 
 from anaconda_channel_guide.box import ChannelGuideBox
+from anaconda_channel_guide.hooks import on_package_not_found
 from anaconda_channel_guide.plugin import (
-    BASE_URL,
     MAIN_X_CHANNEL_NAME,
+    MAIN_X_CHANNEL_URL,
     handle_pnfe,
+    is_available_on_main_x,
     is_logged_in,
     is_main_x_configured,
-    is_package_on_main_x,
 )
 
-FOUND_RESPONSE: dict[str, list[str]] = {"numpy": ["1.24", "1.25"]}
-NOT_FOUND_RESPONSE: dict[str, list[str]] = {"numpy": []}
-MOCK_RESPONSE: dict[str, list[str]] = {"numpy": ["1.24", "1.25"], "six": []}
+LOGIN_CMD = "anaconda login"
+CONFIG_CMD = "conda config --append channels https://repo.anaconda.cloud/repo/main-x"
+SUBDIRS = ("linux-64", "noarch")
+
+PYCHOIR_RECORD = PackageRecord(name="pychoir", version="0.0.30", build="pypi_0", build_number=0)
 
 
-@responses.activate
-def test_handle_pnfe_configured_not_authenticated() -> None:
-    """Verifies that a user with main-x configured but not logged in is prompted to log in."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
+@pytest.mark.parametrize(
+    ("on_main_x", "main_x_configured", "authenticated"),
+    [
+        pytest.param(False, True, False, id="not-on-main-x-with-channel"),
+        pytest.param(False, False, False, id="not-on-main-x-without-channel"),
+        pytest.param(True, True, True, id="already-set-up"),
+    ],
+)
+def test_handle_pnfe_returns_none(
+    mocker: MockerFixture,
+    on_main_x: bool,
+    main_x_configured: bool,
+    authenticated: bool,
+) -> None:
+    """No prompt when packages aren't on main-x, or the user is already set up."""
+    mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=on_main_x)
 
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
-    assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
-
-
-@responses.activate
-def test_handle_pnfe_configured_not_found() -> None:
-    """Verifies that when the package is not on main-x, the plugin
-    falls through to default PNFE behavior.
-    """
-    responses.post(BASE_URL, json=NOT_FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=False)
+    result = handle_pnfe(
+        ["pychoir"],
+        main_x_configured=main_x_configured,
+        authenticated=authenticated,
+        subdirs=SUBDIRS,
+    )
     assert result is None
 
 
-@responses.activate
-def test_handle_pnfe_not_configured_authenticated() -> None:
-    """Verifies that a logged-in user without main-x configured is prompted to add the channel."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
+@pytest.mark.parametrize(
+    ("main_x_configured", "authenticated", "expected_steps"),
+    [
+        pytest.param(True, False, [LOGIN_CMD], id="needs-login-only"),
+        pytest.param(False, True, [CONFIG_CMD], id="needs-config-only"),
+        pytest.param(False, False, [LOGIN_CMD, CONFIG_CMD], id="needs-login-and-config"),
+    ],
+)
+def test_handle_pnfe_prompts_required_steps(
+    mocker: MockerFixture,
+    main_x_configured: bool,
+    authenticated: bool,
+    expected_steps: list[str],
+) -> None:
+    """When packages are on main-x and setup is incomplete, prompt the missing steps."""
+    mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=True)
 
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=True)
+    result = handle_pnfe(
+        ["pychoir"],
+        main_x_configured=main_x_configured,
+        authenticated=authenticated,
+        subdirs=SUBDIRS,
+    )
     assert isinstance(result, ChannelGuideBox)
     output = str(result)
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
+    for step in expected_steps:
+        assert step in output
 
 
-@responses.activate
-def test_handle_pnfe_not_configured_not_authenticated() -> None:
-    """Verifies that a user without main-x configured and not logged in is prompted to do both."""
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
-    assert isinstance(result, ChannelGuideBox)
-    output = str(result)
-    assert "anaconda login" in output
-    assert "conda config --append channels https://repo.anaconda.cloud/repo/main-x" in output
-
-
-@responses.activate
-def test_handle_pnfe_not_configured_not_found() -> None:
-    """Verifies that when the package is not on main-x, the plugin
-    falls through to default PNFE behavior.
-    """
-    responses.post(BASE_URL, json=NOT_FOUND_RESPONSE, status=200)
-
-    result = handle_pnfe(["numpy"], main_x_configured=False, authenticated=False)
-    assert result is None
-
-
-@responses.activate
-def test_handle_pnfe_fully_setup() -> None:
-    """Verifies that a fully set up user (authenticated with main-x
-    configured) gets no prompt, even if the package exists on main-x.
-    """
-    responses.post(BASE_URL, json=FOUND_RESPONSE, status=200)
-    result = handle_pnfe(["numpy"], main_x_configured=True, authenticated=True)
-    assert result is None
-
-
-@pytest.mark.parametrize("expected", [True, False])
+@pytest.mark.parametrize(
+    "expected",
+    [
+        pytest.param(True, id="valid-token"),
+        pytest.param(False, id="expired-token"),
+    ],
+)
 def test_is_logged_in(mocker: MockerFixture, expected: bool) -> None:
     """Verify is_logged_in reflects token state."""
     mock_cls = mocker.patch("anaconda_channel_guide.plugin.TokenInfo")
@@ -102,11 +102,12 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
 @pytest.mark.parametrize(
     ("channels", "expected"),
     [
-        ((MAIN_X_CHANNEL_NAME,), True),
-        (("defaults", MAIN_X_CHANNEL_NAME), True),
-        (("defaults", "conda-forge"), False),
-        ((), False),
-        (None, False),
+        pytest.param((MAIN_X_CHANNEL_NAME,), True, id="main-x-only"),
+        pytest.param(("defaults", MAIN_X_CHANNEL_NAME), True, id="main-x-with-defaults"),
+        pytest.param((f"{MAIN_X_CHANNEL_NAME}/",), True, id="main-x-trailing-slash"),
+        pytest.param(("defaults", "conda-forge"), False, id="no-main-x"),
+        pytest.param((), False, id="empty-channels"),
+        pytest.param(None, False, id="none-channels"),
     ],
 )
 def test_main_x_configured(
@@ -119,17 +120,115 @@ def test_main_x_configured(
     assert is_main_x_configured(event) is expected
 
 
-@responses.activate
-def test_is_package_on_main_x() -> None:
-    """Verifies that is_package_on_main_x posts the package list
-    and returns the parsed API response.
+def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
+    """Availability checks are skipped entirely when conda is in offline mode."""
+    event = mocker.MagicMock()
+    event.offline = True
+    mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
+    on_package_not_found(event)
+    mock_handle.assert_not_called()
+
+
+@pytest.fixture(scope="module")
+def main_x_cache() -> None:
+    """Load main-x repodata once so is_available_on_main_x can use the index cache."""
+    from anaconda_channel_guide.prefetch import main
+
+    main(list(context.subdirs))
+
+
+@pytest.mark.usefixtures("main_x_cache")
+@pytest.mark.parametrize(
+    ("package", "expected"),
+    [
+        pytest.param("pychoir", True, id="found-on-main-x"),
+        pytest.param("pychoir>0.0.29", True, id="found-on-main-x-version-satisfied"),
+        pytest.param("pychoir<0.0.29", False, id="not-found-on-main-x"),
+        pytest.param(MatchSpec("pychoir"), True, id="found-on-main-x-matchspec"),
+        pytest.param(
+            MatchSpec("pychoir>0.0.29"),
+            True,
+            id="found-on-main-x-version-satisfied-matchspec",
+        ),
+        pytest.param(MatchSpec("pychoir<0.0.29"), False, id="not-found-on-main-x-matchspec"),
+    ],
+)
+def test_package_found_on_main_x(
+    package: str | MatchSpec,
+    expected: bool,
+) -> None:
+    """is_available_on_main_x uses real main-x repodata.
+    Returns True when the spec matches at least one package on main-x,
+    False when it does not (missing package or unsatisfied version).
     """
-    responses.post(
-        BASE_URL,
-        json=MOCK_RESPONSE,
-        status=200,
+    assert is_available_on_main_x([package], subdirs=context.subdirs) is expected
+
+
+def test_package_record_with_channel(mocker: MockerFixture) -> None:
+    """A PackageRecord whose MatchSpec carries a channel is rejected."""
+    mock_sd = mocker.patch("anaconda_channel_guide.plugin.SubdirData")
+    mock_sd.query_all.return_value = (PYCHOIR_RECORD,)
+    assert is_available_on_main_x([PYCHOIR_RECORD], subdirs=SUBDIRS) is False
+    mock_sd.query_all.assert_not_called()
+
+
+def test_query_raises_exception(mocker: MockerFixture) -> None:
+    """A failed main-x query is treated as 'not available' rather than crashing."""
+    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.side_effect = Exception()
+    assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is False
+
+
+@pytest.mark.parametrize(
+    "package",
+    [
+        pytest.param("pychoir", id="str"),
+        pytest.param(MatchSpec("pychoir"), id="matchspec"),
+    ],
+)
+def test_query_receives_correct_args(mocker: MockerFixture, package: str | MatchSpec) -> None:
+    """Subdirs and channels are forwarded to query_all."""
+    mock_sd = mocker.patch("anaconda_channel_guide.plugin.SubdirData")
+    mock_sd.query_all.return_value = (PYCHOIR_RECORD,)
+    is_available_on_main_x([package], subdirs=SUBDIRS)
+    mock_sd.query_all.assert_called_once_with(
+        MatchSpec("pychoir"), channels=[MAIN_X_CHANNEL_URL], subdirs=SUBDIRS
     )
 
-    result = is_package_on_main_x(["numpy", "six"])
 
-    assert result == MOCK_RESPONSE
+@pytest.mark.parametrize(
+    "package",
+    [
+        pytest.param("conda-forge::numpy", id="str"),
+        pytest.param(MatchSpec("conda-forge::numpy"), id="matchspec"),
+    ],
+)
+def test_channel_pinned_spec(mocker: MockerFixture, package: str | MatchSpec) -> None:
+    """Specs pinned to another channel, returns False."""
+    mock_sd = mocker.patch("anaconda_channel_guide.plugin.SubdirData")
+
+    assert is_available_on_main_x([package], subdirs=SUBDIRS) is False
+    mock_sd.query_all.assert_not_called()
+
+
+def test_availability_lookup_uses_index_cache(mocker: MockerFixture) -> None:
+    """Use conda's cached repodata instead of refreshing on the PNFE path."""
+    seen_use_index_cache = []
+
+    def query_all(
+        package: MatchSpec,
+        *,
+        channels: list[str],
+        subdirs: tuple[str, ...],
+    ) -> tuple[PackageRecord, ...]:
+        assert package == MatchSpec("pychoir")
+        assert channels == [MAIN_X_CHANNEL_URL]
+        assert subdirs == SUBDIRS
+        seen_use_index_cache.append(context.use_index_cache)
+        return (PYCHOIR_RECORD,)
+
+    mocker.patch("anaconda_channel_guide.plugin.SubdirData").query_all.side_effect = query_all
+
+    with context._override("use_index_cache", False):
+        assert is_available_on_main_x(["pychoir"], subdirs=SUBDIRS) is True
+        assert seen_use_index_cache == [True]
+        assert context.use_index_cache is False

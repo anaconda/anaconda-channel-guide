@@ -10,7 +10,6 @@ dependencies:
   - requests
   # test
   - pytest
-  - responses
   - pre-commit
   # plugins
   - pytest-cov

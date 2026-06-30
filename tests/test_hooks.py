@@ -32,6 +32,7 @@ def test_enable_disable_plugin(enabled: bool, mocker: MockerFixture) -> None:
     """
     mocker.patch("anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide", enabled)
     event = mocker.MagicMock()
+    event.offline = False
     mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
     on_package_not_found(event)
     assert mock_handle.called is enabled
