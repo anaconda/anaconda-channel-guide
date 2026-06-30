@@ -88,6 +88,6 @@ def test_steps_not_repeated_per_package() -> None:
     from anaconda_channel_guide.box import CONFIG_STEP, LOGIN_STEP
 
     box = ChannelGuideBox(["a", "b"], [LOGIN_STEP, CONFIG_STEP])
-    body = box.to_panel().renderable.renderables[0]
+    body = box.to_panel().renderable.renderables[0].renderable
     assert body.count(LOGIN_STEP) == 1
     assert body.count(CONFIG_STEP) == 1
