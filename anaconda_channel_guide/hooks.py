@@ -30,7 +30,9 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     main_x_configured = is_main_x_configured(event)
     authenticated = is_logged_in()
 
-    box = handle_pnfe(event.exc_value.packages, main_x_configured, authenticated, subdirs=context.subdirs)
+    box = handle_pnfe(
+        event.exc_value.packages, main_x_configured, authenticated, subdirs=context.subdirs
+    )
 
     # This is a temporary solution to append the box to the end of the message.
     # This will be removed in conda 26.7.x when there is a better solution.
