@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import pytest
-from conda.exceptions import PackagesNotFoundError
+from conda.exceptions import PackagesNotFoundInChannelsError
 from conda.plugins.types import CondaExceptionEvent
 
 from anaconda_channel_guide.box import ChannelGuideBox
@@ -21,9 +21,9 @@ def make_pnfe_event(
 ) -> CondaExceptionEvent:
     """Build a CondaExceptionEvent for PackagesNotFoundError hook tests."""
     channel_urls = () if channels is None else channels
-    exc = PackagesNotFoundError(packages or ["pychoir"], channel_urls=channel_urls)
+    exc = PackagesNotFoundInChannelsError(packages or ["pychoir"], channel_urls=channel_urls)
     return CondaExceptionEvent(
-        exc_type=PackagesNotFoundError,
+        exc_type=PackagesNotFoundInChannelsError,
         exc_value=exc,
         exc_traceback=None,
         channels=channels,
