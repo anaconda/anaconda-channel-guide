@@ -20,6 +20,10 @@ DISABLE_STEP = (
     "To disable these notifications, please run:\n\n"
     "    $ conda config --set plugins.anaconda_channel_guide false"
 )
+TOS_MESSAGE = (
+    "By accessing main-x, you agree to Anaconda's Terms of Service:\n\n"
+    "    https://www.anaconda.com/legal/terms-of-service"
+)
 
 
 if TYPE_CHECKING:
@@ -53,7 +57,7 @@ class ChannelGuideBox:
         body = intro
         for i, step in enumerate(self.steps, 1):
             body += f"\n\n  {i}. {step}"
-        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
+        body += f"\n\nThen re-run the original command.\n\n{TOS_MESSAGE}\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def to_hint_text(self) -> str:

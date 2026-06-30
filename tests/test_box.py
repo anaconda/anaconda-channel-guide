@@ -6,6 +6,7 @@ from anaconda_channel_guide.box import (
     CONFIG_STEP,
     DISABLE_STEP,
     LOGIN_STEP,
+    TOS_MESSAGE,
     ChannelGuideBox,
 )
 
@@ -22,6 +23,7 @@ def test_always_present_content() -> None:
     assert ChannelGuideBox.TITLE in output
     assert "Then re-run the original command." in output
     assert all(line in output for line in DISABLE_STEP.splitlines() if line)
+    assert all(line in output for line in TOS_MESSAGE.splitlines() if line)
 
 
 @pytest.mark.parametrize(
