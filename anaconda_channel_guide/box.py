@@ -56,6 +56,10 @@ class ChannelGuideBox:
         body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
+    def to_hint_text(self) -> str:
+        """Return the guide message as plain text, without Rich panel formatting."""
+        return self.to_panel().renderable.renderable
+
     def __str__(self) -> str:
         console = Console(file=StringIO(), width=MAX_WIDTH)
         console.print(self.to_panel())
