@@ -17,6 +17,7 @@ def make_pnfe_event(
     json: bool = False,
     channels: tuple[str, ...] | None = ("defaults",),
     packages: list[str] | None = None,
+    offline: bool = False,
 ) -> CondaExceptionEvent:
     """Build a CondaExceptionEvent for PackagesNotFoundError hook tests."""
     channel_urls = () if channels is None else channels
@@ -27,6 +28,7 @@ def make_pnfe_event(
         exc_traceback=None,
         channels=channels,
         json=json,
+        offline=offline,
     )
 
 

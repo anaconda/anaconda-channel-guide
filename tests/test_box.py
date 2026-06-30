@@ -54,3 +54,37 @@ def test_expected_steps_in_box(steps: list[str] | str, expected_fragments: list[
     output = box_output("pychoir", step_list)
     for fragment in expected_fragments:
         assert fragment in output
+
+@pytest.mark.parametrize(
+    ("packages", "expected_intro"),
+    [
+        pytest.param(
+            ["numpy"],
+            "'numpy' is available in Anaconda's 'main-x' channel.",
+            id="single-package",
+        ),
+        pytest.param(
+            ["numpy", "pandas"],
+            "'numpy' and 'pandas' are available in Anaconda's 'main-x' channel.",
+            id="two-packages",
+        ),
+        pytest.param(
+            ["numpy", "pandas", "scipy"],
+            "'numpy', 'pandas', and 'scipy' are available in Anaconda's 'main-x' channel.",
+            id="three-packages",
+        ),
+    ],
+)
+def test_package_intro_formatting(packages: list[str], expected_intro: str) -> None:
+    """Intro line uses correct grammar for one, two, or three packages."""
+    box = ChannelGuideBox(packages, [])
+    assert expected_intro in str(box)
+
+
+def test_steps_not_repeated_per_package() -> None:
+    from anaconda_channel_guide.box import CONFIG_STEP, LOGIN_STEP
+
+    box = ChannelGuideBox(["a", "b"], [LOGIN_STEP, CONFIG_STEP])
+    body = box.to_panel().renderable.renderable
+    assert body.count(LOGIN_STEP) == 1
+    assert body.count(CONFIG_STEP) == 1
