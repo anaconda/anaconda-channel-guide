@@ -65,7 +65,7 @@ class ChannelGuideBox:
 
     def to_hint_text(self) -> str:
         """Return the guide message as plain text, without Rich panel formatting."""
-        return self.to_panel().renderable.renderable
+        return "\n".join(rend.renderable for rend in self.to_panel().renderable.renderables)
 
     def __str__(self) -> str:
         console = Console(file=StringIO(), width=MAX_WIDTH)
