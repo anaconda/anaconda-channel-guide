@@ -21,7 +21,7 @@ def test_always_present_content() -> None:
     output = box_output("package", [])
 
     assert ChannelGuideBox.TITLE in output
-    assert "Then re-run the original command." in output
+    assert "Re-run the original command." in output
     assert all(line in output for line in DISABLE_STEP.splitlines() if line)
     assert all(line in output for line in TOS_MESSAGE.splitlines() if line)
 

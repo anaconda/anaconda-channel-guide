@@ -55,9 +55,11 @@ class ChannelGuideBox:
             intro = f"{joined}, and '{last}' are available in Anaconda's 'main-x' channel."
 
         body = intro
-        for i, step in enumerate(self.steps, 1):
+        rerun_cmd = "Then Re-run the original command."
+        all_steps = [*self.steps, rerun_cmd]
+        for i, step in enumerate(all_steps):
             body += f"\n\n  {i}. {step}"
-        body += f"\n\nThen re-run the original command.\n\n{TOS_MESSAGE}\n\n{DISABLE_STEP}"
+        body += f"\n\n{TOS_MESSAGE}\n\n{DISABLE_STEP}"
         return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
 
     def to_hint_text(self) -> str:
