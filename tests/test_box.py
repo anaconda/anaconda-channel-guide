@@ -12,7 +12,7 @@ from anaconda_channel_guide.box import (
 
 def box_output(package: str, steps: list[str]) -> str:
     """Get the output of a ChannelGuideBox for a given package and steps"""
-    return str(ChannelGuideBox(package, steps))
+    return str(ChannelGuideBox([package], steps))
 
 
 def test_always_present_content() -> None:
@@ -54,6 +54,7 @@ def test_expected_steps_in_box(steps: list[str] | str, expected_fragments: list[
     output = box_output("pychoir", step_list)
     for fragment in expected_fragments:
         assert fragment in output
+
 
 @pytest.mark.parametrize(
     ("packages", "expected_intro"),

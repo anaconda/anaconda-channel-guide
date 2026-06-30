@@ -95,8 +95,8 @@ def test_box_correct_steps_appended(
         return_value=main_x_configured,
     )
     mocker.patch(
-        "anaconda_channel_guide.plugin.get_available_packages_on_main_x",
-        return_value={"pychoir": ["0.0.29"]},
+        "anaconda_channel_guide.plugin.is_available_on_main_x",
+        return_value=True,
     )
 
     on_package_not_found(event)
@@ -109,12 +109,12 @@ def test_box_correct_steps_appended(
 
 
 @pytest.mark.parametrize(
-    ("enabled", "json", "authenticated", "main_x_configured", "availability"),
+    ("enabled", "json", "authenticated", "main_x_configured", "on_main_x"),
     [
-        pytest.param(True, True, False, False, {"pychoir": ["0.0.29"]}, id="json"),
-        pytest.param(True, False, True, True, {"pychoir": ["0.0.29"]}, id="no_action_needed"),
-        pytest.param(True, False, False, False, {}, id="not_on_main_x"),
-        pytest.param(False, False, False, False, {"pychoir": ["0.0.29"]}, id="disabled"),
+        pytest.param(True, True, False, False, True, id="json"),
+        pytest.param(True, False, True, True, True, id="no_action_needed"),
+        pytest.param(True, False, False, False, False, id="not_on_main_x"),
+        pytest.param(False, False, False, False, True, id="disabled"),
     ],
 )
 def test_box_not_appended(
@@ -123,7 +123,7 @@ def test_box_not_appended(
     json: bool,
     authenticated: bool,
     main_x_configured: bool,
-    availability: dict[str, list[str]],
+    on_main_x: bool,
 ) -> None:
     """Box is not appended when output mode or user state makes it unnecessary."""
     event = make_pnfe_event(json=json)
@@ -141,8 +141,8 @@ def test_box_not_appended(
         return_value=main_x_configured,
     )
     mocker.patch(
-        "anaconda_channel_guide.plugin.get_available_packages_on_main_x",
-        return_value=availability,
+        "anaconda_channel_guide.plugin.is_available_on_main_x",
+        return_value=on_main_x,
     )
     on_package_not_found(event)
     assert event.exc_value.message == original_message
