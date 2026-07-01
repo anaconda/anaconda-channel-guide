@@ -29,6 +29,7 @@ def make_pnfe_event(
         channels=channels,
         json=json,
         offline=offline,
+        conda_version="26.5.3",
     )
 
 
