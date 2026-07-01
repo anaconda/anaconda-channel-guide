@@ -12,6 +12,7 @@ from conda.plugins.types import (
     CondaPreCommand,
     CondaSetting,
 )
+from packaging.version import Version
 
 from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 from anaconda_channel_guide.prefetch import prefetch_main_x_repodata
@@ -61,7 +62,7 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
         return
 
     result = _channel_guide_result(event.exc_value)
-    if result:
+    if result and Version(event.conda_version) >= Version("26.5.0"):
         event.exc_value.message += str(result)
 
 
