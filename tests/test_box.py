@@ -13,7 +13,7 @@ from anaconda_channel_guide.box import (
 
 def box_output(package: str, steps: list[str]) -> str:
     """Get the output of a ChannelGuideBox for a given package and steps"""
-    return str(ChannelGuideBox([package], steps))
+    return ChannelGuideBox([package], steps).plain_text_message()
 
 
 def test_always_present_content() -> None:
@@ -81,13 +81,11 @@ def test_expected_steps_in_box(steps: list[str] | str, expected_fragments: list[
 def test_package_intro_formatting(packages: list[str], expected_intro: str) -> None:
     """Intro line uses correct grammar for one, two, or three packages."""
     box = ChannelGuideBox(packages, [])
-    assert expected_intro in str(box)
+    assert expected_intro in box.plain_text_message()
 
 
 def test_steps_not_repeated_per_package() -> None:
-    from anaconda_channel_guide.box import CONFIG_STEP, LOGIN_STEP
-
     box = ChannelGuideBox(["a", "b"], [LOGIN_STEP, CONFIG_STEP])
-    body = box.to_panel().renderable.renderables[0].renderable
-    assert body.count(LOGIN_STEP) == 1
-    assert body.count(CONFIG_STEP) == 1
+    output = box.plain_text_message()
+    assert output.count("$ anaconda login") == 1
+    assert output.count("$ conda config --append channels") == 1

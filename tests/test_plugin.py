@@ -81,7 +81,7 @@ def test_handle_pnfe_prompts_required_steps(
         subdirs=SUBDIRS,
     )
     assert isinstance(result, ChannelGuideBox)
-    output = str(result)
+    output = result.plain_text_message()
     for step in expected_steps:
         assert step in output
 
