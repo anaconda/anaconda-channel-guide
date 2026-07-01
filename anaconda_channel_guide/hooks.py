@@ -63,7 +63,7 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
 
     result = _channel_guide_result(event.exc_value)
     if result and Version(event.conda_version) >= Version("26.5.0"):
-        event.exc_value.message += str(result)
+        event.exc_value.message += result.plain_text_message()
 
 
 @hookimpl
