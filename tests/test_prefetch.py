@@ -16,7 +16,7 @@ def test_pre_command_hook_registers_main_x_prefetch() -> None:
 
     assert hook.name == "channel-guide-main-x-prefetch"
     assert hook.action is prefetch_main_x_repodata
-    assert hook.run_for == {"create", "env_create", "env_update", "install"}
+    assert hook.run_for == {"create", "env_create", "env_update", "install", "search"}
 
 
 def test_prefetch_spawns_background_process(mocker: MockerFixture) -> None:

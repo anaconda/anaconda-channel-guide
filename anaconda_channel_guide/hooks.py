@@ -80,7 +80,7 @@ def conda_pre_commands() -> Iterable[CondaPreCommand]:
     yield CondaPreCommand(
         name="channel-guide-main-x-prefetch",
         action=prefetch_main_x_repodata,
-        run_for={"create", "env_create", "env_update", "install"},
+        run_for={"create", "env_create", "env_update", "install", "search"},
     )
 
 

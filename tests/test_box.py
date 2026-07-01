@@ -6,6 +6,7 @@ from anaconda_channel_guide.box import (
     CONFIG_STEP,
     DISABLE_STEP,
     LOGIN_STEP,
+    TOS_MESSAGE,
     ChannelGuideBox,
 )
 
@@ -20,8 +21,9 @@ def test_always_present_content() -> None:
     output = box_output("package", [])
 
     assert ChannelGuideBox.TITLE in output
-    assert "Then re-run the original command." in output
+    assert "Re-run the original command." in output
     assert all(line in output for line in DISABLE_STEP.splitlines() if line)
+    assert all(line in output for line in TOS_MESSAGE.splitlines() if line)
 
 
 @pytest.mark.parametrize(
@@ -86,6 +88,6 @@ def test_steps_not_repeated_per_package() -> None:
     from anaconda_channel_guide.box import CONFIG_STEP, LOGIN_STEP
 
     box = ChannelGuideBox(["a", "b"], [LOGIN_STEP, CONFIG_STEP])
-    body = box.to_panel().renderable.renderable
+    body = box.to_panel().renderable.renderables[0].renderable
     assert body.count(LOGIN_STEP) == 1
     assert body.count(CONFIG_STEP) == 1

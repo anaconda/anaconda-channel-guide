@@ -4,7 +4,7 @@ from io import StringIO
 from typing import TYPE_CHECKING
 
 from conda.models.match_spec import MatchSpec
-from rich.console import Console
+from rich.console import Console, Group
 from rich.padding import Padding
 from rich.panel import Panel
 
@@ -19,6 +19,10 @@ CONFIG_STEP = (
 DISABLE_STEP = (
     "To disable these notifications, please run:\n\n"
     "    $ conda config --set plugins.anaconda_channel_guide false"
+)
+TOS_MESSAGE = (
+    "By accessing main-x, you agree to Anaconda's Terms of Service:\n\n"
+    "    https://www.anaconda.com/legal/terms/terms-of-service"
 )
 
 
@@ -51,14 +55,17 @@ class ChannelGuideBox:
             intro = f"{joined}, and '{last}' are available in Anaconda's 'main-x' channel."
 
         body = intro
-        for i, step in enumerate(self.steps, 1):
+        rerun_cmd = "Re-run the original command."
+        all_steps = [*self.steps, rerun_cmd]
+        for i, step in enumerate(all_steps, 1):
             body += f"\n\n  {i}. {step}"
-        body += f"\n\nThen re-run the original command.\n\n{DISABLE_STEP}"
-        return Padding(Panel(body, title=self.TITLE, padding=(1, 2)), (1, 0))
+        box = Panel(body, title=self.TITLE, padding=(1, 2))
+        post = Padding(f"\n\n{TOS_MESSAGE}\n\n{DISABLE_STEP}", (0, 2))
+        return Padding(Group(box, post), (1, 0, 0, 0))
 
     def to_hint_text(self) -> str:
         """Return the guide message as plain text, without Rich panel formatting."""
-        return self.to_panel().renderable.renderable
+        return "\n".join(rend.renderable for rend in self.to_panel().renderable.renderables)
 
     def __str__(self) -> str:
         console = Console(file=StringIO(), width=MAX_WIDTH)
