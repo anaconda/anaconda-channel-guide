@@ -29,10 +29,20 @@ def test_always_present_content() -> None:
 @pytest.mark.parametrize(
     ("packages", "expected"),
     [
-        (["pychoir"], "'pychoir' is available in Anaconda's 'main-x' channel."),
-        (
+        pytest.param(
+            ["pychoir"],
+            "'pychoir' is available in Anaconda's 'main-x' channel.",
+            id="single-package",
+        ),
+        pytest.param(
             ["pychoir", "aabbtree"],
             "'pychoir' and 'aabbtree' are available in Anaconda's 'main-x' channel.",
+            id="two-packages",
+        ),
+        pytest.param(
+            ["pychoir", "aabbtree", "numpy"],
+            "'pychoir', 'aabbtree', and 'numpy' are available in Anaconda's 'main-x' channel.",
+            id="three-packages",
         ),
     ],
 )
