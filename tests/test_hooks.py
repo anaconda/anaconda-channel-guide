@@ -155,7 +155,7 @@ def test_box_not_appended(
     "conda_version",
     [
         pytest.param("26.7.0", id="at_max_unsupported"),
-        pytest.param("27.0.0", id="above_max_unsupported"),
+        pytest.param("26.9.0", id="above_max_unsupported"),
     ],
 )
 def test_box_not_appended_outside_supported_version_range(
