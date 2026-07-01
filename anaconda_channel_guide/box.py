@@ -31,6 +31,7 @@ class ChannelGuideBox:
     """Plain-text channel guide message for PNFE remediation."""
 
     TITLE = "Anaconda Channel Guide"
+    MARGIN = 5  # Left margin for the box's content, in spaces.
 
     def __init__(self, packages: Iterable[str | MatchSpec], steps: list[str]) -> None:
         """
@@ -43,34 +44,34 @@ class ChannelGuideBox:
     def _intro_line(self) -> str:
         names = [pkg.name if isinstance(pkg, MatchSpec) else pkg for pkg in self.packages]
         if len(names) == 1:
-            return f"'{names[0]}' is available in Anaconda's 'main-x' channel."
-        if len(names) == 2:
-            return f"'{names[0]}' and '{names[1]}' are available in Anaconda's 'main-x' channel."
-        *rest, last = names
-        joined = ", ".join(f"'{n}'" for n in rest)
-        return f"{joined}, and '{last}' are available in Anaconda's 'main-x' channel."
+            preamble = f"'{names[0]}' is"
+        elif len(names) == 2:
+            preamble = f"'{names[0]}' and '{names[1]}' are"
+        else:
+            *rest, last = names
+            joined = ", ".join(f"'{n}'" for n in rest)
+            preamble = f"{joined}, and '{last}' are"
+        return f"{preamble} available in Anaconda's 'main-x' channel."
 
     @staticmethod
-    def _render_block(block: str, prefix: str = "", indent: str = "     ") -> list[str]:
+    def _render_block(block: str, prefix: str = "", indent: int = MARGIN) -> list[str]:
         title, *command_lines = block.splitlines()
-        return [f"{prefix}{title}", *(f"{indent}{c.strip()}" for c in command_lines)]
+        indent_str = " " * indent
+        return [f"{prefix}{title}", *(f"{indent_str}{c.strip()}" for c in command_lines)]
 
     def plain_text_message(self) -> str:
         width = self._width()
         steps = [*self.steps, "Re-run the original command."]
+        margin = " " * self.MARGIN
 
         parts = [f" {self.TITLE} ".center(width, "-"), self._intro_line()]
         for i, step in enumerate(steps, 1):
-            parts += self._render_block(step, prefix=f"     {i}. ", indent="          ")
+            parts += self._render_block(step, prefix=f"{margin}{i}. ", indent=self.MARGIN * 2)
         parts.append("-" * width)
         for block in (TOS_MESSAGE, DISABLE_STEP):
             parts += self._render_block(block)
 
         return "\n" + "\n\n".join(parts)
-
-    def to_hint_text(self) -> str:
-        """Return the guide message for conda's CondaErrorHint API."""
-        return self.plain_text_message()
 
     @staticmethod
     def _width() -> int:

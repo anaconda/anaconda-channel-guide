@@ -11,14 +11,14 @@ from anaconda_channel_guide.box import (
 )
 
 
-def box_output(package: str, steps: list[str]) -> str:
-    """Get the output of a ChannelGuideBox for a given package and steps"""
-    return ChannelGuideBox([package], steps).plain_text_message()
+def box_output(packages: list[str], steps: list[str]) -> str:
+    """Get the output of a ChannelGuideBox for the given packages and steps"""
+    return ChannelGuideBox(packages, steps).plain_text_message()
 
 
 def test_always_present_content() -> None:
     """Ensure that content always appended by to_panel() is present in the output."""
-    output = box_output("package", [])
+    output = box_output(["package"], [])
 
     assert ChannelGuideBox.TITLE in output
     assert "Re-run the original command." in output
@@ -27,33 +27,40 @@ def test_always_present_content() -> None:
 
 
 @pytest.mark.parametrize(
-    ("package", "expected"),
+    ("packages", "expected"),
     [
-        ("pychoir", "'pychoir' is available in Anaconda's 'main-x' channel."),
-        ("pychoir, aabbtree", "'pychoir, aabbtree' is available in Anaconda's 'main-x' channel."),
+        (["pychoir"], "'pychoir' is available in Anaconda's 'main-x' channel."),
+        (
+            ["pychoir", "aabbtree"],
+            "'pychoir' and 'aabbtree' are available in Anaconda's 'main-x' channel.",
+        ),
     ],
 )
-def test_package_name_display(package: str, expected: str) -> None:
-    """Ensure that the package name is displayed in the box."""
-    assert expected in box_output(package, [])
+def test_package_name_display(packages: list[str], expected: str) -> None:
+    """Ensure that the package name(s) are displayed in the box with correct grammar."""
+    assert expected in box_output(packages, [])
 
 
 @pytest.mark.parametrize(
     ("steps", "expected_fragments"),
     [
-        (LOGIN_STEP, ["1. Log in:", "$ anaconda login"]),
-        (CONFIG_STEP, ["1. Add the 'main-x' channel:", "conda config --append channels"]),
-        (
+        pytest.param(LOGIN_STEP, ["1. Log in:", "$ anaconda login"], id="login_only"),
+        pytest.param(
+            CONFIG_STEP,
+            ["1. Add the 'main-x' channel:", "conda config --append channels"],
+            id="config_only",
+        ),
+        pytest.param(
             [LOGIN_STEP, CONFIG_STEP],
             ["1. Log in:", "$ anaconda login", "2. Add the 'main-x' channel:"],
+            id="login_and_config",
         ),
     ],
-    ids=["login_only", "config_only", "login_and_config"],
 )
 def test_expected_steps_in_box(steps: list[str] | str, expected_fragments: list[str]) -> None:
     """Ensure that the expected steps are displayed in the box."""
     step_list = [steps] if isinstance(steps, str) else steps
-    output = box_output("pychoir", step_list)
+    output = box_output(["pychoir"], step_list)
     for fragment in expected_fragments:
         assert fragment in output
 

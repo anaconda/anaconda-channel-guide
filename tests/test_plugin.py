@@ -128,6 +128,7 @@ def test_main_x_configured(
 def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
     """Availability checks are skipped entirely when conda is in offline mode."""
     event = mocker.MagicMock()
+    event.conda_version = "26.5.3"
     event.offline = True
     mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
     on_package_not_found(event)
