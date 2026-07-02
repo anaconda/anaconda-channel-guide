@@ -1,9 +1,9 @@
 from __future__ import annotations
 
+import shutil
 from typing import TYPE_CHECKING
 
 from conda.models.match_spec import MatchSpec
-from rich.console import Console
 
 # Cap rendered box width so it stays readable on wide terminals.
 MAX_WIDTH = 84
@@ -79,4 +79,4 @@ class ChannelGuideBox:
 
         Rich is used only to detect the terminal size here, not to render the box.
         """
-        return min(Console().size.width, MAX_WIDTH)
+        return min(shutil.get_terminal_size(fallback=(MAX_WIDTH, 0)).columns, MAX_WIDTH)
