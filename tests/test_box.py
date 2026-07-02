@@ -30,6 +30,11 @@ def test_always_present_content() -> None:
     ("packages", "expected"),
     [
         pytest.param(
+            [],
+            "Packages are available in Anaconda's 'main-x' channel.",
+            id="no-packages",
+        ),
+        pytest.param(
             ["pychoir"],
             "'pychoir' is available in Anaconda's 'main-x' channel.",
             id="single-package",

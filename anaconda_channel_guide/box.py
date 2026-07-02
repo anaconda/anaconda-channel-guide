@@ -43,7 +43,9 @@ class ChannelGuideBox:
 
     def _intro_line(self) -> str:
         names = [pkg.name if isinstance(pkg, MatchSpec) else pkg for pkg in self.packages]
-        if len(names) == 1:
+        if not names:
+            preamble = "Packages are"
+        elif len(names) == 1:
             preamble = f"'{names[0]}' is"
         elif len(names) == 2:
             preamble = f"'{names[0]}' and '{names[1]}' are"
