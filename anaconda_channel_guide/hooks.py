@@ -52,7 +52,7 @@ def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
     if result:
         yield plugins.types.CondaErrorHint(
             text=result.plain_text_message(),
-            hint_code="anaconda_channel_suggestion",
+            hint_code="anaconda_channel_guide",
         )
 
 
