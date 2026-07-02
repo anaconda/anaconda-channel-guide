@@ -18,7 +18,6 @@ def make_pnfe_event(
     channels: tuple[str, ...] | None = ("defaults",),
     packages: list[str] | None = None,
     offline: bool = False,
-    conda_version: str | None = "26.5.3",
 ) -> CondaExceptionEvent:
     """Build a CondaExceptionEvent for PackagesNotFoundError hook tests."""
     channel_urls = () if channels is None else channels
@@ -30,7 +29,6 @@ def make_pnfe_event(
         channels=channels,
         json=json,
         offline=offline,
-        conda_version=conda_version,
     )
 
 
@@ -147,33 +145,5 @@ def test_box_not_appended(
         return_value=on_main_x,
     )
     on_package_not_found(event)
-    assert event.exc_value.message == original_message
-    assert ChannelGuideBox.TITLE not in event.exc_value.message
-
-
-@pytest.mark.parametrize(
-    "conda_version",
-    [
-        pytest.param("26.7.0", id="at_max_unsupported"),
-        pytest.param("26.9.0", id="above_max_unsupported"),
-    ],
-)
-def test_box_not_appended_outside_supported_version_range(
-    mocker: MockerFixture,
-    conda_version: str,
-) -> None:
-    """
-    Box is not appended when conda_version is at or above MAX_CONDA_VERSION.
-    """
-    event = make_pnfe_event(conda_version=conda_version)
-    original_message = event.exc_value.message
-
-    mocker.patch("anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide", True)
-    mocker.patch("anaconda_channel_guide.hooks.is_logged_in", return_value=False)
-    mocker.patch("anaconda_channel_guide.hooks.is_main_x_configured", return_value=False)
-    mocker.patch("anaconda_channel_guide.plugin.is_available_on_main_x", return_value=True)
-
-    on_package_not_found(event)
-
     assert event.exc_value.message == original_message
     assert ChannelGuideBox.TITLE not in event.exc_value.message

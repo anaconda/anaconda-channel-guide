@@ -25,9 +25,6 @@ if TYPE_CHECKING:
     from anaconda_channel_guide.box import ChannelGuideBox
 
 
-MAX_CONDA_VERSION = VersionOrder("26.7.0")
-
-
 def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | None:
     if not context.plugins.anaconda_channel_guide:
         return None
@@ -43,7 +40,6 @@ def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
 
     if not isinstance(error, PackagesNotFoundError) or not error.channel_urls:
         return
-        return
 
     result = _channel_guide_result(error)
     if result:
@@ -57,9 +53,6 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     if hasattr(plugins.types, "CondaErrorHint"):
         return
 
-    if VersionOrder(event.conda_version) >= MAX_CONDA_VERSION:
-        return
-
     if event.json:
         return
 
@@ -68,7 +61,6 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
         return
 
     if not isinstance(event.exc_value, PackagesNotFoundError) or not event.exc_value.channel_urls:
-        return
         return
 
     result = _channel_guide_result(event.exc_value)
