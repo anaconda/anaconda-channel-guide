@@ -57,6 +57,17 @@ def test_handle_pnfe_returns_none(
     assert result is None
 
 
+def test_handle_pnfe_returns_none_when_no_packages() -> None:
+    """No prompt when there are no missing packages to guide on."""
+    result = handle_pnfe(
+        [],
+        main_x_configured=False,
+        authenticated=False,
+        subdirs=SUBDIRS,
+    )
+    assert result is None
+
+
 @pytest.mark.parametrize(
     ("main_x_configured", "authenticated", "expected_steps"),
     [
