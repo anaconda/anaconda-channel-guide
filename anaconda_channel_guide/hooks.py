@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 from typing import TYPE_CHECKING
 
 from conda import plugins
@@ -37,6 +38,13 @@ def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | Non
 @plugins.hookimpl(optionalhook=True)
 def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
 
+    try:
+        field_names = {f.name for f in dataclasses.fields(plugins.types.CondaErrorHint)}
+        if {"text", "hint_code"} != field_names:
+            return
+    except Exception:
+        return
+
     if not isinstance(error, PackagesNotFoundError) or not error.channel_urls:
         return
 
@@ -50,7 +58,12 @@ def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
 
 def on_package_not_found(event: CondaExceptionEvent) -> None:
     if hasattr(plugins.types, "CondaErrorHint"):
-        return
+        try:
+            field_names = {f.name for f in dataclasses.fields(plugins.types.CondaErrorHint)}
+            if {"text", "hint_code"} == field_names:
+                return
+        except Exception:  # noqa: S110
+            pass
 
     if event.json:
         return
