@@ -1,11 +1,18 @@
 from __future__ import annotations
 
+import dataclasses
 from typing import TYPE_CHECKING
 
+from conda import plugins
 from conda.base.context import context
 from conda.common.configuration import PrimitiveParameter
+from conda.exceptions import PackagesNotFoundError
 from conda.plugins import hookimpl
-from conda.plugins.types import CondaExceptionObserver, CondaPreCommand, CondaSetting
+from conda.plugins.types import (
+    CondaExceptionObserver,
+    CondaPreCommand,
+    CondaSetting,
+)
 
 from anaconda_channel_guide.plugin import handle_pnfe, is_logged_in, is_main_x_configured
 from anaconda_channel_guide.prefetch import prefetch_main_x_repodata
@@ -13,21 +20,64 @@ from anaconda_channel_guide.prefetch import prefetch_main_x_repodata
 if TYPE_CHECKING:
     from collections.abc import Iterable, Iterator
 
-    from conda.plugins.types import CondaExceptionEvent
+    from conda.plugins.types import CondaErrorHint, CondaExceptionEvent
+
+    from anaconda_channel_guide.box import ChannelGuideBox
+
+
+def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | None:
+    if not context.plugins.anaconda_channel_guide:
+        return None
+    main_x_configured = is_main_x_configured(context.channels)
+    missing_packages = list(error.packages)
+    authenticated = is_logged_in()
+
+    return handle_pnfe(missing_packages, main_x_configured, authenticated, subdirs=context.subdirs)
+
+
+@plugins.hookimpl(optionalhook=True)
+def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
+
+    try:
+        field_names = {f.name for f in dataclasses.fields(plugins.types.CondaErrorHint)}
+        if {"text", "hint_code"} != field_names:
+            return
+    except Exception:
+        return
+
+    if not isinstance(error, PackagesNotFoundError) or not error.channel_urls:
+        return
+
+    result = _channel_guide_result(error)
+    if result:
+        yield plugins.types.CondaErrorHint(
+            text=result.plain_text_message(),
+            hint_code="anaconda_channel_guide",
+        )
 
 
 def on_package_not_found(event: CondaExceptionEvent) -> None:
-    if not context.plugins.anaconda_channel_guide:
+    if hasattr(plugins.types, "CondaErrorHint"):
+        try:
+            field_names = {f.name for f in dataclasses.fields(plugins.types.CondaErrorHint)}
+            if {"text", "hint_code"} == field_names:
+                return
+        except Exception:  # noqa: S110
+            pass
+
+    if event.json:
         return
+
     #  Return immediately in offline mode — availability checks require network access.
     if event.offline:
         return
-    # TODO: when sending the info to API does it need name and version?
 
-    main_x_configured = is_main_x_configured(event)
-    authenticated = is_logged_in()
+    if not isinstance(event.exc_value, PackagesNotFoundError) or not event.exc_value.channel_urls:
+        return
 
-    handle_pnfe(event.exc_value.packages, main_x_configured, authenticated, subdirs=context.subdirs)
+    result = _channel_guide_result(event.exc_value)
+    if result:
+        event.exc_value.message += result.plain_text_message()
 
 
 @hookimpl
@@ -44,7 +94,7 @@ def conda_pre_commands() -> Iterable[CondaPreCommand]:
     yield CondaPreCommand(
         name="channel-guide-main-x-prefetch",
         action=prefetch_main_x_repodata,
-        run_for={"create", "env_create", "env_update", "install"},
+        run_for={"create", "env_create", "env_update", "install", "search"},
     )
 
 

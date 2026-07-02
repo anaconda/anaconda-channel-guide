@@ -1,9 +1,12 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 import pytest
 from anaconda_auth.token import TokenNotFoundError
 from conda.base.context import context
 from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
-from pytest_mock import MockerFixture
 
 from anaconda_channel_guide.box import ChannelGuideBox
 from anaconda_channel_guide.hooks import on_package_not_found
@@ -15,6 +18,11 @@ from anaconda_channel_guide.plugin import (
     is_logged_in,
     is_main_x_configured,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from pytest_mock import MockerFixture
 
 LOGIN_CMD = "anaconda login"
 CONFIG_CMD = "conda config --append channels https://repo.anaconda.cloud/repo/main-x"
@@ -49,6 +57,17 @@ def test_handle_pnfe_returns_none(
     assert result is None
 
 
+def test_handle_pnfe_returns_none_when_no_packages() -> None:
+    """No prompt when there are no missing packages to guide on."""
+    result = handle_pnfe(
+        [],
+        main_x_configured=False,
+        authenticated=False,
+        subdirs=SUBDIRS,
+    )
+    assert result is None
+
+
 @pytest.mark.parametrize(
     ("main_x_configured", "authenticated", "expected_steps"),
     [
@@ -73,7 +92,7 @@ def test_handle_pnfe_prompts_required_steps(
         subdirs=SUBDIRS,
     )
     assert isinstance(result, ChannelGuideBox)
-    output = str(result)
+    output = result.plain_text_message()
     for step in expected_steps:
         assert step in output
 
@@ -111,13 +130,10 @@ def test_is_logged_in_no_token(mocker: MockerFixture) -> None:
     ],
 )
 def test_main_x_configured(
-    mocker: MockerFixture,
-    channels: tuple[str, ...] | None,
+    channels: Iterable[str],
     expected: bool,
 ) -> None:
-    event = mocker.MagicMock()
-    event.channels = channels
-    assert is_main_x_configured(event) is expected
+    assert is_main_x_configured(channels) is expected
 
 
 def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:

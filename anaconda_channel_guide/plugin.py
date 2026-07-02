@@ -18,7 +18,6 @@ from anaconda_channel_guide.box import (
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from conda.plugins.types import CondaExceptionEvent
 
 MAIN_X_CHANNEL_URL = "https://repo.anaconda.cloud/repo/main-x"
 MAIN_X_CHANNEL_NAME = Channel.from_url(MAIN_X_CHANNEL_URL).canonical_name
@@ -39,13 +38,13 @@ def is_logged_in() -> bool:
         return False
 
 
-def is_main_x_configured(event: CondaExceptionEvent) -> bool:
+def is_main_x_configured(channels: Iterable[str]) -> bool:
     """Checks if the main-x channel is configured in the user's conda setup.
 
-    :param event: The conda exception event containing channel and error information
+    :param channels: Channel names or URLs active for the current command
     :returns: True if main-x is in the configured channels, False otherwise
     """
-    return any(is_main_x_channel(channel) for channel in (event.channels or ()))
+    return any(is_main_x_channel(channel) for channel in (channels or ()))
 
 
 def is_main_x_channel(channel: str) -> bool:
@@ -106,9 +105,12 @@ def handle_pnfe(
     :param main_x_configured: True if the main-x channel is already in the user's config
     :param authenticated: True if the user is currently logged in
     :param subdirs: List of subdirectories to check for availability
-    :returns: A user-facing prompt string if action is needed,
-        or None to fall through to default PNFE behavior
+    :returns: A ChannelGuideBox object if action is needed,
+        None to fall through to default PNFE behavior
     """
+    if not missing_packages:
+        return None
+
     if authenticated and main_x_configured:
         return None
 
