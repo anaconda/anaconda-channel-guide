@@ -108,6 +108,9 @@ def handle_pnfe(
     :returns: A ChannelGuideBox object if action is needed,
         None to fall through to default PNFE behavior
     """
+    if not missing_packages:
+        return None
+
     if authenticated and main_x_configured:
         return None
 
