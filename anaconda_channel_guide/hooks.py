@@ -6,7 +6,6 @@ from conda import plugins
 from conda.base.context import context
 from conda.common.configuration import PrimitiveParameter
 from conda.exceptions import PackagesNotFoundError
-from conda.models.version import VersionOrder
 from conda.plugins import hookimpl
 from conda.plugins.types import (
     CondaExceptionObserver,
