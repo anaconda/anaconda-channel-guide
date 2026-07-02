@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from conda import plugins
 from conda.base.context import context
 from conda.common.configuration import PrimitiveParameter
-from conda.exceptions import PackagesNotFoundInChannelsError
+from conda.exceptions import PackagesNotFoundError
 from conda.models.version import VersionOrder
 from conda.plugins import hookimpl
 from conda.plugins.types import (
@@ -28,11 +28,11 @@ if TYPE_CHECKING:
 MAX_CONDA_VERSION = VersionOrder("26.7.0")
 
 
-def _channel_guide_result(error: PackagesNotFoundInChannelsError) -> ChannelGuideBox | None:
+def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | None:
     if not context.plugins.anaconda_channel_guide:
         return None
     main_x_configured = is_main_x_configured(context.channels)
-    missing_packages = [str(pkg) for pkg in error.packages]
+    missing_packages = list(error.packages)
     authenticated = is_logged_in()
 
     return handle_pnfe(missing_packages, main_x_configured, authenticated, subdirs=context.subdirs)
@@ -41,7 +41,8 @@ def _channel_guide_result(error: PackagesNotFoundInChannelsError) -> ChannelGuid
 @plugins.hookimpl(optionalhook=True)
 def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
 
-    if not isinstance(error, PackagesNotFoundInChannelsError):
+    if not isinstance(error, PackagesNotFoundError) or not error.channel_urls:
+        return
         return
 
     result = _channel_guide_result(error)
@@ -66,7 +67,8 @@ def on_package_not_found(event: CondaExceptionEvent) -> None:
     if event.offline:
         return
 
-    if not isinstance(event.exc_value, PackagesNotFoundInChannelsError):
+    if not isinstance(event.exc_value, PackagesNotFoundError) or not event.exc_value.channel_urls:
+        return
         return
 
     result = _channel_guide_result(event.exc_value)
