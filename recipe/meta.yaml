@@ -23,7 +23,7 @@ requirements:
     - pip
   run:
     - python >=3.10
-    - conda
+    - conda >=26.5.0
     - requests
     - anaconda-auth >=0.15.1
 
