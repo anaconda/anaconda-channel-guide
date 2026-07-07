@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import os
+import shutil
+
 import pytest
 
 from anaconda_channel_guide.box import (
@@ -106,3 +109,103 @@ def test_steps_not_repeated_per_package() -> None:
     output = box.plain_text_message()
     assert output.count("$ anaconda login") == 1
     assert output.count("$ conda config --append channels") == 1
+
+
+def _set_terminal_columns(monkeypatch: pytest.MonkeyPatch, columns: int) -> None:
+    """Simulate `shutil.get_terminal_size()` reporting the given width."""
+    monkeypatch.setattr(
+        shutil,
+        "get_terminal_size",
+        lambda **_kwargs: os.terminal_size((columns, 24)),
+    )
+
+
+def _borders(output: str) -> tuple[str, str]:
+    """Return the (top, bottom) border lines of a rendered box."""
+    lines = [line for line in output.splitlines() if line]
+    top = lines[0]
+    bottom = next(line for line in lines if set(line) == {"-"})
+    return top, bottom
+
+
+@pytest.mark.parametrize(
+    ("columns", "expected_width"),
+    [
+        pytest.param(0, 26, id="zero-columns"),
+        pytest.param(1, 26, id="single-column"),
+        pytest.param(10, 30, id="narrower-than-title"),
+        pytest.param(13, 26, id="half-of-title-width"),
+        pytest.param(20, 40, id="still-narrower-than-title"),
+        pytest.param(25, 50, id="one-below-title-width"),
+        pytest.param(26, 26, id="exact-title-width"),
+        pytest.param(27, 27, id="one-above-title-width"),
+        pytest.param(30, 30, id="comfortably-wider-than-title"),
+        pytest.param(84, 84, id="at-max-width"),
+        pytest.param(85, 84, id="above-max-width"),
+        pytest.param(200, 84, id="very-wide"),
+    ],
+)
+def test_border_width_for_columns(
+    monkeypatch: pytest.MonkeyPatch, columns: int, expected_width: int
+) -> None:
+    """Top and bottom borders must both be wide enough to fit the title with dashes."""
+    _set_terminal_columns(monkeypatch, columns)
+    top, bottom = _borders(box_output(["numpy"], []))
+    assert len(top) == expected_width
+    assert len(bottom) == expected_width
+
+
+@pytest.mark.parametrize(
+    "columns",
+    [
+        pytest.param(0, id="zero-columns"),
+        pytest.param(1, id="single-column"),
+        pytest.param(10, id="narrower-than-title"),
+        pytest.param(13, id="half-of-title-width"),
+        pytest.param(20, id="still-narrower-than-title"),
+        pytest.param(25, id="one-below-title-width"),
+        pytest.param(26, id="exact-title-width"),
+        pytest.param(27, id="one-above-title-width"),
+        pytest.param(30, id="comfortably-wider-than-title"),
+        pytest.param(84, id="at-max-width"),
+        pytest.param(85, id="above-max-width"),
+        pytest.param(200, id="very-wide"),
+    ],
+)
+def test_top_and_bottom_borders_match(monkeypatch: pytest.MonkeyPatch, columns: int) -> None:
+    """The bottom border must always be the same length as the top border."""
+    _set_terminal_columns(monkeypatch, columns)
+    top, bottom = _borders(box_output(["numpy"], []))
+    assert len(top) == len(bottom)
+
+
+@pytest.mark.parametrize(
+    "columns",
+    [
+        pytest.param(0, id="zero-columns"),
+        pytest.param(1, id="single-column"),
+        pytest.param(10, id="narrower-than-title"),
+        pytest.param(13, id="half-of-title-width"),
+        pytest.param(20, id="still-narrower-than-title"),
+        pytest.param(25, id="one-below-title-width"),
+        pytest.param(26, id="exact-title-width"),
+        pytest.param(27, id="one-above-title-width"),
+        pytest.param(30, id="comfortably-wider-than-title"),
+        pytest.param(84, id="at-max-width"),
+        pytest.param(85, id="above-max-width"),
+        pytest.param(200, id="very-wide"),
+    ],
+)
+def test_title_has_dashes_on_both_sides(monkeypatch: pytest.MonkeyPatch, columns: int) -> None:
+    """The title border must never be dropped or asymmetric, regardless of terminal size."""
+    _set_terminal_columns(monkeypatch, columns)
+    top, _bottom = _borders(box_output(["pychoir"], []))
+    assert top.startswith("-")
+    assert top.endswith("-")
+    assert ChannelGuideBox.TITLE in top
+
+
+def test_zero_columns_does_not_raise(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A terminal reporting 0 columns must not crash with a ZeroDivisionError."""
+    _set_terminal_columns(monkeypatch, 0)
+    box_output(["pychoir"], [])
