@@ -61,13 +61,14 @@ class ChannelGuideBox:
         return [f"{prefix}{title}", *(f"{indent_str}{c.strip()}" for c in command_lines)]
 
     def plain_text_message(self) -> str:
-        width = self._width()
+        width = self._width() or MAX_WIDTH
         steps = [*self.steps, "Re-run the original command."]
         margin = " " * self.MARGIN
 
         title = f" {self.TITLE} "
         min_title_width = len(title) + 2
         title_width = width
+
         if title_width < min_title_width:
             ceiling = math.ceil(min_title_width / width)
             title_width = width * ceiling

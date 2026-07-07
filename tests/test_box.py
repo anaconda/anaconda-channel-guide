@@ -9,6 +9,7 @@ from anaconda_channel_guide.box import (
     CONFIG_STEP,
     DISABLE_STEP,
     LOGIN_STEP,
+    MAX_WIDTH,
     TOS_MESSAGE,
     ChannelGuideBox,
 )
@@ -131,6 +132,7 @@ def _borders(output: str) -> tuple[str, str]:
 @pytest.mark.parametrize(
     ("columns", "expected_top_width", "expected_bottom_width"),
     [
+        pytest.param(0, MAX_WIDTH, MAX_WIDTH, id="zero-columns"),
         pytest.param(25, 50, 25, id="one-below-title-width"),
         pytest.param(26, 26, 26, id="exact-title-width"),
         pytest.param(84, 84, 84, id="at-max-width"),
@@ -153,6 +155,7 @@ def test_border_width_for_columns(
 @pytest.mark.parametrize(
     "columns",
     [
+        pytest.param(0, id="zero-columns"),
         pytest.param(25, id="one-below-title-width"),
         pytest.param(26, id="exact-title-width"),
         pytest.param(84, id="at-max-width"),
