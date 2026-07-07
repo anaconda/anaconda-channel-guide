@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import shutil
 from typing import TYPE_CHECKING
 
@@ -60,11 +61,19 @@ class ChannelGuideBox:
         return [f"{prefix}{title}", *(f"{indent_str}{c.strip()}" for c in command_lines)]
 
     def plain_text_message(self) -> str:
-        width = self._width()
+        width = self._width() or MAX_WIDTH
         steps = [*self.steps, "Re-run the original command."]
         margin = " " * self.MARGIN
 
-        parts = [f" {self.TITLE} ".center(width, "-"), self._intro_line()]
+        title = f" {self.TITLE} "
+        min_title_width = len(title) + 2
+        title_width = width
+
+        if title_width < min_title_width:
+            ceiling = math.ceil(min_title_width / width)
+            title_width = width * ceiling
+
+        parts = [title.center(title_width, "-"), self._intro_line()]
         for i, step in enumerate(steps, 1):
             parts += self._render_block(step, prefix=f"{margin}{i}. ", indent=self.MARGIN * 2)
         parts.append("-" * width)
@@ -75,8 +84,5 @@ class ChannelGuideBox:
 
     @staticmethod
     def _width() -> int:
-        """Fit the real terminal width, capped at MAX_WIDTH so it stays readable.
-
-        Rich is used only to detect the terminal size here, not to render the box.
-        """
+        """Fit the real terminal width, capped at MAX_WIDTH so it stays readable."""
         return min(shutil.get_terminal_size(fallback=(MAX_WIDTH, 0)).columns, MAX_WIDTH)
