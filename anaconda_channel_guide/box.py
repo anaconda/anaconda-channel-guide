@@ -68,16 +68,14 @@ class ChannelGuideBox:
         title = f" {self.TITLE} "
         min_title_width = len(title) + 2
         title_width = width
-        if not width:
-            title_width = min_title_width
-        elif title_width < min_title_width:
+        if title_width < min_title_width:
             ceiling = math.ceil(min_title_width / width)
             title_width = width * ceiling
 
         parts = [title.center(title_width, "-"), self._intro_line()]
         for i, step in enumerate(steps, 1):
             parts += self._render_block(step, prefix=f"{margin}{i}. ", indent=self.MARGIN * 2)
-        parts.append("-" * title_width)
+        parts.append("-" * width)
         for block in (TOS_MESSAGE, DISABLE_STEP):
             parts += self._render_block(block)
 
