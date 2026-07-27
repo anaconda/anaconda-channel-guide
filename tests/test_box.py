@@ -61,7 +61,7 @@ def test_package_name_display(packages: list[str], expected: str) -> None:
         pytest.param(LOGIN_STEP, ["1. Log in:", "$ anaconda login"], id="login_only"),
         pytest.param(
             CONFIG_STEP,
-            ["1. Add the 'main-x' channel:", "conda config --append channels"],
+            ["1. Add the 'main-x' channel:", "conda config --add default_channels"],
             id="config_only",
         ),
         pytest.param(
@@ -109,7 +109,7 @@ def test_steps_not_repeated_per_package() -> None:
     box = ChannelGuideBox(["a", "b"], [LOGIN_STEP, CONFIG_STEP])
     output = box.plain_text_message()
     assert output.count("$ anaconda login") == 1
-    assert output.count("$ conda config --append channels") == 1
+    assert output.count("conda config --add default_channels") == 1
 
 
 def _set_terminal_columns(monkeypatch: pytest.MonkeyPatch, columns: int) -> None:
