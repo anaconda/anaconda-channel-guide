@@ -31,6 +31,9 @@ def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | Non
     if context.offline:
         return None
 
+    if context.json:
+        return None
+
     main_x_configured = is_main_x_configured(context.channels)
     missing_packages = list(error.packages)
     authenticated = is_logged_in()
