@@ -69,7 +69,9 @@ def test_enable_disable_plugin(enabled: bool, mocker: MockerFixture) -> None:
             id="needs_login_and_config",
         ),
         pytest.param(False, True, ["$ anaconda login"], id="needs_login_only"),
-        pytest.param(True, False, ["conda config --append default_channels"], id="needs_config_only"),
+        pytest.param(
+            True, False, ["conda config --append default_channels"], id="needs_config_only"
+        ),
     ],
 )
 def test_box_correct_steps_appended(
