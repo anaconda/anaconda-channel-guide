@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     from pytest_mock import MockerFixture
 
 LOGIN_CMD = "anaconda login"
-CONFIG_CMD = "conda config --add default_channels https://repo.anaconda.cloud/repo/main-x"
+CONFIG_CMD = "conda config --append default_channels https://repo.anaconda.cloud/repo/main-x"
 SUBDIRS = ("linux-64", "noarch")
 
 PYCHOIR_RECORD = PackageRecord(name="pychoir", version="0.0.30", build="pypi_0", build_number=0)
