@@ -86,7 +86,7 @@ channels = ["https://repo.anaconda.com/pkgs/main"]
 platforms = ["linux-64", "linux-aarch64", "osx-arm64", "win-64"]
 
 [tool.pixi.dependencies]
-conda = ">=26.5.0"
+conda = ">=26.7.0"
 python = ">=3.10"
 requests = "*"
 anaconda-auth = ">=0.15.1"
