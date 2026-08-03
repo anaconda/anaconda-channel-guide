@@ -12,7 +12,7 @@ MAX_WIDTH = 84
 LOGIN_STEP = "Log in:\n    $ anaconda login"
 CONFIG_STEP = (
     "Add the 'main-x' channel:\n"
-    "    conda config --add default_channels https://repo.anaconda.cloud/repo/main-x"
+    "    $ conda config --add default_channels https://repo.anaconda.cloud/repo/main-x"
 )
 DISABLE_STEP = (
     "To disable these notifications, please run:\n"
