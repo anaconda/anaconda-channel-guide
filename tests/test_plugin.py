@@ -9,7 +9,7 @@ from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 
 from anaconda_channel_guide.box import ChannelGuideBox
-from anaconda_channel_guide.hooks import on_package_not_found
+from anaconda_channel_guide.hooks import conda_error_hints
 from anaconda_channel_guide.plugin import (
     MAIN_X_CHANNEL_NAME,
     MAIN_X_CHANNEL_URL,
@@ -141,7 +141,7 @@ def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
     event = mocker.MagicMock()
     event.offline = True
     mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
-    on_package_not_found(event)
+    conda_error_hints(event)
     mock_handle.assert_not_called()
 
 

@@ -7,7 +7,7 @@ from conda.exceptions import PackagesNotFoundInChannelsError
 from conda.plugins.types import CondaExceptionEvent
 
 from anaconda_channel_guide.box import ChannelGuideBox
-from anaconda_channel_guide.hooks import conda_settings, on_package_not_found
+from anaconda_channel_guide.hooks import conda_error_hints, conda_settings
 
 if TYPE_CHECKING:
     from pytest_mock import MockerFixture
@@ -50,13 +50,16 @@ def test_conda_settings() -> None:
 )
 def test_enable_disable_plugin(enabled: bool, mocker: MockerFixture) -> None:
     """
-    Make sure that nothing is returned when the plugin is disabled via settings
+    Make sure that no hint is yielded when the plugin is disabled via settings
     """
     mocker.patch("anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide", enabled)
     event = make_pnfe_event()
-    mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
-    on_package_not_found(event)
+    mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe", return_value=None)
+
+    hints = list(conda_error_hints(event.exc_value))
+
     assert mock_handle.called is enabled
+    assert hints == []
 
 
 @pytest.mark.parametrize(
@@ -80,7 +83,6 @@ def test_box_correct_steps_appended(
 ) -> None:
     """Plugin enabled, normal output, package on main-x, action still needed."""
     event = make_pnfe_event()
-    original_message = event.exc_value.message
 
     mocker.patch(
         "anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide",
@@ -99,13 +101,13 @@ def test_box_correct_steps_appended(
         return_value=True,
     )
 
-    on_package_not_found(event)
+    hints = list(conda_error_hints(event.exc_value))
 
-    assert event.exc_value.message.startswith(original_message)
-    assert event.exc_value.message != original_message
-    assert ChannelGuideBox.TITLE in event.exc_value.message
+    assert len(hints) == 1
+    assert hints[0].hint_code == "anaconda_channel_guide"
+    assert ChannelGuideBox.TITLE in hints[0].text
     for fragment in expected_fragments:
-        assert fragment in event.exc_value.message
+        assert fragment in hints[0].text
 
 
 @pytest.mark.parametrize(
@@ -144,6 +146,6 @@ def test_box_not_appended(
         "anaconda_channel_guide.plugin.is_available_on_main_x",
         return_value=on_main_x,
     )
-    on_package_not_found(event)
+    conda_error_hints(event)
     assert event.exc_value.message == original_message
     assert ChannelGuideBox.TITLE not in event.exc_value.message
