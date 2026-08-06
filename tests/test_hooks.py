@@ -131,11 +131,11 @@ def test_box_not_appended(
 ) -> None:
     """Box is not appended when output mode or user state makes it unnecessary."""
     event = make_pnfe_event(json=json)
-    original_message = event.exc_value.message
     mocker.patch(
         "anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide",
         enabled,
     )
+    mocker.patch("anaconda_channel_guide.hooks.context.json", json)
     mocker.patch(
         "anaconda_channel_guide.hooks.is_logged_in",
         return_value=authenticated,
@@ -148,6 +148,5 @@ def test_box_not_appended(
         "anaconda_channel_guide.plugin.is_available_on_main_x",
         return_value=on_main_x,
     )
-    conda_error_hints(event)
-    assert event.exc_value.message == original_message
-    assert ChannelGuideBox.TITLE not in event.exc_value.message
+    hints = list(conda_error_hints(event.exc_value))
+    assert hints == []
