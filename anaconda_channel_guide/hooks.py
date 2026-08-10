@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from conda import plugins
 from conda.base.context import context
 from conda.common.configuration import PrimitiveParameter
-from conda.exceptions import PackagesNotFoundInChannelsError
+from conda.exceptions import PackagesNotFoundError
 from conda.plugins import hookimpl
 from conda.plugins.types import (
     CondaPreCommand,
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from anaconda_channel_guide.box import ChannelGuideBox
 
 
-def _channel_guide_result(error: PackagesNotFoundInChannelsError) -> ChannelGuideBox | None:
+def _channel_guide_result(error: PackagesNotFoundError) -> ChannelGuideBox | None:
     if not context.plugins.anaconda_channel_guide:
         return None
 
@@ -44,7 +44,7 @@ def _channel_guide_result(error: PackagesNotFoundInChannelsError) -> ChannelGuid
 def conda_error_hints(error: Exception) -> Iterator[CondaErrorHint]:
     """Contribute channel-guide remediation as structured conda error hints."""
 
-    if not isinstance(error, PackagesNotFoundInChannelsError) or not error.channel_urls:
+    if not isinstance(error, PackagesNotFoundError) or not error.channel_urls:
         return
 
     result = _channel_guide_result(error)
