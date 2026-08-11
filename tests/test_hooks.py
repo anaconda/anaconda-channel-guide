@@ -113,29 +113,26 @@ def test_box_correct_steps_appended(
 
 
 @pytest.mark.parametrize(
-    ("enabled", "json", "authenticated", "main_x_configured", "on_main_x"),
+    ("enabled", "authenticated", "main_x_configured", "on_main_x"),
     [
-        pytest.param(True, True, False, False, True, id="json"),
-        pytest.param(True, False, True, True, True, id="no_action_needed"),
-        pytest.param(True, False, False, False, False, id="not_on_main_x"),
-        pytest.param(False, False, False, False, True, id="disabled"),
+        pytest.param(True, True, True, True, id="no_action_needed"),
+        pytest.param(True, False, False, False, id="not_on_main_x"),
+        pytest.param(False, False, False, True, id="disabled"),
     ],
 )
 def test_box_not_appended(
     mocker: MockerFixture,
     enabled: bool,
-    json: bool,
     authenticated: bool,
     main_x_configured: bool,
     on_main_x: bool,
 ) -> None:
-    """Box is not appended when output mode or user state makes it unnecessary."""
-    event = make_pnfe_event(json=json)
+    """Box is not appended when plugin disabled or user state makes it unnecessary."""
+    event = make_pnfe_event()
     mocker.patch(
         "anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide",
         enabled,
     )
-    mocker.patch("anaconda_channel_guide.hooks.context.json", json)
     mocker.patch(
         "anaconda_channel_guide.hooks.is_logged_in",
         return_value=authenticated,
