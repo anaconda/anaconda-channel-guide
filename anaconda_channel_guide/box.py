@@ -80,7 +80,7 @@ class ChannelGuideBox:
         for block in (TOS_MESSAGE, DISABLE_STEP):
             parts += self._render_block(block)
 
-        return "\n" + "\n\n".join(parts)
+        return "\n\n" + "\n\n".join(parts)
 
     @staticmethod
     def _width() -> int:

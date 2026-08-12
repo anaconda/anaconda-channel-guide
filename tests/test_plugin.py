@@ -5,11 +5,12 @@ from typing import TYPE_CHECKING
 import pytest
 from anaconda_auth.token import TokenNotFoundError
 from conda.base.context import context
+from conda.exceptions import PackagesNotFoundInChannelsError
 from conda.models.match_spec import MatchSpec
 from conda.models.records import PackageRecord
 
 from anaconda_channel_guide.box import ChannelGuideBox
-from anaconda_channel_guide.hooks import on_package_not_found
+from anaconda_channel_guide.hooks import conda_error_hints
 from anaconda_channel_guide.plugin import (
     MAIN_X_CHANNEL_NAME,
     MAIN_X_CHANNEL_URL,
@@ -136,13 +137,28 @@ def test_main_x_configured(
     assert is_main_x_configured(channels) is expected
 
 
-def test_on_package_not_found_skips_offline(mocker: MockerFixture) -> None:
-    """Availability checks are skipped entirely when conda is in offline mode."""
-    event = mocker.MagicMock()
-    event.offline = True
+@pytest.mark.parametrize(
+    "mode",
+    [
+        pytest.param("offline", id="offline"),
+        pytest.param("json", id="json"),
+    ],
+)
+def test_on_package_not_found_skips(
+    mocker: MockerFixture,
+    mode: str,
+) -> None:
+    """handle_pnfe is not called when conda is offline or in JSON mode."""
+    mocker.patch("anaconda_channel_guide.hooks.context.plugins.anaconda_channel_guide", True)
+    mocker.patch("anaconda_channel_guide.hooks.context.offline", mode == "offline")
+    mocker.patch("anaconda_channel_guide.hooks.context.json", mode == "json")
     mock_handle = mocker.patch("anaconda_channel_guide.hooks.handle_pnfe")
-    on_package_not_found(event)
+
+    error = PackagesNotFoundInChannelsError(["pychoir"], channel_urls=("defaults",))
+    hints = list(conda_error_hints(error))
+
     mock_handle.assert_not_called()
+    assert hints == []
 
 
 @pytest.fixture(scope="module")
