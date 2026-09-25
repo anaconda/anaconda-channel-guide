@@ -9,3 +9,7 @@ The plug-in can be disabled using the following command:
 ```
 conda config --set plugins.anaconda_channel_guide false
 ```
+
+## Maintainer documentation
+
+See [MAINTAINERS.md](MAINTAINERS.md) for the versioning scheme and security contact.
