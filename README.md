@@ -1,6 +1,6 @@
 # anaconda-channel-guide
 
-A plug-in that checks whether a package is available on `main-x` when unavialable in other channels.
+A plug-in that checks whether a package is available on `main-x` when unavailable in other channels.
 
 ## Disabling the plug-in
 
